@@ -62,7 +62,7 @@ function createSection() {
     document.body.appendChild(productGrid);
 }
 
-addStylesheet(base_chatBot_url_front+'/components/products/css/style.css', () => {
+addStylesheet("https://ammarhammamieh.github.io/testy/style.css", () => {
     createSection();
 });
   
