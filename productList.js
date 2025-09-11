@@ -196,7 +196,7 @@ function filterCategory(product){
   </li>
   `).join("");  
 }
-export default function updateCategoryList() {
+function updateCategoryList() {
   let series = [
     {
       name:"Premium",
