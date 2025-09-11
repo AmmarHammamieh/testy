@@ -1,54 +1,51 @@
+var slider_pWfhEQrjIkDO = null;
+
 function updateCategoryList() {
-    let series = [
-      {
-        name:"Premium",
-        categories:["Hospitality","fashion & Rentail","Industrial"]
-      },
-      {
-        name:"E-Series",
-        categories:["Spotlight","Tube Light","Down Light"]
-      },
-      {
-        name:"Electric",
-        categories:["Power Extension Sockets","Plug","Wiring Device"]
-      }
-    ]
+    let series = [{
+        name: "Premium",
+        categories: ["Hospitality", "fashion & Rentail", "Industrial"]
+    }, {
+        name: "E-Series",
+        categories: ["Spotlight", "Tube Light", "Down Light"]
+    }, {
+        name: "Electric",
+        categories: ["Power Extension Sockets", "Plug", "Wiring Device"]
+    }]
     let categoryList = document.getElementsByClassName("slight-submenu-wrap")[0];
-  
-    let product=[
-      {
+
+    let product = [{
         img: "https://iororwxhmnrilr5q-static.micyjz.com/cloud/liBpjKorliSRqknmokikjq/weibiaoti.jpg",
         title: "Flicker free and Three year warranty, GU5.3 lamp holder",
         desc: "..."
-      },
-    ];
-    categoryList.innerHTML=series.map((serie,index) => `
+    }, ];
+    categoryList.innerHTML = series.map( (serie, index) => `
       <li class="prodli li-with-ul">
         <a href="/LED-Indoor-Lighting-pl46987387.html" title="${serie.name}">${serie.name}</a> <i class="list-mid-dot"></i>
         <ul class="submenu-default-simple slight-submenu-ul slight-submenu-master-ul">
-            ${serie.categories.map((category,index) => `
+            ${serie.categories.map( (category, index) => `
               <li class="prodli on hasNoUlChild"><a class="" title="${category}" onclick='filterCategory(${JSON.stringify(product)})'>${category}</a></li>
             `).join("")}
         </ul>
       </li>
     `).join("")
-  
+
     // to re-initilize category list
     $(".sitewidget-prodCategory-20230510105934 .submenu-default-simple").slightSubmenu({
-      buttonActivateEvents: "click click",
-      submenuOpeneTime: 10
+        buttonActivateEvents: "click click",
+        submenuOpeneTime: 10
     });
 }
 function replaceSlides(imageUrls) {
-    if (window.slider_pWfhEQrjIkDO) {
-      window.slider_pWfhEQrjIkDO.destroy(true);
-    }
-  
+    // var $widget = $(".sitewidget-prodDetail-20141127140104");
+    // if ($widget.hasClass("isLoaded") || $widget.find('#masterslider_pWfhEQrjIkDO').data('custom-initialized')) {
+    //     console.log("Original slider initialization skipped.");
+    //     return;
+    // }
     var $slider = $('#masterslider_pWfhEQrjIkDO');
     $slider.empty();
-  
-    imageUrls.forEach(function(url){
-      var slideHtml = `
+
+    imageUrls.forEach(function(url) {
+        var slideHtml = `
         <div class="ms-slide easyzoom easyzoom--overlay easyzoom--overlay_absolute is-ready">
           <div class="ms-slide-bgcont" style="height: 100%; opacity: 1;">
             <a href="${url}">
@@ -58,45 +55,46 @@ function replaceSlides(imageUrls) {
           </div>
         </div>
       `;
-      $slider.append(slideHtml);
+        $slider.append(slideHtml);
     });
-  
-    window.slider_pWfhEQrjIkDO = new MasterSlider();
+
+    var slider_pWfhEQrjIkDO = new MasterSlider();
     slider_pWfhEQrjIkDO.control('arrows');
     slider_pWfhEQrjIkDO.control('thumblist', {
-      autohide: false,
-      dir: 'h',
-      arrows: true,
-      align: 'bottom',
-      width: 100,
-      height: 100,
-      margin: 10,
-      space: 7
+        autohide: false,
+        dir: 'h',
+        arrows: true,
+        align: 'bottom',
+        width: 100,
+        height: 100,
+        margin: 10,
+        space: 7
     });
     slider_pWfhEQrjIkDO.setup('masterslider_pWfhEQrjIkDO', {
-      width: 640,
-      height: 640,
-      space: 5,
-      view: 'basic'
+        width: 640,
+        height: 640,
+        space: 5,
+        view: 'basic'
     });
     slider_pWfhEQrjIkDO.api.addEventListener('sliderLoad', function() {
         $('#masterslider_pWfhEQrjIkDO .ms-slide').each(function() {
-          var $img = $(this).find('img');
-          $img.wrap(`<a href="${$img.attr('src')}" class="easyzoom easyzoom--overlay"></a>`);
+            var $img = $(this).find('img');
+            $img.wrap(`<a href="${$img.attr('src')}" class="easyzoom easyzoom--overlay"></a>`);
         });
     });
     $('.easyzoom').easyZoom();
+    
 }
 function updateDescription() {
-    let title="test";
-    document.getElementsByClassName("proddetail-description")[0].getElementsByTagName("h1")[0].innerHTML=`<span class="prodDetail-tts"></span> ${title} <span><i class="fa fa-qrcode" aria-hidden="true"></i></span> `
-    document.getElementsByClassName("pro-this-prodBrief")[0].getElementsByTagName("ul")[0].innerHTML=`<li>aa</li><li>bb</li>`
-    document.getElementsByClassName("pro-info-list")[0].getElementsByTagName("li")[0].innerHTML=` <label style="width: 55px;">Model:</label> <p> 102R </p>`
+    let title = "test";
+    document.getElementsByClassName("proddetail-description")[0].getElementsByTagName("h1")[0].innerHTML = `<span class="prodDetail-tts"></span> ${title} <span><i class="fa fa-qrcode" aria-hidden="true"></i></span> `
+    document.getElementsByClassName("pro-this-prodBrief")[0].getElementsByTagName("ul")[0].innerHTML = `<li>aa</li><li>bb</li>`
+    document.getElementsByClassName("pro-info-list")[0].getElementsByTagName("li")[0].innerHTML = ` <label style="width: 55px;">Model:</label> <p> 102R </p>`
 }
 function initilizeTabs() {
-
-    document.getElementsByClassName("detial-cont-index")[0].innerHTML= `<div class="detial-cont-divsions detial-cont-prodescription">
+    document.getElementsByClassName("detial-cont-index")[0].innerHTML = `<div class="detial-cont-divsions detial-cont-prodescription">
             <ul class="detial-cont-tabslabel fix">
+            ammar
                 <li class="on"><a href="javascript:;"> Product Description</a></li>
                 <li><a href="javascript:;"> Product Package </a></li>
                 <li><a href="javascript:;"> Product Datasheet </a></li>
@@ -741,28 +739,58 @@ function initilizeTabs() {
     // initilize
     const tabs = document.querySelectorAll('.detial-cont-tabslabel li');
     const contents = document.querySelectorAll('.detial-cont-tabscont .prodDesc');
-    tabs.forEach((tab, index) => {
-      tab.addEventListener('click', (event) => {
-        event.preventDefault();
-        tabs.forEach(item => item.classList.remove('on'));
-        tab.classList.add('on');
-        contents.forEach(content => content.classList.add('hide'));
-        if (contents[index]) {
-          contents[index].classList.remove('hide');
+    tabs.forEach( (tab, index) => {
+        tab.addEventListener('click', (event) => {
+            event.preventDefault();
+            tabs.forEach(item => item.classList.remove('on'));
+            tab.classList.add('on');
+            contents.forEach(content => content.classList.add('hide'));
+            if (contents[index]) {
+                contents[index].classList.remove('hide');
+            }
         }
-      });
-    });
+        );
+    }
+    );
 }
+function initializePageContent() {
+    $(".sitewidget-prodDetail-20141127140104").addClass("isLoaded");
+    $('.placeholder-container, .mobile_3-small').remove();
+    updateDescription();
+    updateCategoryList();
+    initilizeTabs();
+    replaceSlides(["https://iororwxhmnrilr5q-static.micyjz.com/cloud/lrBpjKorliSRrlkrorqojo/800.jpg", "https://iororwxhmnrilr5q-static.micyjz.com/cloud/jmBpjKorliSRikimqqipjo/102S-480-480.jpg", "https://iororwxhmnrilr5q-static.micyjz.com/cloud/jlBpjKorliSRikimnqppjq/102R-480-480.jpg"]);
+}
+function waitForSliderAndInitialize() {
+    const maxAttempts = 50;
+    let attempts = 0;
 
+    const interval = setInterval(function() {
+        if (window.jQuery!=undefined && jQuery.fn.slightSubmenu!=undefined && jQuery.fn.easyZoom!=undefined) {
+            clearInterval(interval);
+            initializePageContent();
+            hideLoader();
+        }
+        else {
+            attempts++;
+            if (attempts >= maxAttempts) {
+                clearInterval(interval);
+                hideLoader();
+            }
+        }
+    }, 2000);
+}
+function hideLoader() {
+    const loader = document.getElementById('page-loader');
+    loader.classList.add('hidden');
+}
 document.addEventListener("DOMContentLoaded", function() {
-    updateDescription()
-    updateCategoryList()
-    initilizeTabs()
-    window.slider_pWfhEQrjIkDO.api.addEventListener('sliderload', function() {
-        replaceSlides([
-            "https://iororwxhmnrilr5q-static.micyjz.com/cloud/lrBpjKorliSRrlkrorqojo/800.jpg",
-            "https://iororwxhmnrilr5q-static.micyjz.com/cloud/jmBpjKorliSRikimqqipjo/102S-480-480.jpg",
-            "https://iororwxhmnrilr5q-static.micyjz.com/cloud/jlBpjKorliSRikimnqppjq/102R-480-480.jpg"
-        ]);
-    });
+    const loaderDiv = document.createElement('div');
+    loaderDiv.id = 'page-loader';
+    const spinnerDiv = document.createElement('div');
+    spinnerDiv.classList.add('spinner');
+    loaderDiv.appendChild(spinnerDiv);
+    document.body.prepend(loaderDiv);
+    
+    waitForSliderAndInitialize()
 });
