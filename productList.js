@@ -1,4 +1,4 @@
-const updateCategoryList = require('./categoryList');
+const updateCategoryList = require('https://ammarhammamieh.github.io/testy/categoryList');
 let base_chatBot_url_back="https://support.atcsolution.co";
 let base_chatBot_url_front="https://widget.atcsolution.co";
 let pagination="";
