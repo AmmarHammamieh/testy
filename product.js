@@ -753,12 +753,15 @@ function initilizeTabs() {
       });
     });
 }
-updateDescription()
-updateCategoryList()
-initilizeTabs()
-replaceSlides([
-    "https://iororwxhmnrilr5q-static.micyjz.com/cloud/lrBpjKorliSRrlkrorqojo/800.jpg",
-    "https://iororwxhmnrilr5q-static.micyjz.com/cloud/jmBpjKorliSRikimqqipjo/102S-480-480.jpg",
-    "https://iororwxhmnrilr5q-static.micyjz.com/cloud/jlBpjKorliSRikimnqppjq/102R-480-480.jpg"
-]);
-  
+
+document.addEventListener("DOMContentLoaded", function() {
+    updateDescription()
+    updateCategoryList()
+    initilizeTabs()
+    replaceSlides([
+        "https://iororwxhmnrilr5q-static.micyjz.com/cloud/lrBpjKorliSRrlkrorqojo/800.jpg",
+        "https://iororwxhmnrilr5q-static.micyjz.com/cloud/jmBpjKorliSRikimqqipjo/102S-480-480.jpg",
+        "https://iororwxhmnrilr5q-static.micyjz.com/cloud/jlBpjKorliSRikimnqppjq/102R-480-480.jpg"
+    ]);
+      
+});
