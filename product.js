@@ -1,5 +1,18 @@
 var slider_pWfhEQrjIkDO = null;
 
+function addStylesheet(href, callback) {
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = href;
+    link.onload = () => {
+      callback();
+    };
+    link.onerror = () => {
+      callback();
+    };
+    document.head.appendChild(link);
+}
+
 function updateCategoryList() {
     let series = [{
         name: "Premium",
@@ -794,3 +807,8 @@ document.addEventListener("DOMContentLoaded", function() {
     
     waitForSliderAndInitialize()
 });
+
+addStylesheet("https://ammarhammamieh.github.io/testy/product.css", () => {
+    updateProductListPage();
+});
+  
