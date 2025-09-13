@@ -10,7 +10,7 @@ function addStylesheet(href, callback) {
     link.onerror = () => {
       callback();
     };
-    document.head.appendChild(link);
+    document.head.prepend(link);
 }
 
 function updateCategoryList() {
@@ -813,6 +813,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
   
+
 
 
 
