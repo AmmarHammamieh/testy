@@ -807,13 +807,13 @@ document.addEventListener("DOMContentLoaded", function() {
     spinnerDiv.classList.add('spinner');
     loaderDiv.appendChild(spinnerDiv);
     document.body.prepend(loaderDiv);
-    waitForSliderAndInitialize()
+    addStylesheet("https://ammarhammamieh.github.io/testy/product.css", () => {
+        waitForSliderAndInitialize()
+    });
 });
 
-addStylesheet("https://ammarhammamieh.github.io/testy/product.css", () => {
-    updateProductListPage();
-});
   
+
 
 
 
