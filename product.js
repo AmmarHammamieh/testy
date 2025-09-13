@@ -1,4 +1,5 @@
 var slider_pWfhEQrjIkDO = null;
+document.documentElement.style.visibility = "hidden";
 
 function addStylesheet(href, callback) {
     const link = document.createElement('link');
@@ -813,6 +814,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
   
+
 
 
 
