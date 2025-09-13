@@ -797,6 +797,7 @@ function waitForSliderAndInitialize() {
 }
 function hideLoader() {
     const loader = document.getElementById('page-loader');
+    document.documentElement.style.visibility = "visible";
     loader.classList.add('hidden');
 }
 
@@ -814,6 +815,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
   
+
 
 
 
