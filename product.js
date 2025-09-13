@@ -798,14 +798,12 @@ function hideLoader() {
     loader.classList.add('hidden');
 }
 
-window.addEventListener("load", function() {
-    const loaderDiv = document.createElement('div');
-    loaderDiv.id = 'page-loader';
-    const spinnerDiv = document.createElement('div');
-    spinnerDiv.classList.add('spinner');
-    loaderDiv.appendChild(spinnerDiv);
-    document.body.prepend(loaderDiv);
-});
+const loaderDiv = document.createElement('div');
+loaderDiv.id = 'page-loader';
+const spinnerDiv = document.createElement('div');
+spinnerDiv.classList.add('spinner');
+loaderDiv.appendChild(spinnerDiv);
+document.body.prepend(loaderDiv);
 
 document.addEventListener("DOMContentLoaded", function() {
     waitForSliderAndInitialize()
@@ -815,4 +813,5 @@ addStylesheet("https://ammarhammamieh.github.io/testy/product.css", () => {
     updateProductListPage();
 });
   
+
 
