@@ -102,6 +102,7 @@ function replaceSlides(imageUrls) {
 }
 function updateDescription() {
     let title = "test";
+    document.getElementsByClassName("web-crumbs-title")[0].getElementsByTagName("strong")[0].innerHTML = title
     document.getElementsByClassName("proddetail-description")[0].getElementsByTagName("h1")[0].innerHTML = `<span class="prodDetail-tts"></span> ${title} <span><i class="fa fa-qrcode" aria-hidden="true"></i></span> `
     document.getElementsByClassName("pro-this-prodBrief")[0].getElementsByTagName("ul")[0].innerHTML = `<li>aa</li><li>bb</li>`
     document.getElementsByClassName("pro-info-list")[0].getElementsByTagName("li")[0].innerHTML = ` <label style="width: 55px;">Model:</label> <p> 102R </p>`
@@ -813,5 +814,6 @@ addStylesheet("https://ammarhammamieh.github.io/testy/product.css", () => {
     updateProductListPage();
 });
   
+
 
 
