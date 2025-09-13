@@ -1,5 +1,8 @@
-
+body{
+     visibility: hidden;
+}
 #page-loader {
+    visibility: visible;
     position: fixed;
     top: 0;
     left: 0;
