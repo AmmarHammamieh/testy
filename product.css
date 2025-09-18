@@ -62,3 +62,11 @@ html{
     height: calc( 100% - 55px );
     max-height: calc( 100% - 35px );
 }
+
+.sitewidget-proddetail > div,
+.sitewidget-proddetail > div > div,
+.sitewidget-proddetail > div > div > div,
+.sitewidget-proddetail > div > div > div > div,
+.sitewidget-proddetail > div > div > div > div > div {
+  height: 100%;
+}
