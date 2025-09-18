@@ -59,10 +59,12 @@ html{
 }
 
 #tab_contents_modal{
+    overflow-y: auto;
     height: calc( 100% - 55px );
     max-height: calc( 100% - 35px );
 }
 
+.sitewidget-proddetail,
 .sitewidget-proddetail > div,
 .sitewidget-proddetail > div > div,
 .sitewidget-proddetail > div > div > div,
