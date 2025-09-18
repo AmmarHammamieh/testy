@@ -1,5 +1,6 @@
-let base_chatBot_url_back="https://support.atcsolution.co";
-let base_chatBot_url_front="https://widget.atcsolution.co";
+var slider_pWfhEQrjIkDO = null;
+document.documentElement.style.visibility = "hidden";
+const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyRW1haWwiOiJhZG1pbmlzdHJhdG9yIiwidXNlcl9pZCI6IjEiLCJBUElfVElNRSI6MTc1NTY5Nzg3M30.gp9y4hnv5yPfDESMdyWG7Stj_8Ces2iuBNb6Hh_WSLY";
 
 function addStylesheet(href, callback) {
     const link = document.createElement('link');
@@ -11,134 +12,875 @@ function addStylesheet(href, callback) {
     link.onerror = () => {
       callback();
     };
-    document.head.appendChild(link);
+    document.head.prepend(link);
 }
 
-async function createSection() {
-    const products = [
-        {
-          img: "https://iororwxhmnrilr5q-static.micyjz.com/cloud/liBpjKorliSRqknmokikjq/weibiaoti.jpg",
-          title: "Flicker free and Three year warranty, GU5.3 lamp holder",
-          desc: "..."
-        },
-        {
-          img: "https://iororwxhmnrilr5q-static.micyjz.com/cloud/jpBpjKorliSRjklqonnljo/800-116D.jpg",
-          title: "Energy Saving LED Bulb with 2 Year Warranty",
-          desc: "..."
-        },
-        {
-          img: "https://iororwxhmnrilr5q-static.micyjz.com/cloud/ljBpjKorliSRmjkojmjnjq/134.jpg",
-          title: "Smart WiFi Bulb - Works with Alexa & Google",
-          desc: "..."
-        },
-        {
-          img: "https://iororwxhmnrilr5q-static.micyjz.com/cloud/jmBpjKorliSRikimjpoqjo/227S.jpg",
-          title: "Vintage Edison Bulb - Warm Light",
-          desc: "..."
-        },
-        {
-          img: "https://iororwxhmnrilr5q-static.micyjz.com/cloud/jnBpjKorliSRjklqmnrkjo/800-122CR.jpg",
-          title: "High Power Spotlight with GU10 Holder",
-          desc: "..."
-        }
-    ];
-  
-    const productGrid = document.createElement('div');
-    productGrid.className = 'grid-container';
+function addScript(src, callback) {
+  const script = document.createElement('script');
+  script.src = src;
+  script.async = true;
+  script.onload = () => {
+    callback(null);
+  };
+  script.onerror = () => {
+    callback(new Error(`Failed to load script: ${src}`));
+  };
+  document.body.appendChild(script);
+}
 
-    productGrid.innerHTML = products.map(product => `
-        <div class="product-card">
-            <div class="thumb">
-                <img src="${product.img}" alt="Product Image">
-            </div>
-            <div class="product-info">
-                <h3>${product.title}</h3>
-                <p>${product.desc}</p>
-                <a href="#" class="view-more">View More &gt;</a>
-            </div>
-        </div>
-    `).join("");
-
-    document.body.appendChild(productGrid);
-
-    let list = document.getElementsByClassName("prodlist-fix-style")[0].getElementsByTagName("ul")[0];
-    list.innerHTML=products.map((product,index) => `
-       <li pte="false" ipte="false" isp="false" sku="1" pi="1" pad="1" style="margin-left: 0px;">
-          <div class="prodlist-box-hover 66 55 audio-container-box" style="background-color: ;">
-              <div class="prodlist-display">
-                  <div class="prodlist-inner prodlist-inner1">
-                      <div class="prodlist-picbox labelfather">
-                          <div class="prodlist-cell">
-                              <a href="/Ultra-thin-panel-light-for-indoor-pd733273788.html" target="" title="Ultra thin panel light for indoor">
-                                  <img
-                                      class="lazy img-default-bgc"
-                                      data-original="${product.img}"
-                                      src="${product.img}"
-                                      alt="Ultra thin panel light for indoor"
-                                  />
-                              </a>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="prodlist-special"></div>
-              <div class="prodlist-parameter-wrap">
-                  <div class="prodlist-parameter-inner">
-                      <a href="/Ultra-thin-panel-light-for-indoor-pd733273788.html" target="" class="prodlist-pro-name" title="Ultra thin panel light for indoor" style="height: 40px;">
-                          <div class="inlineLabel fll"></div>
-                          Ultra thin panel light for indoor
-                      </a>
-                      <div class="style_line_9"></div>
-                      <div class="prodlist-ops-container" data-pid="${index}"></div>
-                      <dl class="prodlist-defined-list"></dl>
-                      <dl class="prodlist-defined-list"></dl>
-                      <div style="height: 50px; width: 100%;"></div>
-                      <div class="prodlist-parameter-btns prodlist-btn-default 1 prodlist-parameter-btns-container" style="margin-top: 10px; max-width: 100%;">
-                          <button prodId="${index}" style="text-align: center; text-indent: -40px;" class="default-button prodlist-pro-inquire mt10 button_color gbBgColor0 gbBdColor0">
-                              <i class="togetherClass fa fa-envelope-o" aria-hidden="true"></i>Inquire
-                          </button>
-                          <a
-                              style="text-align: center; line-height: 40px;"
-                              href="javascript:void(0);"
-                              rel="nofollow"
-                              prodId="${index}" 
-                              prodname="Ultra thin panel light for indoor"
-                              prodphotourl="//iororwxhmnrilr5q-static.micyjz.com/cloud/jlBpjKorliSRikimnqppjq/102R-40-40.jpg"
-                              class="InquireAndBasket pro-detail-basket proasynclist-add-basket-btn block prodlist-pro-addbasket-btn mt10 button_basket gbBgColor1 gbBdColor0"
-                          >
-                              <i class="fa fa-shopping-cart" style="color: ;" aria-hidden="true"></i><span style="color: ;" class="hide">Add to Basket</span>
-                          </a>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class=""></div>
-          <div class="" style="display: none;">
-              <div class="prodlist-parameter-btns prodlist-btn-default 3" style="margin-top: 10px; position: relative; width: 200px;">
-                  <a href="/Ultra-thin-panel-light-for-indoor-pd733273788.html" target="" title="Ultra thin panel light for indoor">More &gt;&gt;</a>
-              </div>
-          </div>
-      </li>
-      `).join("");
-      await fetch("https://www.hyundailighting-led.com/phoenix/admin/prod/inquire", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify([
-          { prodId: "jUAqKVTeCYFt", selectParam: "", quantity: "1" }
-        ])
-      })
-        .then(res => res.json())   // parse JSON body
-        .then(data => {
-          console.log("✅ Server response:", data);
+function updateCategoryList() {
+    const url = "https://rafeed.atcsolution.co/api/Product_series/get_series";
+    let series=[]
+    fetch(url, {
+      method: "GET",
+      headers: {
+        "authorization": `${token}`,
+        "Content-Type": "application/json",
+      }
+    }).then(response => {
+      return response.json();
+    })
+    .then(data => {
+      let res=data.data;
+      res.map((info)=>{
+        series.push({
+          id:info.ID,
+          name:info.Name,
+          categories:[
+            {
+              id:"",
+              name:"",
+            }
+          ]
         })
-        .catch(err => {
-          console.error("❌ Error:", err);
-        });
-        window.dispatchEvent(new Event('resize'));
+      })
+      let categoryList = document.getElementsByClassName("slight-submenu-wrap")[0];
+      categoryList.innerHTML=series.map((serie,index) => `
+        <li class="prodli li-with-ul">
+          <a href="/LED-Indoor-Lighting-pl46987387-p2.html?series_id=${serie.id}" title="${serie.name}">${serie.name}</a> <i class="list-mid-dot"></i>
+          <ul class="submenu-default-simple slight-submenu-ul slight-submenu-master-ul">
+              ${serie.categories.map((category,index) => `
+                <li class="prodli on hasNoUlChild"><a href="/LED-Indoor-Lighting-pl46987387-p2.html?series_id=${serie.id}&cat_id=${category.id}" class="" title="${category.name}">${category.name}</a></li>
+              `).join("")}
+          </ul>
+        </li>
+      `).join("")
 
+      // to re-initilize category list
+      $(".sitewidget-prodCategory-20191227164552 .submenu-default-simple").slightSubmenu({
+        buttonActivateEvents: "click click",
+        submenuOpeneTime: 10,
+      });
+    })
+    .catch(error => {
+    });
+}
+function replaceSlides(imageUrls) {
+    var $slider = $('#masterslider_pWfhEQrjIkDO');
+    $slider.empty();
+
+    imageUrls.forEach(function(url) {
+        var slideHtml = `
+        <div class="ms-slide easyzoom easyzoom--overlay easyzoom--overlay_absolute is-ready">
+          <div class="ms-slide-bgcont" style="height: 100%; opacity: 1;">
+            <a href="${url}">
+              <img id="${url}" class="viewsImg img-default-bgc showViewer history-point-image" src="${url}" alt="Product Image" style="height: 100%; width: auto; position: absolute; top: 0px; left: 50%; transform: translateX(-50%);">
+              <img class="ms-thumb img-default-bgc showViewer history-point-image" src="${url}"/>
+            </a>
+          </div>
+        </div>
+      `;
+        $slider.append(slideHtml);
+    });
+
+    var slider_pWfhEQrjIkDO = new MasterSlider();
+    slider_pWfhEQrjIkDO.control('arrows');
+    slider_pWfhEQrjIkDO.control('thumblist', {
+        autohide: false,
+        dir: 'h',
+        arrows: true,
+        align: 'bottom',
+        width: 100,
+        height: 100,
+        margin: 10,
+        space: 7
+    });
+    slider_pWfhEQrjIkDO.setup('masterslider_pWfhEQrjIkDO', {
+        width: 640,
+        height: 640,
+        space: 5,
+        view: 'basic'
+    });
+    slider_pWfhEQrjIkDO.api.addEventListener('sliderLoad', function() {
+        $('#masterslider_pWfhEQrjIkDO .ms-slide').each(function() {
+            var $img = $(this).find('img');
+            $img.wrap(`<a href="${$img.attr('src')}" class="easyzoom easyzoom--overlay"></a>`);
+        });
+    });
+    $(".sitewidget-prodDetail-20141127140104").addClass("isLoaded");
+    $('.placeholder-container, .mobile_3-small').remove();
+    $('.easyzoom').easyZoom();
+    
+}
+function updateDescription(title,description) {
+    document.getElementsByClassName("web-crumbs-title")[0].getElementsByTagName("strong")[0].innerHTML = title
+    document.getElementsByClassName("proddetail-description")[0].getElementsByTagName("h1")[0].innerHTML = `<span class="prodDetail-tts"></span> ${title} <span><i class="fa fa-qrcode" aria-hidden="true"></i></span> `
+    document.getElementsByClassName("pro-this-prodBrief")[0].getElementsByTagName("ul")[0].remove();
+    document.getElementsByClassName("pro-this-prodBrief")[0].innerHTML += description
+    document.getElementsByClassName("pro-info-list")[0].getElementsByTagName("li")[0].innerHTML = ` <label style="width: 55px;">Model:</label> <p> 102R </p>`
+}
+function initilizeTabs(family_name,application_photo,applications) {
+    document.getElementsByClassName("detial-cont-index")[0].innerHTML = `<div class="detial-cont-divsions detial-cont-prodescription">
+            <ul class="detial-cont-tabslabel fix">
+            ammar
+                <li class="on"><a href="javascript:;"> Product Description</a></li>
+                <li><a href="javascript:;"> Product Package </a></li>
+                <li><a href="javascript:;"> Product Datasheet </a></li>
+                <li><a href="javascript:;"> Product IES Report </a></li>
+            </ul>
+            <div class="detial-cont-tabscont">
+                <input type="hidden" name="delay_static_mobile_above" value="true" /> <input type="hidden" name="settingId" value="pWfhEQrjIkDO" />
+                <div class="fix prodDesc">
+                    <div class="prodDetail-editor-container">
+                        <p><br /></p>
+                        <p>
+                            <strong><span style="color: rgb(79, 129, 189); font-size: 24px;">Application</span></strong>
+                        </p>
+                        <p><br /></p>
+                        <ul class="list-paddingleft-2" style="list-style-type: disc;">
+                            ${applications.map((application)=>(
+                                `<li><p>${application}</p></li>`
+                            ))}
+                        </ul>
+                        <p><br /></p>
+                        <p>
+                            <img
+                                title="${family_name}"
+                                alt="${family_name}"
+                                width="882"
+                                height="176"
+                                border="0"
+                                vspace="0"
+                                hspace="0"
+                                style="width: 882px; height: 176px;"
+                                data-original="${application_photo}"
+                                src="${application_photo}"
+                                class="lazyloaded"
+                            />
+                            &nbsp;&nbsp;&nbsp;
+                        </p>
+                        <p><br /></p>
+                        <p>
+                            <span style="font-size: 24px;">
+                                <strong><span style="color: rgb(79, 129, 189);">Data</span></strong>
+                            </span>
+                        </p>
+                        <div class="sliderTable mt10 mb10 sliderTable-index0">
+                            <div class="inner">
+                                <table align="center" width="874" style="width: 100%;">
+                                    <tbody>
+                                        <tr class="firstRow">
+                                            <td width="155" style="background-color: rgb(79, 129, 189); color: rgb(255, 255, 255); text-align: center;" align="center" valign="middle"><p>Item No.</p></td>
+                                            <td width="74" style="background-color: rgb(79, 129, 189); color: rgb(255, 255, 255); text-align: center;" align="center" valign="middle"><p>Power</p></td>
+                                            <td colspan="1" rowspan="1" valign="middle" width="180" style="background-color: rgb(79, 129, 189); color: rgb(255, 255, 255); text-align: center;" align="center">Voltage</td>
+                                            <td colspan="1" rowspan="1" valign="middle" width="164" style="background-color: rgb(79, 129, 189); color: rgb(255, 255, 255); text-align: center;" align="center">luminous efficieny</td>
+                                            <td width="107" style="background-color: rgb(79, 129, 189); color: rgb(255, 255, 255); text-align: center;" align="center" valign="middle"><p>Size</p></td>
+                                            <td width="68" style="background-color: rgb(79, 129, 189); color: rgb(255, 255, 255); text-align: center;" align="center" valign="middle"><p>Cut out</p></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="155" align="center" valign="middle" style="text-align: center;"><a data-micromodal-trigger="my-modal"><p>HYD-102R-4W</p></a></td>
+                                            <td width="74" align="center" valign="middle" style="text-align: center;"><p>4W</p></td>
+                                            <td colspan="1" rowspan="1" valign="middle" width="180" align="center" style="text-align: center;">110-240V/220-240V</td>
+                                            <td colspan="1" rowspan="1" valign="middle" width="164" align="center" style="text-align: center;">90-100 lm/w</td>
+                                            <td width="100" align="center" valign="middle" style="text-align: center;"><p>109*35mm</p></td>
+                                            <td width="68" align="center" valign="middle" style="text-align: center;"><p>90mm</p></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="155" align="center" valign="middle" style="text-align: center;"><a data-micromodal-trigger="my-modal"><p>HYD-102R-6W</p></a></td>
+                                            <td width="74" align="center" valign="middle" style="text-align: center;"><p>6W</p></td>
+                                            <td colspan="1" rowspan="1" valign="middle" width="180" align="center" style="text-align: center;">110-240V/220-240V</td>
+                                            <td colspan="1" rowspan="1" valign="middle" width="164" align="center" style="text-align: center;">90-100 lm/w</td>
+                                            <td width="100" align="center" valign="middle" style="text-align: center;"><p>120*35mm</p></td>
+                                            <td width="68" align="center" valign="middle" style="text-align: center;"><p>105mm</p></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="155" align="center" valign="middle" style="text-align: center;"><a data-micromodal-trigger="my-modal"><p>HYD-102R-9W</p></a></td>
+                                            <td width="74" align="center" valign="middle" style="text-align: center;"><p>9W</p></td>
+                                            <td colspan="1" rowspan="1" valign="middle" width="180" align="center" style="text-align: center;">110-240V/220-240V</td>
+                                            <td colspan="1" rowspan="1" valign="middle" width="164" align="center" style="text-align: center;">90-100 lm/w</td>
+                                            <td width="100" align="center" valign="middle" style="text-align: center;"><p>146*35mm</p></td>
+                                            <td width="68" align="center" valign="middle" style="text-align: center;"><p>130mm</p></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="155" align="center" valign="middle" style="text-align: center;"><a data-micromodal-trigger="my-modal"><p>HYD-102R-12W</p></a></td>
+                                            <td width="74" align="center" valign="middle" style="text-align: center;"><p>12W</p></td>
+                                            <td colspan="1" rowspan="1" valign="middle" width="180" align="center" style="text-align: center;">110-240V/220-240V</td>
+                                            <td colspan="1" rowspan="1" valign="middle" width="164" align="center" style="text-align: center;">90-100 lm/w</td>
+                                            <td width="100" align="center" valign="middle" style="text-align: center;"><p>173*35mm</p></td>
+                                            <td width="68" align="center" valign="middle" style="text-align: center;"><p>160mm</p></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="155" align="center" valign="middle" style="text-align: center;"><a data-micromodal-trigger="my-modal"><p>HYD-102R-18W</p></a></td>
+                                            <td width="74" align="center" valign="middle" style="text-align: center;"><p>18W</p></td>
+                                            <td colspan="1" rowspan="1" valign="middle" width="180" align="center" style="text-align: center;">110-240V/220-240V</td>
+                                            <td colspan="1" rowspan="1" valign="middle" width="164" align="center" style="text-align: center;">90-100 lm/w</td>
+                                            <td width="100" align="center" valign="middle" style="text-align: center;"><p>225*35mm</p></td>
+                                            <td width="68" align="center" valign="middle" style="text-align: center;"><p>205mm</p></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="155" align="center" valign="middle" style="text-align: center;"><a data-micromodal-trigger="my-modal"><p>HYD-102R-20W</p></a></td>
+                                            <td width="74" align="center" valign="middle" style="text-align: center;"><p>20W</p></td>
+                                            <td colspan="1" rowspan="1" valign="middle" width="180" align="center" style="text-align: center;">110-240V/220-240V</td>
+                                            <td colspan="1" rowspan="1" valign="middle" width="164" align="center" style="text-align: center;">90-100 lm/w</td>
+                                            <td width="100" align="center" valign="middle" style="text-align: center;"><p>237*35mm</p></td>
+                                            <td width="68" align="center" valign="middle" style="text-align: center;"><p>220mm</p></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="155" align="center" valign="middle" style="text-align: center;"><a data-micromodal-trigger="my-modal"><p>HYD-102R-24W</p></a></td>
+                                            <td width="74" align="center" valign="middle" style="text-align: center;"><p>24W</p></td>
+                                            <td colspan="1" rowspan="1" valign="middle" width="180" align="center" style="text-align: center;">110-240V/220-240V</td>
+                                            <td colspan="1" rowspan="1" valign="middle" width="164" align="center" style="text-align: center;">90-100 lm/w</td>
+                                            <td width="100" align="center" valign="middle" style="text-align: center;"><p>300*35mm</p></td>
+                                            <td width="68" align="center" valign="middle" style="text-align: center;"><p>285mm</p></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <span class="inner-zoom hide"><i class="fa fa-search-plus"></i></span>
+                        </div>
+                        <p><br /></p>
+                        <p style="text-align: center;">
+                            <img
+                                title="icon"
+                                alt="icon"
+                                width="882"
+                                height="225"
+                                border="0"
+                                vspace="0"
+                                hspace="0"
+                                style="width: 882px; height: 225px;"
+                                data-original="//iororwxhmnrilr5q-static.micyjz.com/cloud/jrBpjKorliSRikrmopqljq/tubiao.jpg"
+                                src="//iororwxhmnrilr5q-static.micyjz.com/cloud/jrBpjKorliSRikrmopqljq/tubiao.jpg"
+                                class="lazyloaded"
+                            />
+                        </p>
+                        <p><br /></p>
+                        <p style="text-align: justify;">HYUNDAI Lighting products, there is an ultra-thin small panel light.</p>
+                        <p style="text-align: justify;">
+                            It has won the love of many consumers with its unique design, excellent performance and environmental protection characteristics. The design of the small panel light is mainly embedded, which is not only beautiful, but
+                            also easy to install, making it widely used in various places.
+                        </p>
+                        <p style="text-align: justify;"><br /></p>
+                        <p style="text-align: justify;">
+                            <strong><span style="color: rgb(79, 129, 189);">1. Advanced LED technology to create excellent lighting effect</span></strong>
+                        </p>
+                        <p style="text-align: justify;">
+                            The ultra-thin small panel light is made of advanced LED technology, and <strong>the LED lamp beads have the advantages of high brightness and low energy consumption</strong>, making the lighting effect more excellent.
+                            At the same time, LED lamp beads have a long life and strong stability, and can maintain stable performance during long-term use. This makes small panel lights the most popular lighting equipment in offices, shopping
+                            malls, schools and other places.
+                        </p>
+                        <p style="text-align: justify;">
+                            <strong><span style="color: rgb(79, 129, 189);">2. Light body thin design, easy to install and application</span></strong>
+                        </p>
+                        <p style="text-align: justify;">
+                            Another feature of the small panel light is its thin design. Because of this, <strong>it is very easy to install</strong>, can be easily embedded in various occasions of the wall or ceiling, suitable for low ceilings.
+                            Its high-brightness lights can illuminate the entire space, providing a comfortable working and learning environment for people. In addition, the small panel light also has excellent energy-saving and environmental
+                            protection characteristics, in line with the development trend of green environmental protection in today's society.
+                        </p>
+                        <p style="text-align: justify;">
+                            <strong><span style="color: rgb(79, 129, 189);">3. Meet diverse needs and have a wide range of applications</span></strong>
+                        </p>
+                        <p style="text-align: justify;">
+                            Ultra-thin small panel lights not only have good lighting effects, but also <strong>can meet the lighting needs of different occasions</strong>. Whether it is commercial or home, it can give full play to its advantages
+                            and bring the ideal lighting experience to users. In the home environment, small panel lights can improve the comfort and beauty of the living room; In commercial places, it can provide businesses with efficient lighting
+                            solutions to help save energy and reduce emissions.
+                        </p>
+                        <p style="text-align: justify;"><br /></p>
+                        <p style="text-align: justify;">
+                            In summary, the ultra-thin small panel light with its <strong>advanced technology</strong>, <strong>excellent performance</strong> and <strong>environmental protection</strong> characteristics, whether
+                            <strong>in the home</strong> or <strong>commercial field</strong>, it can meet the lighting needs of consumers, for people to create a comfortable, bright, environmentally friendly living and working space. With people's
+                            pursuit of green life, the market prospects of small panel lights will be broader.
+                        </p>
+                        <p><br /></p>
+                        <p>
+                            <span style="font-size: 24px; color: rgb(79, 129, 189);"><strong>Installation-Recessed</strong></span>
+                        </p>
+                        <p>
+                            <span style="font-size: 24px; color: rgb(79, 129, 189);">
+                                <strong><br /></strong>
+                            </span>
+                        </p>
+                        <p>
+                            <img
+                                width="884"
+                                height="441"
+                                alt="Installation"
+                                style="width: 884px; height: 441px;"
+                                border="0"
+                                vspace="0"
+                                hspace="0"
+                                title="Installation"
+                                data-original="//iororwxhmnrilr5q-static.micyjz.com/cloud/jjBpjKorliSRikqopknqjq/anzhuangtu.jpg"
+                                src="//iororwxhmnrilr5q-static.micyjz.com/cloud/jjBpjKorliSRikqopknqjq/anzhuangtu.jpg"
+                                class="lazyloaded"
+                            />
+                        </p>
+                        <p><br /></p>
+                    </div>
+                </div>
+                <div class="fix prodDesc hide">
+                    <div class="prodDetail-editor-container">
+                        <p><br /></p>
+                        <p>
+                            <span style="font-size: 24px;">
+                                <strong><span style="color: rgb(79, 129, 189);">Package Data</span></strong>
+                            </span>
+                        </p>
+                        <p><br /></p>
+                        <div class="sliderTable mt10 mb10 sliderTable-index1">
+                            <div class="inner">
+                                <table align="center" width="868" style="width: 868px;">
+                                    <tbody>
+                                        <tr class="firstRow">
+                                            <td width="137" valign="middle" style="word-break: break-word; color: rgb(255, 255, 255); background-color: rgb(79, 129, 189); text-align: center;" align="center">
+                                                <p><span style="font-family: Cambria; font-size: 16px;">Product code</span></p>
+                                            </td>
+                                            <td width="232" valign="middle" style="word-break: break-word; color: rgb(255, 255, 255); background-color: rgb(79, 129, 189); text-align: center;" align="center">
+                                                <p><span style="font-family: Cambria; font-size: 16px;">Packaging unit (pieces/Unit)</span></p>
+                                            </td>
+                                            <td width="269" valign="middle" style="word-break: break-word; color: rgb(255, 255, 255); background-color: rgb(79, 129, 189); text-align: center;" align="center">
+                                                <p style="text-autospace: ideograph-numeric; text-align: center;">
+                                                    <span style="font-family: Cambria; font-size: 16px;">Dimensions&nbsp;</span><span style="font-family: Cambria; font-size: 16px;">(length x width x height)&nbsp;</span>
+                                                </p>
+                                            </td>
+                                            <td width="165" valign="middle" style="word-break: break-word; color: rgb(255, 255, 255); background-color: rgb(79, 129, 189); text-align: center;" align="center">
+                                                <p><span style="font-family: Cambria; font-size: 16px;">Volume</span></p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="middle" align="center" rowspan="4" colspan="1" width="NaN"><span style="text-align: center; text-wrap: wrap;">HYD-102R-3W</span></td>
+                                            <td valign="middle" align="center" rowspan="1" colspan="1" width="232" style="text-align: center;">
+                                                <p style="text-autospace: ideograph-numeric; text-align: center;"><span style="font-family: Cambria; font-size: 16px;">Graphic carton</span></p>
+                                            </td>
+                                            <td valign="middle" align="center" rowspan="2" colspan="1" width="NaN">13.5*12*3.5 cm<br /></td>
+                                            <td valign="middle" align="center" rowspan="2" colspan="1" width="NaN">0.00057</td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="middle" align="center" rowspan="1" colspan="1" style="text-align: center;"><p>50</p></td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="middle" align="center" rowspan="1" colspan="1" style="text-align: center;"><span style="font-family: Cambria; font-size: 16px; text-align: center; text-wrap: wrap;">Master carton</span></td>
+                                            <td valign="middle" align="center" rowspan="2" colspan="1" width="NaN">62*19.5*29.5 cm<br /></td>
+                                            <td valign="middle" align="center" rowspan="2" colspan="1" width="NaN">0.03567</td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="middle" align="center" rowspan="1" colspan="1" width="232" style="text-align: center;">1</td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="middle" align="center" rowspan="4" colspan="1" width="NaN"><span style="text-align: center; text-wrap: wrap;">HYD-102R-4W</span></td>
+                                            <td valign="middle" align="center" rowspan="1" colspan="1" width="232" style="text-align: center;">
+                                                <p style="text-autospace: ideograph-numeric; text-align: center;"><span style="font-family: Cambria; font-size: 16px;">Graphic carton</span></p>
+                                            </td>
+                                            <td valign="middle" align="center" rowspan="2" colspan="1" width="NaN">14.5*13.5*4 cm<br /></td>
+                                            <td valign="middle" align="center" rowspan="2" colspan="1" width="NaN">0.00078</td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="middle" align="center" rowspan="1" colspan="1" style="text-align: center;"><p>50</p></td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="middle" align="center" rowspan="1" colspan="1" style="text-align: center;"><span style="font-family: Cambria; font-size: 16px; text-align: center; text-wrap: wrap;">Master carton</span></td>
+                                            <td valign="middle" align="center" rowspan="2" colspan="1" width="NaN">69.5*22*31.5 cm</td>
+                                            <td valign="middle" align="center" rowspan="2" colspan="1" width="NaN">0.04816<br /></td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="middle" align="center" rowspan="1" colspan="1" width="232" style="text-align: center;">1</td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="middle" align="center" rowspan="4" colspan="1" width="NaN">HYD-102R-6W</td>
+                                            <td valign="middle" align="center" rowspan="1" colspan="1" width="232" style="text-align: center;">
+                                                <p style="text-autospace: ideograph-numeric; text-align: center;"><span style="font-family: Cambria; font-size: 16px;">Graphic carton</span></p>
+                                            </td>
+                                            <td valign="middle" align="center" rowspan="2" colspan="1" width="NaN">15.5*14.5*4 cm<br /></td>
+                                            <td valign="middle" align="center" rowspan="2" colspan="1" width="NaN">0.00090<br /></td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="middle" align="center" rowspan="1" colspan="1" style="text-align: center;">
+                                                <p>50<br /></p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="middle" align="center" rowspan="1" colspan="1" style="text-align: center;"><span style="font-family: Cambria; font-size: 16px; text-align: center; text-wrap: wrap;">Master carton</span></td>
+                                            <td valign="middle" align="center" rowspan="2" colspan="1" width="NaN">74.5*22*33.5 cm<br /></td>
+                                            <td valign="middle" align="center" rowspan="2" colspan="1" width="NaN">0.05491</td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="middle" align="center" rowspan="1" colspan="1" width="232" style="text-align: center;">1</td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="middle" align="center" rowspan="4" colspan="1" width="NaN">HYD-102R-9W</td>
+                                            <td valign="middle" align="center" rowspan="1" colspan="1" width="232" style="text-align: center;">
+                                                <p style="text-autospace: ideograph-numeric; text-align: center;"><span style="font-family: Cambria; font-size: 16px;">Graphic carton</span></p>
+                                            </td>
+                                            <td valign="middle" align="center" rowspan="2" colspan="1" width="NaN">18*17*4 cm<br /></td>
+                                            <td valign="middle" align="center" rowspan="2" colspan="1" width="NaN">0.00122<br /></td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="middle" align="center" rowspan="1" colspan="1" style="text-align: center;"><p>30</p></td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="middle" align="center" rowspan="1" colspan="1" style="text-align: center;"><span style="font-family: Cambria; font-size: 16px; text-align: center; text-wrap: wrap;">Master carton</span></td>
+                                            <td valign="middle" align="center" rowspan="2" colspan="1" width="NaN">53*20*42.5 cm<br /></td>
+                                            <td valign="middle" align="center" rowspan="2" colspan="1" width="NaN">0.04505<br /></td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="middle" align="center" rowspan="1" colspan="1" width="232" style="text-align: center;">1</td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="middle" align="center" rowspan="4" colspan="1" width="NaN">HYD-102R-12W</td>
+                                            <td valign="middle" align="center" rowspan="1" colspan="1" width="232" style="text-align: center;">
+                                                <p style="text-autospace: ideograph-numeric; text-align: center;"><span style="font-family: Cambria; font-size: 16px;">Graphic carton</span></p>
+                                            </td>
+                                            <td valign="middle" align="center" rowspan="2" colspan="1" width="NaN">21*21.5*3.5 cm<br /></td>
+                                            <td valign="middle" align="center" rowspan="2" colspan="1" width="NaN">0.00158<br /></td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="middle" align="center" rowspan="1" colspan="1" style="text-align: center;">
+                                                <p>20<br /></p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="middle" align="center" rowspan="1" colspan="1" style="text-align: center;"><span style="font-family: Cambria; font-size: 16px; text-align: center; text-wrap: wrap;">Master carton</span></td>
+                                            <td valign="middle" align="center" rowspan="2" colspan="1" width="NaN">45*23*37.5 cm<br /></td>
+                                            <td valign="middle" align="center" rowspan="2" colspan="1" width="NaN">0.03881<br /></td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="middle" align="center" rowspan="1" colspan="1" width="232" style="text-align: center;">1</td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="middle" align="center" rowspan="4" colspan="1" width="NaN">HYD-102R-15W</td>
+                                            <td valign="middle" align="center" rowspan="1" colspan="1" width="232" style="text-align: center;">
+                                                <p style="text-autospace: ideograph-numeric; text-align: center;"><span style="font-family: Cambria; font-size: 16px;">Graphic carton</span></p>
+                                            </td>
+                                            <td valign="middle" align="center" rowspan="2" colspan="1" width="NaN">24*23*4 cm<br /></td>
+                                            <td valign="middle" align="center" rowspan="2" colspan="1" width="NaN">0.00221</td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="middle" align="center" rowspan="1" colspan="1" style="text-align: center;">
+                                                <p>20<br /></p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="middle" align="center" rowspan="1" colspan="1" style="text-align: center;"><span style="font-family: Cambria; font-size: 16px; text-align: center; text-wrap: wrap;">Master carton</span></td>
+                                            <td valign="middle" align="center" rowspan="2" colspan="1" width="NaN">48*26*42.5 cm<br /></td>
+                                            <td valign="middle" align="center" rowspan="2" colspan="1" width="NaN">0.05304<br /></td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="middle" align="center" rowspan="1" colspan="1" width="232" style="text-align: center;">1</td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="middle" align="center" rowspan="4" colspan="1" width="NaN">HYD-102R-18W</td>
+                                            <td valign="middle" align="center" rowspan="1" colspan="1" width="232" style="text-align: center;">
+                                                <p style="text-autospace: ideograph-numeric; text-align: center;"><span style="font-family: Cambria; font-size: 16px;">Graphic carton</span></p>
+                                            </td>
+                                            <td valign="middle" align="center" rowspan="2" colspan="1" width="NaN">27*25*3.5 cm<br /></td>
+                                            <td valign="middle" align="center" rowspan="2" colspan="1" width="NaN">0.00236</td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="middle" align="center" rowspan="1" colspan="1" style="text-align: center;">
+                                                <p>20<br /></p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="middle" align="center" rowspan="1" colspan="1" style="text-align: center;"><span style="font-family: Cambria; font-size: 16px; text-align: center; text-wrap: wrap;">Master carton</span></td>
+                                            <td valign="middle" align="center" rowspan="2" colspan="1" width="NaN">52*29*37.5 cm<br /></td>
+                                            <td valign="middle" align="center" rowspan="2" colspan="1" width="NaN">0.05655<br /></td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="middle" align="center" rowspan="1" colspan="1" width="232" style="text-align: center;">1</td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="middle" align="center" rowspan="4" colspan="1" width="NaN">HYD-102R-20W</td>
+                                            <td valign="middle" align="center" rowspan="1" colspan="1" width="232" style="text-align: center;">
+                                                <p style="text-autospace: ideograph-numeric; text-align: center;"><span style="font-family: Cambria; font-size: 16px;">Graphic carton</span></p>
+                                            </td>
+                                            <td valign="middle" align="center" rowspan="2" colspan="1" width="NaN">28*26*3.5 cm<br /></td>
+                                            <td valign="middle" align="center" rowspan="2" colspan="1" width="NaN">0.00255<br /></td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="middle" align="center" rowspan="1" colspan="1" style="text-align: center;"><p>20</p></td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="middle" align="center" rowspan="1" colspan="1" style="text-align: center;"><span style="font-family: Cambria; font-size: 16px; text-align: center; text-wrap: wrap;">Master carton</span></td>
+                                            <td valign="middle" align="center" rowspan="2" colspan="1" width="NaN">54*30*37.5 cm<br /></td>
+                                            <td valign="middle" align="center" rowspan="2" colspan="1" width="NaN">0.06075</td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="middle" align="center" rowspan="1" colspan="1" width="232" style="text-align: center;">1</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="137" valign="middle" align="center" style="text-align: center;" rowspan="4" colspan="1">HYD-102R-24W<br /></td>
+                                            <td width="232" valign="middle" align="center" style="text-align: center;">
+                                                <p style="text-autospace: ideograph-numeric; text-align: center;"><span style="font-family: Cambria; font-size: 16px;">Graphic carton</span></p>
+                                            </td>
+                                            <td width="269" valign="middle" align="center" style="text-align: center;" rowspan="2" colspan="1">32.5*31.5*4.5 cm<br /></td>
+                                            <td width="165" valign="middle" align="center" style="text-align: center;" rowspan="2" colspan="1">0.00461</td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="middle" colspan="1" rowspan="1" align="center" style="text-align: center;">
+                                                <p>10<br /></p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="middle" colspan="1" rowspan="1" align="center" style="text-align: center;"><span style="font-family: Cambria; font-size: 16px; text-align: center; text-wrap: wrap;">Master carton</span></td>
+                                            <td valign="middle" colspan="1" rowspan="2" width="0" align="center" style="text-align: center;">47*33.5*35 cm</td>
+                                            <td valign="middle" colspan="1" rowspan="2" width="165" align="center" style="text-align: center;">0.05511<br /></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="232" valign="middle" align="center" style="text-align: center;">1</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <p><br /></p>
+                        <p>
+                            <span style="font-size: 24px;">
+                                <strong><span style="color: rgb(79, 129, 189);">Graphic carton</span></strong>
+                            </span>
+                        </p>
+                        <p>
+                            <strong>
+                                <span style="color: rgb(79, 129, 189);"><br /></span>
+                            </strong>
+                        </p>
+                        <p>
+                            <strong>
+                                <span style="color: rgb(79, 129, 189);">
+                                    <img
+                                        title="Panel Light"
+                                        alt="Panel Light"
+                                        width="882"
+                                        height="487"
+                                        border="0"
+                                        vspace="0"
+                                        hspace="0"
+                                        style="width: 882px; height: 487px;"
+                                        data-original="//iororwxhmnrilr5q-static.micyjz.com/cloud/llBpjKorliSRkkpppjmmjp/HYUNDAI-M-726-102R-20Wyuanxingchangguichaobocaihe.jpg"
+                                        src="//iororwxhmnrilr5q-static.micyjz.com/cloud/llBpjKorliSRkkpppjmmjp/HYUNDAI-M-726-102R-20Wyuanxingchangguichaobocaihe.jpg"
+                                        class="lazyimg"
+                                    />
+                                </span>
+                            </strong>
+                        </p>
+                        <p><br /></p>
+                        <p><br /></p>
+                        <p>
+                            <span style="font-size: 24px;">
+                                <strong><span style="color: rgb(79, 129, 189);">Master carton</span></strong>
+                            </span>
+                        </p>
+                        <p><br /></p>
+                        <p>
+                            <img
+                                title="Panel Light"
+                                alt="Panel Light"
+                                width="882"
+                                height="419"
+                                border="0"
+                                vspace="0"
+                                hspace="0"
+                                style="width: 882px; height: 419px;"
+                                data-original="//iororwxhmnrilr5q-static.micyjz.com/cloud/lkBpjKorliSRkkppokjojq/HYUNDAI-102R-20W-3K4kyuanxingchangguichaobowaixiang.jpg"
+                                src="//iororwxhmnrilr5q-static.micyjz.com/cloud/lkBpjKorliSRkkppokjojq/HYUNDAI-102R-20W-3K4kyuanxingchangguichaobowaixiang.jpg"
+                                class="lazyimg"
+                            />
+                        </p>
+                        <p><br /></p>
+                    </div>
+                </div>
+                <div class="fix prodDesc hide">
+                    <div class="prodDetail-editor-container">
+                        <p>
+                            <img
+                                width="20px"
+                                height="20px"
+                                style="text-wrap: wrap; position: relative; top: 2px; margin-right: 5px;"
+                                data-original="https://rnrorwxhmnrilr5q-static.micyjz.com/static/assets/images/file/ueEditDownload.png"
+                                src="https://rnrorwxhmnrilr5q-static.micyjz.com/static/assets/images/file/ueEditDownload.png"
+                                class="lazyimg"
+                            />
+                            <a href="https://iororwxhmnrilr5q-static.micyjz.com/Datasheet+HYD-102R-4W+4K-aidlnBpjKorliSRkkkqoponjq.pdf" target="_blank" style="text-wrap: wrap;">Datasheet HYD-102R-4W 4K.pdf</a>
+                        </p>
+                        <p>
+                            <img
+                                width="20px"
+                                height="20px"
+                                style="position: relative; top: 2px; margin-right: 5px;"
+                                data-original="//rnrorwxhmnrilr5q-static.micyjz.com/static/assets/images/file/ueEditDownload.png"
+                                src="//rnrorwxhmnrilr5q-static.micyjz.com/static/assets/images/file/ueEditDownload.png"
+                                class="lazyimg"
+                            />
+                            <a href="//iororwxhmnrilr5q-static.micyjz.com/Datasheet+HYD-102R-6W+4K-aidloBpjKorliSRkkkqopqnjq.pdf" target="_blank">Datasheet HYD-102R-6W 4K.pdf</a>
+                        </p>
+                        <p>
+                            <img
+                                width="20px"
+                                height="20px"
+                                style="position: relative; top: 2px; margin-right: 5px;"
+                                data-original="//rnrorwxhmnrilr5q-static.micyjz.com/static/assets/images/file/ueEditDownload.png"
+                                src="//rnrorwxhmnrilr5q-static.micyjz.com/static/assets/images/file/ueEditDownload.png"
+                                class="lazyimg"
+                            />
+                            <a href="//iororwxhmnrilr5q-static.micyjz.com/Datasheet+HYD-102R-9W+4K-aidlqBpjKorliSRkkkqoppnjq.pdf" target="_blank">Datasheet HYD-102R-9W 4K.pdf</a>
+                        </p>
+                        <p>
+                            <img
+                                width="20px"
+                                height="20px"
+                                style="position: relative; top: 2px; margin-right: 5px;"
+                                data-original="//rnrorwxhmnrilr5q-static.micyjz.com/static/assets/images/file/ueEditDownload.png"
+                                src="//rnrorwxhmnrilr5q-static.micyjz.com/static/assets/images/file/ueEditDownload.png"
+                                class="lazyimg"
+                            />
+                            <a href="//iororwxhmnrilr5q-static.micyjz.com/Datasheet+HYD-102R-12W+4K-aidlpBpjKorliSRkkkqopmnjq.pdf" target="_blank">Datasheet HYD-102R-12W 4K.pdf</a>
+                        </p>
+                        <p>
+                            <img
+                                width="20px"
+                                height="20px"
+                                style="position: relative; top: 2px; margin-right: 5px;"
+                                data-original="//rnrorwxhmnrilr5q-static.micyjz.com/static/assets/images/file/ueEditDownload.png"
+                                src="//rnrorwxhmnrilr5q-static.micyjz.com/static/assets/images/file/ueEditDownload.png"
+                                class="lazyimg"
+                            />
+                            <a href="//iororwxhmnrilr5q-static.micyjz.com/Datasheet+HYD-102R-18W+4K-aidlrBpjKorliSRkkkqoprojq.pdf" target="_blank">Datasheet HYD-102R-18W 4K.pdf</a>
+                        </p>
+                        <p>
+                            <img
+                                width="20px"
+                                height="20px"
+                                style="text-wrap: wrap; position: relative; top: 2px; margin-right: 5px;"
+                                data-original="https://rnrorwxhmnrilr5q-static.micyjz.com/static/assets/images/file/ueEditDownload.png"
+                                src="https://rnrorwxhmnrilr5q-static.micyjz.com/static/assets/images/file/ueEditDownload.png"
+                                class="lazyimg"
+                            />
+                            <a href="https://iororwxhmnrilr5q-static.micyjz.com/Datasheet+HYD-102R-20W+4K-aidljBpjKorliSRkkkqopjojq.pdf" target="_blank" style="text-wrap: wrap;">Datasheet HYD-102R-20W 4K.pdf</a>
+                        </p>
+                        <p>
+                            <img
+                                width="20px"
+                                height="20px"
+                                style="position: relative; top: 2px; margin-right: 5px;"
+                                data-original="//rnrorwxhmnrilr5q-static.micyjz.com/static/assets/images/file/ueEditDownload.png"
+                                src="//rnrorwxhmnrilr5q-static.micyjz.com/static/assets/images/file/ueEditDownload.png"
+                                class="lazyimg"
+                            />
+                            <a href="//iororwxhmnrilr5q-static.micyjz.com/Datasheet+HYD-102R-24W+4K-aidliBpjKorliSRkkkqopiojq.pdf" target="_blank">Datasheet HYD-102R-24W 4K.pdf</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="fix prodDesc hide">
+                    <div class="prodDetail-editor-container">
+                        <p>
+                            <img
+                                width="20px"
+                                height="20px"
+                                style="position: relative; top: 2px; margin-right: 5px;"
+                                data-original="//rnrorwxhmnrilr5q-static.micyjz.com/static/assets/images/file/ueEditDownload.png"
+                                src="//rnrorwxhmnrilr5q-static.micyjz.com/static/assets/images/file/ueEditDownload.png"
+                                class="lazyimg"
+                            />
+                            <a href="//iororwxhmnrilr5q-static.micyjz.com/IES+102R-4W+4K+EN+24.01.24-aidlmBpjKorliSRkkkqppjijo.pdf" target="_blank">IES 102R-4W 4K EN 24.01.24.pdf</a>
+                        </p>
+                        <p>
+                            <img
+                                width="20px"
+                                height="20px"
+                                style="position: relative; top: 2px; margin-right: 5px;"
+                                data-original="//rnrorwxhmnrilr5q-static.micyjz.com/static/assets/images/file/ueEditDownload.png"
+                                src="//rnrorwxhmnrilr5q-static.micyjz.com/static/assets/images/file/ueEditDownload.png"
+                                class="lazyimg"
+                            />
+                            <a href="//iororwxhmnrilr5q-static.micyjz.com/IES+102R-6W+4K+EN+24.01.24-aidlrBpjKorliSRkkkqppkijq.pdf" target="_blank">IES 102R-6W 4K EN 24.01.24.pdf</a>
+                        </p>
+                        <p>
+                            <img
+                                width="20px"
+                                height="20px"
+                                style="text-wrap: wrap; position: relative; top: 2px; margin-right: 5px;"
+                                data-original="https://rnrorwxhmnrilr5q-static.micyjz.com/static/assets/images/file/ueEditDownload.png"
+                                src="https://rnrorwxhmnrilr5q-static.micyjz.com/static/assets/images/file/ueEditDownload.png"
+                                class="lazyimg"
+                            />
+                            <a href="https://iororwxhmnrilr5q-static.micyjz.com/IES+102R-9W+4K+EN+24.01.24-aidliBpjKorliSRkkkqpplijq.pdf" target="_blank" style="text-wrap: wrap;">IES 102R-9W 4K EN 24.01.24.pdf</a>
+                        </p>
+                        <p>
+                            <img
+                                width="20px"
+                                height="20px"
+                                style="text-wrap: wrap; position: relative; top: 2px; margin-right: 5px;"
+                                data-original="https://rnrorwxhmnrilr5q-static.micyjz.com/static/assets/images/file/ueEditDownload.png"
+                                src="https://rnrorwxhmnrilr5q-static.micyjz.com/static/assets/images/file/ueEditDownload.png"
+                                class="lazyimg"
+                            />
+                            <a href="https://iororwxhmnrilr5q-static.micyjz.com/IES+102R-12W+4K+EN+24.01.24-aidljBpjKorliSRkkkqppnijq.pdf" target="_blank" style="text-wrap: wrap;">IES 102R-12W 4K EN 24.01.24.pdf</a>
+                        </p>
+                        <p>
+                            <img
+                                width="20px"
+                                height="20px"
+                                style="position: relative; top: 2px; margin-right: 5px;"
+                                data-original="//rnrorwxhmnrilr5q-static.micyjz.com/static/assets/images/file/ueEditDownload.png"
+                                src="//rnrorwxhmnrilr5q-static.micyjz.com/static/assets/images/file/ueEditDownload.png"
+                                class="lazyimg"
+                            />
+                            <a href="//iororwxhmnrilr5q-static.micyjz.com/IES+102R-18W+4K+EN+24.01.24-aidlkBpjKorliSRkkkqppoijq.pdf" target="_blank">IES 102R-18W 4K EN 24.01.24.pdf</a>
+                        </p>
+                        <p>
+                            <img
+                                width="20px"
+                                height="20px"
+                                style="position: relative; top: 2px; margin-right: 5px;"
+                                data-original="//rnrorwxhmnrilr5q-static.micyjz.com/static/assets/images/file/ueEditDownload.png"
+                                src="//rnrorwxhmnrilr5q-static.micyjz.com/static/assets/images/file/ueEditDownload.png"
+                                class="lazyimg"
+                            />
+                            <a href="//iororwxhmnrilr5q-static.micyjz.com/IES+102R-20W+4K+EN+24.01.24-aidllBpjKorliSRkkkqppqijq.pdf" target="_blank">IES 102R-20W 4K EN 24.01.24.pdf</a>
+                        </p>
+                        <p>
+                            <img
+                                width="20px"
+                                height="20px"
+                                style="position: relative; top: 2px; margin-right: 5px;"
+                                data-original="//rnrorwxhmnrilr5q-static.micyjz.com/static/assets/images/file/ueEditDownload.png"
+                                src="//rnrorwxhmnrilr5q-static.micyjz.com/static/assets/images/file/ueEditDownload.png"
+                                class="lazyimg"
+                            />
+                            <a href="//iororwxhmnrilr5q-static.micyjz.com/IES+102R-24W+4K+EN+24.01.25-aidlnBpjKorliSRkkkqpppijq.pdf" target="_blank">IES 102R-24W 4K EN 24.01.25.pdf</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>`
+
+    // initilize
+    const tabs = document.querySelectorAll('.detial-cont-tabslabel li');
+    const contents = document.querySelectorAll('.detial-cont-tabscont .prodDesc');
+    tabs.forEach( (tab, index) => {
+        tab.addEventListener('click', (event) => {
+            event.preventDefault();
+            tabs.forEach(item => item.classList.remove('on'));
+            tab.classList.add('on');
+            contents.forEach(content => content.classList.add('hide'));
+            if (contents[index]) {
+                contents[index].classList.remove('hide');
+            }
+        }
+        );
+    }
+    );
+}
+const initilizeModal=()=>{
+    if(!document.getElementById("item-modal")){
+        document.body.innerHTML+=`  <div class="modal micromodal-slide" id="item-modal" aria-hidden="true">
+                                        <div class="modal__overlay" tabindex="-1" >
+                                            <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+                                                <header class="modal__container">
+                                                    <h2 id="modal-title">Item Detail</h2>
+                                                    <span class="modal__close" data-micromodal-close/>
+                                                </header>
+                                                <main>
+                                                    <div class="sitewidget-proddetail">
+                                                        <div class="sitewidget-bd prodDetail-tab-style prodDetail-tab-style-grey prodd-color-otl prodd-btn-otl-colorful">
+                                                            <div class="proddetails-detial-wrap">
+                                                                <div class="detial-wrap-cont">
+                                                                    <div class="detial-cont-index">
+                                                                        <div class="detial-cont-divsions detial-cont-prodescription">
+                                                                            <ul class="detial-item-tabslabel fix">
+                                                                            </ul>
+                                                                            <div class="detial-item-tabscont">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                    </div>
+                                                    </div>
+                                                </main>
+                                            </div>
+                                        </div>
+                                    </div>`;
+    }
+    
+}
+async function initializePageContent() {
+    const params = new URLSearchParams(window.location.search);
+    let family_id = params.get("family_id")
+    const url = `https://rafeed.atcsolution.co/api/Economic_product/get_product_families/62`;
+    // 
+    await fetch(url, {
+        method: "GET",
+        headers: {
+        "authorization": `${token}`,
+        "Content-Type": "application/json",
+        },
+    }).then(response => {
+        return response.json();
+    })
+    .then(data => {
+        console.log(data,"data")
+        let res = data.data.families
+        updateDescription(res.family_Name,res.family_description);
+        updateCategoryList();
+        initilizeTabs(res.family_Name,res.application_photo,res.applications);
+        replaceSlides([res.family_photo]);
+        initilizeModal();
+        MicroModal.init();
+    })
+    .catch(error => {
+    });
+}
+function waitForSliderAndInitialize() {
+    const maxAttempts = 50;
+    let attempts = 0;
+
+    const interval = setInterval(function() {
+        if (window.jQuery!=undefined && jQuery.fn.slightSubmenu!=undefined && jQuery.fn.easyZoom!=undefined) {
+            clearInterval(interval);
+            initializePageContent();
+            hideLoader();
+        }
+        else {
+            attempts++;
+            if (attempts >= maxAttempts) {
+                clearInterval(interval);
+                hideLoader();
+            }
+        }
+    }, 2000);
+}
+function hideLoader() {
+    const loader = document.getElementById('page-loader');
+    document.documentElement.style.visibility = "visible";
+    loader.classList.add('hidden');
 }
 
-addStylesheet("https://ammarhammamieh.github.io/testy/style.css", () => {
-    createSection();
+
+document.addEventListener("DOMContentLoaded", function() {
+    const loaderDiv = document.createElement('div');
+    loaderDiv.id = 'page-loader';
+    const spinnerDiv = document.createElement('div');
+    spinnerDiv.classList.add('spinner');
+    loaderDiv.appendChild(spinnerDiv);
+    document.body.prepend(loaderDiv);
+    addStylesheet("https://ammarhammamieh.github.io/testy/product.css", () => {
+        addStylesheet("https://ammarhammamieh.github.io/testy/micromodal.min.css", () => {
+            addScript("https://ammarhammamieh.github.io/testy/micromodal.min.js", () => {
+                waitForSliderAndInitialize()
+            });
+        });
+    });
 });
-  
+
+
+
