@@ -1,5 +1,6 @@
 var slider_pWfhEQrjIkDO = null;
 document.documentElement.style.visibility = "hidden";
+const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyRW1haWwiOiJhZG1pbmlzdHJhdG9yIiwidXNlcl9pZCI6IjEiLCJBUElfVElNRSI6MTc1NTY5Nzg3M30.gp9y4hnv5yPfDESMdyWG7Stj_8Ces2iuBNb6Hh_WSLY";
 
 function addStylesheet(href, callback) {
     const link = document.createElement('link');
@@ -14,47 +15,67 @@ function addStylesheet(href, callback) {
     document.head.prepend(link);
 }
 
+function addScript(src, callback) {
+  const script = document.createElement('script');
+  script.src = src;
+  script.async = true;
+  script.onload = () => {
+    callback(null);
+  };
+  script.onerror = () => {
+    callback(new Error(`Failed to load script: ${src}`));
+  };
+  document.body.appendChild(script);
+}
+
 function updateCategoryList() {
-    let series = [{
-        name: "Premium",
-        categories: ["Hospitality", "fashion & Rentail", "Industrial"]
-    }, {
-        name: "E-Series",
-        categories: ["Spotlight", "Tube Light", "Down Light"]
-    }, {
-        name: "Electric",
-        categories: ["Power Extension Sockets", "Plug", "Wiring Device"]
-    }]
-    let categoryList = document.getElementsByClassName("slight-submenu-wrap")[0];
+    const url = "https://rafeed.atcsolution.co/api/Product_series/get_series";
+    let series=[]
+    fetch(url, {
+      method: "GET",
+      headers: {
+        "authorization": `${token}`,
+        "Content-Type": "application/json",
+      }
+    }).then(response => {
+      return response.json();
+    })
+    .then(data => {
+      let res=data.data;
+      res.map((info)=>{
+        series.push({
+          id:info.ID,
+          name:info.Name,
+          categories:[
+            {
+              id:"",
+              name:"",
+            }
+          ]
+        })
+      })
+      let categoryList = document.getElementsByClassName("slight-submenu-wrap")[0];
+      categoryList.innerHTML=series.map((serie,index) => `
+        <li class="prodli li-with-ul">
+          <a href="/LED-Indoor-Lighting-pl46987387-p2.html?series_id=${serie.id}" title="${serie.name}">${serie.name}</a> <i class="list-mid-dot"></i>
+          <ul class="submenu-default-simple slight-submenu-ul slight-submenu-master-ul">
+              ${serie.categories.map((category,index) => `
+                <li class="prodli on hasNoUlChild"><a href="/LED-Indoor-Lighting-pl46987387-p2.html?series_id=${serie.id}&cat_id=${category.id}" class="" title="${category.name}">${category.name}</a></li>
+              `).join("")}
+          </ul>
+        </li>
+      `).join("")
 
-    let product = [{
-        img: "https://iororwxhmnrilr5q-static.micyjz.com/cloud/liBpjKorliSRqknmokikjq/weibiaoti.jpg",
-        title: "Flicker free and Three year warranty, GU5.3 lamp holder",
-        desc: "..."
-    }, ];
-    categoryList.innerHTML = series.map( (serie, index) => `
-      <li class="prodli li-with-ul">
-        <a href="/LED-Indoor-Lighting-pl46987387.html" title="${serie.name}">${serie.name}</a> <i class="list-mid-dot"></i>
-        <ul class="submenu-default-simple slight-submenu-ul slight-submenu-master-ul">
-            ${serie.categories.map( (category, index) => `
-              <li class="prodli on hasNoUlChild"><a class="" title="${category}" onclick='filterCategory(${JSON.stringify(product)})'>${category}</a></li>
-            `).join("")}
-        </ul>
-      </li>
-    `).join("")
-
-    // to re-initilize category list
-    $(".sitewidget-prodCategory-20230510105934 .submenu-default-simple").slightSubmenu({
+      // to re-initilize category list
+      $(".sitewidget-prodCategory-20191227164552 .submenu-default-simple").slightSubmenu({
         buttonActivateEvents: "click click",
-        submenuOpeneTime: 10
+        submenuOpeneTime: 10,
+      });
+    })
+    .catch(error => {
     });
 }
 function replaceSlides(imageUrls) {
-    // var $widget = $(".sitewidget-prodDetail-20141127140104");
-    // if ($widget.hasClass("isLoaded") || $widget.find('#masterslider_pWfhEQrjIkDO').data('custom-initialized')) {
-    //     console.log("Original slider initialization skipped.");
-    //     return;
-    // }
     var $slider = $('#masterslider_pWfhEQrjIkDO');
     $slider.empty();
 
@@ -101,14 +122,14 @@ function replaceSlides(imageUrls) {
     $('.easyzoom').easyZoom();
     
 }
-function updateDescription() {
-    let title = "test";
+function updateDescription(title,description) {
     document.getElementsByClassName("web-crumbs-title")[0].getElementsByTagName("strong")[0].innerHTML = title
     document.getElementsByClassName("proddetail-description")[0].getElementsByTagName("h1")[0].innerHTML = `<span class="prodDetail-tts"></span> ${title} <span><i class="fa fa-qrcode" aria-hidden="true"></i></span> `
-    document.getElementsByClassName("pro-this-prodBrief")[0].getElementsByTagName("ul")[0].innerHTML = `<li>aa</li><li>bb</li>`
+    document.getElementsByClassName("pro-this-prodBrief")[0].getElementsByTagName("ul")[0].remove();
+    document.getElementsByClassName("pro-this-prodBrief")[0].innerHTML += description
     document.getElementsByClassName("pro-info-list")[0].getElementsByTagName("li")[0].innerHTML = ` <label style="width: 55px;">Model:</label> <p> 102R </p>`
 }
-function initilizeTabs() {
+function initilizeTabs(family_name,application_photo,applications) {
     document.getElementsByClassName("detial-cont-index")[0].innerHTML = `<div class="detial-cont-divsions detial-cont-prodescription">
             <ul class="detial-cont-tabslabel fix">
             ammar
@@ -123,38 +144,27 @@ function initilizeTabs() {
                     <div class="prodDetail-editor-container">
                         <p><br /></p>
                         <p>
-                            <strong><span style="color: rgb(79, 129, 189); font-size: 24px;">Feature</span></strong>
-                        </p>
-                        <p><br /></p>
-                        <ul class="list-paddingleft-2" style="list-style-type: disc;">
-                            <li><p>Thickness &lt;35mm, to adapt to the low ceiling</p></li>
-                            <li><p>A variety of power flexible options</p></li>
-                            <li><p>Precision integrated aluminum design</p></li>
-                        </ul>
-                        <p><br /></p>
-                        <p>
                             <strong><span style="color: rgb(79, 129, 189); font-size: 24px;">Application</span></strong>
                         </p>
                         <p><br /></p>
                         <ul class="list-paddingleft-2" style="list-style-type: disc;">
-                            <li><p>Classroom</p></li>
-                            <li><p>supermarket</p></li>
-                            <li><p>restroom</p></li>
-                            <li><p>Aisle</p></li>
+                            ${applications.map((application)=>(
+                                `<li><p>${application}</p></li>`
+                            ))}
                         </ul>
                         <p><br /></p>
                         <p>
                             <img
-                                title="Panel Light"
-                                alt="Panel Light"
+                                title="${family_name}"
+                                alt="${family_name}"
                                 width="882"
                                 height="176"
                                 border="0"
                                 vspace="0"
                                 hspace="0"
                                 style="width: 882px; height: 176px;"
-                                data-original="//iororwxhmnrilr5q-static.micyjz.com/cloud/llBpjKorliSRkkppokqjjq/102R.jpg"
-                                src="//iororwxhmnrilr5q-static.micyjz.com/cloud/llBpjKorliSRkkppokqjjq/102R.jpg"
+                                data-original="${application_photo}"
+                                src="${application_photo}"
                                 class="lazyloaded"
                             />
                             &nbsp;&nbsp;&nbsp;
@@ -178,7 +188,7 @@ function initilizeTabs() {
                                             <td width="68" style="background-color: rgb(79, 129, 189); color: rgb(255, 255, 255); text-align: center;" align="center" valign="middle"><p>Cut out</p></td>
                                         </tr>
                                         <tr>
-                                            <td width="155" align="center" valign="middle" style="text-align: center;"><p>HYD-102R-4W</p></td>
+                                            <td width="155" align="center" valign="middle" style="text-align: center;"><a data-micromodal-trigger="my-modal"><p>HYD-102R-4W</p></a></td>
                                             <td width="74" align="center" valign="middle" style="text-align: center;"><p>4W</p></td>
                                             <td colspan="1" rowspan="1" valign="middle" width="180" align="center" style="text-align: center;">110-240V/220-240V</td>
                                             <td colspan="1" rowspan="1" valign="middle" width="164" align="center" style="text-align: center;">90-100 lm/w</td>
@@ -186,7 +196,7 @@ function initilizeTabs() {
                                             <td width="68" align="center" valign="middle" style="text-align: center;"><p>90mm</p></td>
                                         </tr>
                                         <tr>
-                                            <td width="155" align="center" valign="middle" style="text-align: center;"><p>HYD-102R-6W</p></td>
+                                            <td width="155" align="center" valign="middle" style="text-align: center;"><a data-micromodal-trigger="my-modal"><p>HYD-102R-6W</p></a></td>
                                             <td width="74" align="center" valign="middle" style="text-align: center;"><p>6W</p></td>
                                             <td colspan="1" rowspan="1" valign="middle" width="180" align="center" style="text-align: center;">110-240V/220-240V</td>
                                             <td colspan="1" rowspan="1" valign="middle" width="164" align="center" style="text-align: center;">90-100 lm/w</td>
@@ -194,7 +204,7 @@ function initilizeTabs() {
                                             <td width="68" align="center" valign="middle" style="text-align: center;"><p>105mm</p></td>
                                         </tr>
                                         <tr>
-                                            <td width="155" align="center" valign="middle" style="text-align: center;"><p>HYD-102R-9W</p></td>
+                                            <td width="155" align="center" valign="middle" style="text-align: center;"><a data-micromodal-trigger="my-modal"><p>HYD-102R-9W</p></a></td>
                                             <td width="74" align="center" valign="middle" style="text-align: center;"><p>9W</p></td>
                                             <td colspan="1" rowspan="1" valign="middle" width="180" align="center" style="text-align: center;">110-240V/220-240V</td>
                                             <td colspan="1" rowspan="1" valign="middle" width="164" align="center" style="text-align: center;">90-100 lm/w</td>
@@ -202,7 +212,7 @@ function initilizeTabs() {
                                             <td width="68" align="center" valign="middle" style="text-align: center;"><p>130mm</p></td>
                                         </tr>
                                         <tr>
-                                            <td width="155" align="center" valign="middle" style="text-align: center;"><p>HYD-102R-12W</p></td>
+                                            <td width="155" align="center" valign="middle" style="text-align: center;"><a data-micromodal-trigger="my-modal"><p>HYD-102R-12W</p></a></td>
                                             <td width="74" align="center" valign="middle" style="text-align: center;"><p>12W</p></td>
                                             <td colspan="1" rowspan="1" valign="middle" width="180" align="center" style="text-align: center;">110-240V/220-240V</td>
                                             <td colspan="1" rowspan="1" valign="middle" width="164" align="center" style="text-align: center;">90-100 lm/w</td>
@@ -210,7 +220,7 @@ function initilizeTabs() {
                                             <td width="68" align="center" valign="middle" style="text-align: center;"><p>160mm</p></td>
                                         </tr>
                                         <tr>
-                                            <td width="155" align="center" valign="middle" style="text-align: center;"><p>HYD-102R-18W</p></td>
+                                            <td width="155" align="center" valign="middle" style="text-align: center;"><a data-micromodal-trigger="my-modal"><p>HYD-102R-18W</p></a></td>
                                             <td width="74" align="center" valign="middle" style="text-align: center;"><p>18W</p></td>
                                             <td colspan="1" rowspan="1" valign="middle" width="180" align="center" style="text-align: center;">110-240V/220-240V</td>
                                             <td colspan="1" rowspan="1" valign="middle" width="164" align="center" style="text-align: center;">90-100 lm/w</td>
@@ -218,7 +228,7 @@ function initilizeTabs() {
                                             <td width="68" align="center" valign="middle" style="text-align: center;"><p>205mm</p></td>
                                         </tr>
                                         <tr>
-                                            <td width="155" align="center" valign="middle" style="text-align: center;"><p>HYD-102R-20W</p></td>
+                                            <td width="155" align="center" valign="middle" style="text-align: center;"><a data-micromodal-trigger="my-modal"><p>HYD-102R-20W</p></a></td>
                                             <td width="74" align="center" valign="middle" style="text-align: center;"><p>20W</p></td>
                                             <td colspan="1" rowspan="1" valign="middle" width="180" align="center" style="text-align: center;">110-240V/220-240V</td>
                                             <td colspan="1" rowspan="1" valign="middle" width="164" align="center" style="text-align: center;">90-100 lm/w</td>
@@ -226,7 +236,7 @@ function initilizeTabs() {
                                             <td width="68" align="center" valign="middle" style="text-align: center;"><p>220mm</p></td>
                                         </tr>
                                         <tr>
-                                            <td width="155" align="center" valign="middle" style="text-align: center;"><p>HYD-102R-24W</p></td>
+                                            <td width="155" align="center" valign="middle" style="text-align: center;"><a data-micromodal-trigger="my-modal"><p>HYD-102R-24W</p></a></td>
                                             <td width="74" align="center" valign="middle" style="text-align: center;"><p>24W</p></td>
                                             <td colspan="1" rowspan="1" valign="middle" width="180" align="center" style="text-align: center;">110-240V/220-240V</td>
                                             <td colspan="1" rowspan="1" valign="middle" width="164" align="center" style="text-align: center;">90-100 lm/w</td>
@@ -770,11 +780,64 @@ function initilizeTabs() {
     }
     );
 }
-function initializePageContent() {
-    updateDescription();
-    updateCategoryList();
-    initilizeTabs();
-    replaceSlides(["https://iororwxhmnrilr5q-static.micyjz.com/cloud/lrBpjKorliSRrlkrorqojo/800.jpg", "https://iororwxhmnrilr5q-static.micyjz.com/cloud/jmBpjKorliSRikimqqipjo/102S-480-480.jpg", "https://iororwxhmnrilr5q-static.micyjz.com/cloud/jlBpjKorliSRikimnqppjq/102R-480-480.jpg"]);
+const initilizeModal=()=>{
+    if(!document.getElementById("item-modal")){
+        document.body.innerHTML+=`  <div class="modal micromodal-slide" id="item-modal" aria-hidden="true">
+                                        <div class="modal__overlay" tabindex="-1" >
+                                            <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+                                                <header class="modal__container">
+                                                    <h2 id="modal-title">Item Detail</h2>
+                                                    <span class="modal__close" data-micromodal-close/>
+                                                </header>
+                                                <main>
+                                                    <div class="sitewidget-proddetail">
+                                                        <div class="sitewidget-bd prodDetail-tab-style prodDetail-tab-style-grey prodd-color-otl prodd-btn-otl-colorful">
+                                                            <div class="proddetails-detial-wrap">
+                                                                <div class="detial-wrap-cont">
+                                                                    <div class="detial-cont-index">
+                                                                        <div class="detial-cont-divsions detial-cont-prodescription">
+                                                                            <ul class="detial-item-tabslabel fix">
+                                                                            </ul>
+                                                                            <div class="detial-item-tabscont">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                    </div>
+                                                    </div>
+                                                </main>
+                                            </div>
+                                        </div>
+                                    </div>`;
+    }
+    
+}
+async function initializePageContent() {
+    const params = new URLSearchParams(window.location.search);
+    let family_id = params.get("family_id")
+    const url = `https://rafeed.atcsolution.co/api/Economic_product/get_product_families/62`;
+    // 
+    await fetch(url, {
+        method: "GET",
+        headers: {
+        "authorization": `${token}`,
+        "Content-Type": "application/json",
+        },
+    }).then(response => {
+        return response.json();
+    })
+    .then(data => {
+        let res = data.data.families
+        updateDescription(res.family_Name,res.family_description);
+        updateCategoryList();
+        initilizeTabs(res.family_Name,res.application_photo,res.applications);
+        replaceSlides([res.family_photo]);
+        initilizeModal();
+        MicroModal.init();
+    })
+    .catch(error => {
+    });
 }
 function waitForSliderAndInitialize() {
     const maxAttempts = 50;
@@ -810,16 +873,13 @@ document.addEventListener("DOMContentLoaded", function() {
     loaderDiv.appendChild(spinnerDiv);
     document.body.prepend(loaderDiv);
     addStylesheet("https://ammarhammamieh.github.io/testy/product.css", () => {
-        waitForSliderAndInitialize()
+        addStylesheet("https://ammarhammamieh.github.io/testy/micromodal.min.css", () => {
+            addScript("https://ammarhammamieh.github.io/testy/micromodal.min.js", () => {
+                waitForSliderAndInitialize()
+            });
+        });
     });
 });
-
-  
-
-
-
-
-
 
 
 
