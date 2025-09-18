@@ -57,3 +57,11 @@ html{
     opacity: 0;
     visibility: hidden;
 }
+
+.modal main div{
+    height: 100%;
+}
+#tab_contents_modal{
+    height: calc( 100% - 55px );
+    max-height: calc( 100% - 35px );
+}
