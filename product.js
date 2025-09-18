@@ -123,6 +123,7 @@ function replaceSlides(imageUrls) {
     
 }
 function updateDescription(title,description) {
+    console.log(title,description,"description")
     document.getElementsByClassName("web-crumbs-title")[0].getElementsByTagName("strong")[0].innerHTML = title
     document.getElementsByClassName("proddetail-description")[0].getElementsByTagName("h1")[0].innerHTML = `<span class="prodDetail-tts"></span> ${title} <span><i class="fa fa-qrcode" aria-hidden="true"></i></span> `
     document.getElementsByClassName("pro-this-prodBrief")[0].getElementsByTagName("ul")[0].remove();
@@ -780,7 +781,7 @@ function initilizeTabs(family_name,application_photo,applications) {
     }
     );
 }
-const initilizeModal=()=>{
+function initilizeModal(){
     if(!document.getElementById("item-modal")){
         document.body.innerHTML+=`  <div class="modal micromodal-slide" id="item-modal" aria-hidden="true">
                                         <div class="modal__overlay" tabindex="-1" >
@@ -828,7 +829,7 @@ async function initializePageContent() {
         return response.json();
     })
     .then(data => {
-        let res = data.data.families
+        let res = data.data.families[0]
         updateDescription(res.family_Name,res.family_description);
         updateCategoryList();
         initilizeTabs(res.family_Name,res.application_photo,res.applications);
