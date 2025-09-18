@@ -58,7 +58,7 @@ html{
     visibility: hidden;
 }
 
-.modal main div{
+.modal main div:first-of-type{
     height: 100%;
 }
 #tab_contents_modal{
