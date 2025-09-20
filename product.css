@@ -89,3 +89,9 @@ html{
     font-weight: 700;
     font-size: 0.9rem;
 }
+
+.loading-container{
+    height: 50px;
+    width: 100%;
+    position: relative;
+}
