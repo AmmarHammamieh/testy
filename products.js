@@ -1,6 +1,6 @@
 var slider_pWfhEQrjIkDO = null;
 document.documentElement.style.visibility = "hidden";
-const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyRW1haWwiOiJhZG1pbmlzdHJhdG9yIiwidXNlcl9pZCI6IjEiLCJBUElfVElNRSI6MTc1NTY5Nzg3M30.gp9y4hnv5yPfDESMdyWG7Stj_8Ces2iuBNb6Hh_WSLY";
+const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyRW1haWwiOiJhZG1pbmlzdHJhdG9yIiwidXNlcl9pZCI6IjEiLCJBUElfVElNRSI6MTc1ODM0NjM5OX0.XC4jUa2kAdXfWRokGwHO2G6nXh9GaEo1FEI1v1LyLys";
 
 function addStylesheet(href, callback) {
     const link = document.createElement('link');
@@ -46,12 +46,7 @@ function updateCategoryList() {
         series.push({
           id:info.ID,
           name:info.Name,
-          categories:[
-            {
-              id:"",
-              name:"",
-            }
-          ]
+          categories:info.categories
         })
       })
       let categoryList = document.getElementsByClassName("slight-submenu-wrap")[0];
@@ -67,7 +62,7 @@ function updateCategoryList() {
       `).join("")
 
       // to re-initilize category list
-      $(".sitewidget-prodCategory-20191227164552 .submenu-default-simple").slightSubmenu({
+      $(".slight-submenu-wrap.submenu-default-simple").slightSubmenu({
         buttonActivateEvents: "click click",
         submenuOpeneTime: 10,
       });
@@ -135,6 +130,13 @@ function updateDescription(title,description) {
 
 async function packingInfo(product_id) {
     let url = `https://rafeed.atcsolution.co/api/Economic_product/get_family_packaging_information/${product_id}`;
+    document.querySelector("#packing_data .inner").innerHTML=`
+        <div class="loading-container">
+            <div class="container-spinner-product-list">
+                <div class="spinner-product-list"></div>
+            </div>
+        </div>
+    `
     await fetch(url, {
         method: "GET",
         headers: {
@@ -151,39 +153,39 @@ async function packingInfo(product_id) {
             <tbody>
                 <tr class="firstRow">
                     <td width="137" valign="middle" style="word-break: break-word; color: rgb(255, 255, 255); background-color: rgb(79, 129, 189); text-align: center;" align="center">
-                        <p><span style="font-family: Cambria; font-size: 16px;">Product code</span></p>
+                        <p><span style=" font-size: 16px;">Product code</span></p>
                     </td>
                     <td width="232" valign="middle" style="word-break: break-word; color: rgb(255, 255, 255); background-color: rgb(79, 129, 189); text-align: center;" align="center">
-                        <p><span style="font-family: Cambria; font-size: 16px;">Packaging unit (pieces/Unit)</span></p>
+                        <p><span style=" font-size: 16px;">Packaging unit (pieces/Unit)</span></p>
                     </td>
                     <td width="269" valign="middle" style="word-break: break-word; color: rgb(255, 255, 255); background-color: rgb(79, 129, 189); text-align: center;" align="center">
                         <p style="text-autospace: ideograph-numeric; text-align: center;">
-                            <span style="font-family: Cambria; font-size: 16px;">Dimensions&nbsp;</span><span style="font-family: Cambria; font-size: 16px;">(length x width x height)&nbsp;</span>
+                            <span style=" font-size: 16px;">Dimensions&nbsp;</span><span style=" font-size: 16px;">(length x width x height)&nbsp;</span>
                         </p>
                     </td>
                     <td width="165" valign="middle" style="word-break: break-word; color: rgb(255, 255, 255); background-color: rgb(79, 129, 189); text-align: center;" align="center">
-                        <p><span style="font-family: Cambria; font-size: 16px;">Volume</span></p>
+                        <p><span style=" font-size: 16px;">Volume</span></p>
                     </td>
                 </tr>
                 ${res.map((item)=>(
                     `<tr>
-                        <td valign="middle" align="center" rowspan="4" colspan="1" width="NaN"><span style="text-align: center; text-wrap: wrap;">${item.product_code}</span></td>
+                        <td valign="middle" align="center" rowspan="4" colspan="1" width="NaN"><span style="text-align: center; text-wrap: wrap;">${item.product_code || "-"}</span></td>
                         <td valign="middle" align="center" rowspan="1" colspan="1" width="232" style="text-align: center;">
-                            <p style="text-autospace: ideograph-numeric; text-align: center;"><span style="font-family: Cambria; font-size: 16px;">Graphic carton</span></p>
+                            <p style="text-autospace: ideograph-numeric; text-align: center;"><span style=" font-size: 16px;">Graphic carton</span></p>
                         </td>
-                        <td valign="middle" align="center" rowspan="2" colspan="1" width="NaN">${item.packaging_info.color_box_dimension} cm<br /></td>
-                        <td valign="middle" align="center" rowspan="2" colspan="1" width="NaN"> -- </td>
+                        <td valign="middle" align="center" rowspan="2" colspan="1" width="NaN">${item.packaging_info.color_box_dimension + " cm" || "-"} <br /></td>
+                        <td valign="middle" align="center" rowspan="2" colspan="1" width="NaN">${item.packaging_info.ctn_volume || "-"}</td>
                     </tr>
                     <tr>
-                        <td valign="middle" align="center" rowspan="1" colspan="1" style="text-align: center;"><p>${item.packaging_info.color_box_quantity_per_box}</p></td>
+                        <td valign="middle" align="center" rowspan="1" colspan="1" style="text-align: center;"><p>${item.packaging_info.color_box_quantity_per_box || "-"}</p></td>
                     </tr>
                     <tr>
-                        <td valign="middle" align="center" rowspan="1" colspan="1" style="text-align: center;"><span style="font-family: Cambria; font-size: 16px; text-align: center; text-wrap: wrap;">Master carton</span></td>
-                        <td valign="middle" align="center" rowspan="2" colspan="1" width="NaN">${item.packaging_info.outer_box_dimension} cm<br /></td>
-                        <td valign="middle" align="center" rowspan="2" colspan="1" width="NaN"> -- </td>
+                        <td valign="middle" align="center" rowspan="1" colspan="1" style="text-align: center;"><span style=" font-size: 16px; text-align: center; text-wrap: wrap;">Master carton</span></td>
+                        <td valign="middle" align="center" rowspan="2" colspan="1" width="NaN">${item.packaging_info.outer_box_dimension + " cm" || "-"}<br /></td>
+                        <td valign="middle" align="center" rowspan="2" colspan="1" width="NaN">${item.packaging_info.ctn_volume || "-"}</td>
                     </tr>
                     <tr>
-                        <td valign="middle" align="center" rowspan="1" colspan="1" width="232" style="text-align: center;">${item.packaging_info.inner_box_quantity_per_outer_box}</td>
+                        <td valign="middle" align="center" rowspan="1" colspan="1" width="232" style="text-align: center;">${item.packaging_info.inner_box_quantity_per_outer_box || "-"}</td>
                     </tr>`
                 )).join("")}
             </tbody>
@@ -193,8 +195,16 @@ async function packingInfo(product_id) {
     });
 }
 async function itemDetails(id){
+  document.getElementById("general_tab").innerHTML="";
+  document.getElementById("technical_tab").innerHTML="";
+  document.getElementById("accessories_tab").innerHTML="";
+  document.getElementById("downloads_tab").innerHTML="";
+  document.querySelector(".modal__container main").insertAdjacentHTML("beforeend", `
+    <div class="container-spinner-product-list">
+        <div class="spinner-product-list"></div>
+    </div>
+  `);
   let url = `https://rafeed.atcsolution.co/api/Economic_product/get_economic_product_collection_by_id/${id}`;
- 
   await fetch(url, {
     method: "GET",
     headers: {
@@ -206,7 +216,6 @@ async function itemDetails(id){
   })
   .then(data => {
     let res=data.data
-  
     document.getElementById("general_tab").innerHTML=`<div>
         <span class="label">Luminaire Number : </span>
         <span class="value">${res.product_number}</span>
@@ -216,58 +225,110 @@ async function itemDetails(id){
     </div>`;
 
     
-
     document.getElementById("technical_tab").innerHTML=`
         <ul class="list-group">
-            <li class="list-group-item"><span class="label">Shape : </span>${res.fitting_shape}</li>
-            <li class="list-group-item">
-                <span class="label">Width : </span>${res.Width}<span><i> mm</i></span>
-            </li>
-            <li class="list-group-item">
-                <span class="label">Height : </span>${res.Height}<span><i> mm</i></span>
-            </li>
-            <li class="list-group-item"><span class="label">Adjustable : </span>${res.AdjustableType}</li>
-            <li class="list-group-item"><span class="label">Weight : </span>${res.Weight}</li>
-            <li class="list-group-item">
-                <span class="label">Power : </span>${res.Power} W<span><i> </i></span>
-            </li>
-            <li class="list-group-item">
-                <span class="label">CCT : </span>${res.CCT} <span><i>K</i></span>
-            </li>
-            <li class="list-group-item"><span class="label">CRI : </span>${res.CRI}</li>
-            <li class="list-group-item">
-                <span class="label">Luminous Flux : </span>${res.flux} lm<span><i> </i></span>
-            </li>
-            <li class="list-group-item">
-                <span class="label">Current : </span>${res.Current}<span><i> mA</i></span>
-            </li>
-            <li class="list-group-item"><span class="label">IP : </span>${res.IP}</li>
-            <li class="list-group-item"><span class="label">Beam Angle : </span>${res.BeamAngleValue}°</li>
-            <li class="list-group-item">
-                <span class="label">LifeSpan : </span>${res.lifespan}<span><i> Hours</i></span>
-            </li>
+            ${ res.fitting_shape ? 
+                    `<li class="list-group-item"><span class="label">Shape : </span>${res.fitting_shape}</li>`
+                :
+                    ``
+            }
+            ${ res.Width ? 
+                    `<li class="list-group-item">
+                        <span class="label">Width : </span>${res.Width} mm
+                    </li>`
+                :
+                    ``
+            }
+            ${ res.Height ?
+                    ` <li class="list-group-item">
+                        <span class="label">Height : </span>${res.Height} mm
+                    </li>`
+                :
+                    ``
+            }
+            ${ res.AdjustableType ? 
+                    `<li class="list-group-item"><span class="label">Adjustable : </span>${res.AdjustableType}</li>`
+                :
+                    ``
+            }
+            ${ res.Weight ? 
+                    `<li class="list-group-item"><span class="label">Weight : </span>${res.Weight}</li>`
+                :
+                    ``
+            }
+            ${ res.Power ? 
+                    `<li class="list-group-item">
+                        <span class="label">Power : </span>${res.Power} W
+                    </li>`
+                :
+                    ``
+            }
+            ${ res.CCT ? 
+                    `<li class="list-group-item">
+                        <span class="label">CCT : </span>${res.CCT} K
+                    </li>`
+                :
+                    ``
+            }
+            ${ res.CRI ? 
+                    `<li class="list-group-item"><span class="label">CRI : </span>${res.CRI}</li>`
+                :
+                    ``
+            }
+            ${ res.flux ? 
+                    ` <li class="list-group-item">
+                        <span class="label">Luminous Flux : </span>${res.flux} lm
+                    </li>`
+                :
+                    ``
+            }
+            ${ res.Current ? 
+                    `<li class="list-group-item">
+                        <span class="label">Current : </span>${res.Current} mA
+                    </li>`
+                :
+                    ``
+            }
+            ${ res.IP ? 
+                    `<li class="list-group-item"><span class="label">IP : </span>${res.IP}</li>`
+                :
+                    ``
+            }
+            ${ res.BeamAngleValue ? 
+                    `<li class="list-group-item"><span class="label">Beam Angle : </span>${res.BeamAngleValue}°</li>`
+                :
+                    ``
+            }
+            ${ res.lifespan ? 
+                    `<li class="list-group-item">
+                        <span class="label">LifeSpan : </span>${res.lifespan} Hours
+                    </li>`
+                :
+                    ``
+            }
+            
             <li class="list-group-item" style="padding-bottom: 0px;">
                 <dl>
-                    <dt style="padding-bottom: 6px; font-size: 0.9rem;">Color</dt>
-                    {res.fitting_color.map((distributor)=>(
-                        '<dd>
+                    <dt class="label" style="padding-bottom: 6px; font-size: 0.9rem;">Color</dt>
+                    ${res.fitting_color?.map((distributor)=>(
+                        `<dd>
                             <img hight="20" width="20" style="border-radius: 50%; border: 1px solid #b7b6b6; padding-bottom: 0px !important;" src="${distributor.Texture_photo}" />
                             <span> ${distributor.part} - ${distributor.color} - ${distributor.material}</span>
-                        </dd>'
+                        </dd>`
 
-                    ))}
+                    )).join("")}
                 </dl>
             </li>
             <li class="list-group-item" style="padding-bottom: 0px;">
                 <dl>
-                    <dt style="padding-bottom: 6px; font-size: 0.9rem;">Lighting Distributor</dt>
-                    {res.lighting_distributor.map((distributor)=>(
-                        '<dd>
+                    <dt class="label" style="padding-bottom: 6px; font-size: 0.9rem;">Lighting Distributor</dt>
+                    ${res.lighting_distributor?.map((distributor)=>(
+                        `<dd>
                             <img hight="20" width="20" style="border-radius: 50%; border: 1px solid #b7b6b6; padding-bottom: 0px !important;" src="${distributor.Texture_photo}" />
                             <span> ${distributor.kind} - ${distributor.color} - ${distributor.material}</span>
-                        </dd>'
+                        </dd>`
 
-                    ))}
+                    )).join("")}
                 </dl>
             </li>
         </ul>
@@ -283,6 +344,7 @@ async function itemDetails(id){
             </li>
         </ul>
     `;
+    document.querySelector(".modal__container main .container-spinner-product-list").remove();
   })
   .catch(error => {
   });
@@ -291,7 +353,7 @@ function initilizeTabs(product_id,family_name,application_photo,applications,ite
     document.getElementsByClassName("detial-cont-index")[0].innerHTML = `<div class="detial-cont-divsions detial-cont-prodescription">
             <ul id="tab_titles" class="detial-cont-tabslabel fix">
                 <li class="on"><a href="javascript:;"> Product Description</a></li>
-                <li><a href="javascript:;" onclick="packingInfo(${product_id})"> Product Package </a></li>
+                <li onclick="packingInfo(${product_id})"><a href="javascript:;"> Product Package </a></li>
             </ul>
             <div id="tab_content" class="detial-cont-tabscont">
                 <input type="hidden" name="delay_static_mobile_above" value="true" /> <input type="hidden" name="settingId" value="pWfhEQrjIkDO" />
@@ -318,7 +380,7 @@ function initilizeTabs(product_id,family_name,application_photo,applications,ite
                                         ${items.map((item)=>(
                                             `
                                              <tr>
-                                                <td width="155" align="center" valign="middle" style="text-align: center;"><a data-micromodal-trigger="item-modal" onclick="itemDetails(${item.ID})"><p>HYD-102R-4W</p></a></td>
+                                                <td width="155" align="center" valign="middle" style="text-align: center;"><a href="javascript:;" data-micromodal-trigger="item-modal" onclick="itemDetails(${item.ID})"><p>HYD-102R-4W</p></a></td>
                                                 <td width="74" align="center" valign="middle" style="text-align: center;"><p>4W</p></td>
                                                 <td colspan="1" rowspan="1" valign="middle" width="180" align="center" style="text-align: center;">110-240V/220-240V</td>
                                                 <td colspan="1" rowspan="1" valign="middle" width="164" align="center" style="text-align: center;">90-100 lm/w</td>
@@ -470,12 +532,11 @@ function initilizeTabs(product_id,family_name,application_photo,applications,ite
             if (contents[index]) {
                 contents[index].classList.remove('hide');
             }
-        }
-        );
-    }
-    );
+        });
+    });
 }
 function initilizeModal() {
+    console.log("hu2222222")
     if (!document.getElementById("item-modal")) {
         const modalHTML = `
             <div class="modal micromodal-slide" id="item-modal" aria-hidden="true">
@@ -553,7 +614,6 @@ async function initializePageContent() {
         `https://rafeed.atcsolution.co/api/Economic_product/get_product_families/62`,
         `https://rafeed.atcsolution.co/api/Economic_product/get_economic_product_collections/62`
     ];
-    // 
     const responses = await Promise.all(
       urls.map(url =>
         fetch(url, {
@@ -566,14 +626,17 @@ async function initializePageContent() {
       )
     );
     let familyDetails=responses[0].data.families[0];
+    document.getElementById("addToBasket").setAttribute("prodid",familyDetails.ID);
+    document.getElementById("addToBasket").setAttribute("prodname",familyDetails.family_Name);
+    document.getElementById("addToBasket").setAttribute("prodphotourl",familyDetails.family_photo);
     let items=responses[1].data.collection;
     updateDescription(familyDetails.family_Name,familyDetails.family_description);
     updateCategoryList();
     initilizeTabs(familyDetails.ProductID,familyDetails.family_Name,familyDetails.application_photo,familyDetails.applications,items);
     replaceSlides([familyDetails.family_photo]);
     initilizeModal();
+    hideLoader();
     MicroModal.init();
-  
 }
 function waitForSliderAndInitialize() {
     const maxAttempts = 50;
@@ -583,7 +646,6 @@ function waitForSliderAndInitialize() {
         if (window.jQuery!=undefined && jQuery.fn.slightSubmenu!=undefined && jQuery.fn.easyZoom!=undefined) {
             clearInterval(interval);
             initializePageContent();
-            hideLoader();
         }
         else {
             attempts++;
