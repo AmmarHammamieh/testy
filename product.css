@@ -75,6 +75,7 @@ html{
 
 .modal__container main{
     height: 60vh;
+    position: relative;
 }
 .modal #technical_tab ul {
     display: grid;
@@ -94,4 +95,14 @@ html{
     height: 75px;
     width: 100%;
     position: relative;
+}
+
+table .firstRow{
+    position: sticky;
+    top: 0;
+}
+
+.sliderTable .inner {
+    max-height: 400px;
+    overflow-y: auto ;
 }
