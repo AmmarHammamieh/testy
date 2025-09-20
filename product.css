@@ -72,3 +72,22 @@ html{
 .sitewidget-proddetail > div > div > div > div > div {
   height: 100%;
 }
+
+.modal__container main{
+    height: 60vh;
+}
+.modal #technical_tab ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+.modal #technical_tab ul.list-group li {
+    padding: 5px;
+    width: 25%;
+    display: flex;
+    border-bottom: 1px solid #7e7e7e;
+    flex: auto;
+}
+.modal #technical_tab .label {
+    font-weight: 700;
+    font-size: 0.9rem;
+}
