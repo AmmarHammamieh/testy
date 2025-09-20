@@ -26,10 +26,7 @@
   border-radius: 8px;
   z-index: 999;
 }
-.modal__container main{
-    height: 60vh;
-    overflow-y: auto;
-}
+
 .modal__header {
   display: flex;
   justify-content: space-between;
