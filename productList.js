@@ -94,7 +94,7 @@ function renderPage(index) {
                               rel="nofollow"
                               prodId="${itemsPerPage[i].ID}" 
                               prodname="${itemsPerPage[i].Name}"
-                              prodphotourl="//iororwxhmnrilr5q-static.micyjz.com/cloud/jlBpjKorliSRikimnqppjq/102R-40-40.jpg"
+                              prodphotourl="${itemsPerPage[i].family_photo}"
                               class="InquireAndBasket pro-detail-basket proasynclist-add-basket-btn block prodlist-pro-addbasket-btn mt10 button_basket gbBgColor1 gbBdColor0"
                           >
                               <i class="fa fa-shopping-cart" style="color: ;" aria-hidden="true"></i><span style="color: ;" class="hide">Add to Basket</span>
