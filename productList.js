@@ -180,8 +180,8 @@ async function filter(el,series_id,cat_id){
 }
 async function updateCategoryList() {
   const params = new URLSearchParams(window.location.search);
-  let series_id = params.get("series_id")
-  let cat_id = params.get("cat_id")
+  let series_id = params.get("series_id").replaceAll('"', '');
+  let cat_id = params.get("cat_id").replaceAll('"', '');
   const url = "https://rafeed.atcsolution.co/api/Product_series/get_series";
   let series=[]
   await fetch(url, {
