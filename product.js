@@ -672,11 +672,13 @@ document.addEventListener("DOMContentLoaded", function() {
     addStylesheet("https://ammarhammamieh.github.io/testy/product.css", () => {
         addStylesheet("https://ammarhammamieh.github.io/testy/micromodal.min.css", () => {
             addScript("https://ammarhammamieh.github.io/testy/micromodal.min.js", () => {
+                console.log("ho")
                 waitForSliderAndInitialize()
             });
         });
     });
 });
+
 
 
 
