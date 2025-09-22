@@ -642,10 +642,10 @@ function waitForSliderAndInitialize() {
     let attempts = 0;
 
     const interval = setInterval(function() {
-        if (window.jQuery!=undefined && jQuery.fn.slightSubmenu!=undefined && jQuery.fn.easyZoom!=undefined) {
+        // if (window.jQuery!=undefined && jQuery.fn.slightSubmenu!=undefined && jQuery.fn.easyZoom!=undefined) {
             clearInterval(interval);
             initializePageContent();
-        }
+        // }
         else {
             attempts++;
             if (attempts >= maxAttempts) {
@@ -678,6 +678,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
+
 
 
 
