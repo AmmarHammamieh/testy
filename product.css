@@ -126,11 +126,11 @@ table .firstRow{
 .accessory-content span:last-child{
     color: #c4c4c4;
 }
-.installation-way-list{
+.list-paddingleft-2{
     display: flex;
     flex-wrap: wrap;
 }
-.installation-way-list li{
+.list-paddingleft-2 li{
     width: 50%;
 }
 @media (max-width: 1024px) {
