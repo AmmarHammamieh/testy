@@ -85,7 +85,7 @@ function renderPage(index) {
                       <dl class="prodlist-defined-list"></dl>
                       <div style="height: 50px; width: 100%;"></div>
                       <div class="prodlist-parameter-btns prodlist-btn-default 1 prodlist-parameter-btns-container" style="margin-top: 10px; max-width: 100%;">
-                          <button prodId="${itemsPerPage[i].ID}" style="text-align: center; text-indent: -40px;" class="default-button prodlist-pro-inquire mt10 button_color gbBgColor0 gbBdColor0">
+                          <button prodId="${itemsPerPage[i].ID}" prodPhotoUrl=${itemsPerPage[i].family_photo} prodName=${itemsPerPage[i].Name} style="text-align: center; text-indent: -40px;" class="default-button prodlist-pro-inquire mt10 button_color gbBgColor0 gbBdColor0">
                               <i class="togetherClass fa fa-envelope-o" aria-hidden="true"></i>Inquire
                           </button>
                           <a
@@ -283,7 +283,7 @@ async function updatefamiltyListPage() {
                         <dl class="prodlist-defined-list"></dl>
                         <div style="height: 50px; width: 100%;"></div>
                         <div class="prodlist-parameter-btns prodlist-btn-default 1 prodlist-parameter-btns-container" style="margin-top: 10px; max-width: 100%;">
-                            <button prodId="${family.ID}" style="text-align: center; text-indent: -40px;" class="default-button prodlist-pro-inquire mt10 button_color gbBgColor0 gbBdColor0">
+                            <button prodId="${family.ID}" prodPhotoUrl=${family.family_photo} prodName=${family.Name} style="text-align: center; text-indent: -40px;" class="default-button prodlist-pro-inquire mt10 button_color gbBgColor0 gbBdColor0">
                                 <i class="togetherClass fa fa-envelope-o" aria-hidden="true"></i>Inquire
                             </button>
                             <a
@@ -359,6 +359,29 @@ document.addEventListener("DOMContentLoaded", function() {
   spinnerDiv.classList.add('spinner');
   loaderDiv.appendChild(spinnerDiv);
   document.body.prepend(loaderDiv);
+  // stop inquire Form
+  const inquireButtons = document.querySelectorAll('.prodlist-pro-inquire');
+  inquireButtons.forEach(button => {
+      button.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const prodId = button.getAttribute('prodId');
+          const prodPhotoUrl = button.getAttribute('prodPhotoUrl');
+          const prodName = button.getAttribute('prodName');
+          let item={
+            "prodId": prodId,
+            "prodPhotoUrl": prodPhotoUrl,
+            "skuParam": "",
+            "selectParam": "",
+            "prodName": prodName,
+            "quantity": 1,
+            "sku": ""
+          }
+          localStorage.setItem("inquireProd",JSON.stringify(item))
+          window.location.replace(window.location.origin+"/phoenix/admin/prod/inquire")
+      }, true);
+  });
+  //
   addStylesheet("https://ammarhammamieh.github.io/testy/product.css", () => {
       updatefamiltyListPage();
   });
