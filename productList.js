@@ -204,7 +204,7 @@ async function updateCategoryList() {
     })
     let categoryList = document.getElementsByClassName("slight-submenu-wrap")[0];
     categoryList.innerHTML=series.map((serie,index) => `
-      <li class="prodli li-with-ul">
+      <li class="prodli ${series_id && series_id==serie.id ? "on" : "" } li-with-ul">
         <a href="javascript:void(0);" title="${serie.name}" onclick='filter(this,${serie.id})'>${serie.name}</a> <i class="list-mid-dot"></i>
         <ul class="submenu-default-simple slight-submenu-ul slight-submenu-master-ul">
             ${serie.categories.map((category,index) => `
