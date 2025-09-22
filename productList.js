@@ -142,6 +142,9 @@ function prevPage() {
 }
 //  end pagination functions
 async function filter(el,series_id,cat_id){
+  document.querySelectorAll(".slight-submenu-master-ul.fix .on").forEach(item => {
+    item.classList.remove("on");
+  });
   document.querySelector(".sitewidget-prodlist .sitewidget-hd h2").innerHTML=el.title ?  el.title : "";
   if(document.querySelector(".sitewidget-prodlist .sitewidget-prodlist-description p")){
     document.querySelector(".sitewidget-prodlist .sitewidget-prodlist-description p").remove()
@@ -173,6 +176,8 @@ async function filter(el,series_id,cat_id){
       renderPage(activePage);
       renderButtons("first")
       pageNumberPaginationListener()
+      el.target.parentElement.classList.add("on");
+      el.target.parentElement.parentElement.classList.add("on");
     }
   })
   .catch(error => {
