@@ -327,6 +327,42 @@ async function updatefamiltyListPage() {
   });
   await updateCategoryList()
   hideLoader()
+  // stop inquire Form
+  const inquireButtons = document.querySelectorAll('.prodlist-pro-inquire');
+  const inquireButton = document.querySelector(".basket-btns button[type='submit']");
+  inquireButton.addEventListener('submit', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      localStorage.removeItem("inquireProd")
+      window.location.replace(window.location.origin+"/phoenix/admin/prod/inquire")
+  }, true);
+  inquireButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      localStorage.removeItem("inquireProd")
+      window.location.replace(window.location.origin+"/phoenix/admin/prod/inquire")
+  }, true);
+  inquireButtons.forEach(button => {
+      button.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const prodId = button.getAttribute('prodId');
+          const prodPhotoUrl = button.getAttribute('prodPhotoUrl');
+          const prodName = button.getAttribute('prodName');
+          let item={
+            "prodId": prodId,
+            "prodPhotoUrl": prodPhotoUrl,
+            "skuParam": "",
+            "selectParam": "",
+            "prodName": prodName,
+            "quantity": 1,
+            "sku": ""
+          }
+          localStorage.setItem("inquireProd",JSON.stringify(item))
+          window.location.replace(window.location.origin+"/phoenix/admin/prod/inquire")
+      }, true);
+  });
+  //
 }
 
 function pageNumberPaginationListener() {
@@ -359,31 +395,8 @@ document.addEventListener("DOMContentLoaded", function() {
   spinnerDiv.classList.add('spinner');
   loaderDiv.appendChild(spinnerDiv);
   document.body.prepend(loaderDiv);
-  // stop inquire Form
-  const inquireButtons = document.querySelectorAll('.prodlist-pro-inquire');
-  inquireButtons.forEach(button => {
-      button.addEventListener('click', (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          const prodId = button.getAttribute('prodId');
-          const prodPhotoUrl = button.getAttribute('prodPhotoUrl');
-          const prodName = button.getAttribute('prodName');
-          let item={
-            "prodId": prodId,
-            "prodPhotoUrl": prodPhotoUrl,
-            "skuParam": "",
-            "selectParam": "",
-            "prodName": prodName,
-            "quantity": 1,
-            "sku": ""
-          }
-          localStorage.setItem("inquireProd",JSON.stringify(item))
-          window.location.replace(window.location.origin+"/phoenix/admin/prod/inquire")
-      }, true);
-  });
-  //
   addStylesheet("https://ammarhammamieh.github.io/testy/product.css", () => {
-      updatefamiltyListPage();
+    updatefamiltyListPage();
   });
 });
   
