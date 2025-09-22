@@ -226,8 +226,8 @@ async function updateCategoryList() {
 }
 async function updatefamiltyListPage() {
   const params = new URLSearchParams(window.location.search);
-  let series_id = params.get("series_id")
-  let cat_id = params.get("cat_id")
+  let series_id = params.get("series_id").replaceAll('"', '');
+  let cat_id = params.get("cat_id").replaceAll('"', '');
   if(document.querySelector(".sitewidget-prodlist .sitewidget-prodlist-description p")){
     document.querySelector(".sitewidget-prodlist .sitewidget-prodlist-description p").remove()
   }
