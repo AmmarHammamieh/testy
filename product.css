@@ -106,3 +106,23 @@ table .firstRow{
     max-height: 400px;
     overflow-y: auto ;
 }
+
+#accessories_tab{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 20px;
+    text-align: center;
+}
+.accessory-container{
+    text-align: center;
+}
+.accessory-content{
+    display: flex;
+    flex-direction: column;
+}
+.accessory-content span{
+    line-height: normal;
+}
+.accessory-content span:last-child{
+    color: #c4c4c4;
+}
