@@ -126,7 +126,13 @@ table .firstRow{
 .accessory-content span:last-child{
     color: #c4c4c4;
 }
-
+.installation-way-list{
+    display: flex;
+    flex-wrap: wrap;
+}
+.installation-way-list li{
+    width: 50%;
+}
 @media (max-width: 1024px) {
     #accessories_tab { grid-template-columns: repeat(3, 1fr); }
 }
