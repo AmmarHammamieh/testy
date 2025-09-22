@@ -646,13 +646,13 @@ function waitForSliderAndInitialize() {
             clearInterval(interval);
             initializePageContent();
         // }
-        else {
-            attempts++;
-            if (attempts >= maxAttempts) {
-                clearInterval(interval);
+        // else {
+        //     attempts++;
+        //     if (attempts >= maxAttempts) {
+                // clearInterval(interval);
                 hideLoader();
-            }
-        }
+        //     }
+        // }
     }, 2000);
 }
 function hideLoader() {
@@ -678,6 +678,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
+
 
 
 
