@@ -1,6 +1,7 @@
 var slider_pWfhEQrjIkDO = null;
 document.documentElement.style.visibility = "hidden";
 const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyRW1haWwiOiJhZG1pbmlzdHJhdG9yIiwidXNlcl9pZCI6IjEiLCJBUElfVElNRSI6MTc1ODM0NjM5OX0.XC4jUa2kAdXfWRokGwHO2G6nXh9GaEo1FEI1v1LyLys";
+const base_url="https://rafeed.atcsolution.co/api"
 
 function addStylesheet(href, callback) {
     const link = document.createElement('link');
@@ -29,7 +30,7 @@ function addScript(src, callback) {
 }
 
 function updateCategoryList() {
-    const url = "https://rafeed.atcsolution.co/api/Product_series/get_series";
+    const url = base_url+"/Product_series/get_series";
     let series=[]
     fetch(url, {
       method: "GET",
@@ -133,7 +134,7 @@ function updateDescription(title,description) {
 }
 
 async function packingInfo(product_id) {
-    let url = `https://rafeed.atcsolution.co/api/Economic_product/get_family_packaging_information/${product_id}`;
+    let url = base_url+`/Economic_product/get_family_packaging_information/${product_id}`;
     document.querySelector("#packing_data .inner").innerHTML=`
         <div class="loading-container">
             <div class="container-spinner-product-list">
@@ -208,7 +209,7 @@ async function itemDetails(id){
         <div class="spinner-product-list"></div>
     </div>
   `);
-  let url = `https://rafeed.atcsolution.co/api/Economic_product/get_economic_product_collection_by_id/${id}`;
+  let url = base_url+`/Economic_product/get_economic_product_collection_by_id/${id}`;
   await fetch(url, {
     method: "GET",
     headers: {
@@ -588,8 +589,8 @@ async function initializePageContent() {
     const params = new URLSearchParams(window.location.search);
     let family_id = params.get("family_id")
     const urls = [
-        `https://rafeed.atcsolution.co/api/Economic_product/get_product_families/62`,
-        `https://rafeed.atcsolution.co/api/Economic_product/get_economic_product_collections/62`
+        base_url+`/Economic_product/get_product_families/62`,
+        base_url+`/Economic_product/get_economic_product_collections/62`
     ];
     const responses = await Promise.all(
       urls.map(url =>
