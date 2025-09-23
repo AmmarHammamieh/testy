@@ -20,10 +20,10 @@ function hideLoader() {
     loader.classList.add('hidden');
 }
 
-function updateCategoryList() {
+async function updateCategoryList() {
     const url = base_url+"/Product_series/get_series";
     let series=[]
-    fetch(url, {
+    await fetch(url, {
       method: "GET",
       headers: {
         "authorization": `${token}`,
@@ -54,10 +54,11 @@ function updateCategoryList() {
       `).join("")
 
       // to re-initilize category list
-      $(".slight-submenu-wrap.submenu-default-simple").slightSubmenu({
+       $(".sitewidget-prodCategory-20191227164552 .submenu-default-simple").slightSubmenu({
         buttonActivateEvents: "click click",
         submenuOpeneTime: 10,
-      });
+        });
+        $(".sitewidget-prodCategory-20191227164552 .submenu-default-simple ul").hide();
     })
     .catch(error => {
     });
