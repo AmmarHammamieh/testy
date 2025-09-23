@@ -141,3 +141,8 @@ table .firstRow{
 @media (max-width: 1024px) {
     #accessories_tab { grid-template-columns: repeat(3, 1fr); }
 }
+@media (max-width: 992px) {
+    .modal #technical_tab ul{
+        grid-column-gap: 50px;
+    }
+}
