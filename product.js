@@ -616,6 +616,19 @@ async function initializePageContent() {
     hideLoader();
     // stop inquire Form
     const inquireTopButton = document.querySelector('#prodInquire');
+    const inquireButton = document.querySelector("#basketInquire");
+    inquireButton.addEventListener('submit', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        localStorage.removeItem("inquireProd")
+        window.location.replace(window.location.origin+"/phoenix/admin/prod/inquire")
+    }, true);
+    inquireButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        localStorage.removeItem("inquireProd")
+        window.location.replace(window.location.origin+"/phoenix/admin/prod/inquire")
+    }, true);
     inquireTopButton.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
