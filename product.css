@@ -85,7 +85,7 @@ html{
 .modal #technical_tab ul {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-column-gap: 100px;
+    grid-column-gap: 50px;
 }
 .modal #technical_tab ul.list-group li {
     border-bottom: 1px solid #7e7e7e;
@@ -140,11 +140,6 @@ table .firstRow{
 }
 @media (max-width: 1024px) {
     #accessories_tab { grid-template-columns: repeat(3, 1fr); }
-}
-@media (max-width: 992px) {
-    .modal #technical_tab ul{
-        grid-column-gap: 50px;
-    }
 }
 @media (max-width: 600px) {
     .modal #technical_tab ul{ 
