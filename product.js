@@ -616,19 +616,6 @@ async function initializePageContent() {
     hideLoader();
     // stop inquire Form
     const inquireTopButton = document.querySelector('#prodInquire');
-    const inquireButton = document.querySelector(".basket-btns button[type='submit']");
-    inquireButton.addEventListener('submit', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        localStorage.removeItem("inquireProd")
-        window.location.replace(window.location.origin+"/phoenix/admin/prod/inquire")
-    }, true);
-    inquireButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        localStorage.removeItem("inquireProd")
-        window.location.replace(window.location.origin+"/phoenix/admin/prod/inquire")
-    }, true);
     inquireTopButton.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
@@ -688,5 +675,42 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
+// Function to attach event listeners safely
+function attachInquireHandler(button) {
+    if (!button || button.dataset.inquireAttached === "true") return;
 
+    button.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        localStorage.removeItem("inquireProd");
+        window.location.replace(window.location.origin + "/phoenix/admin/prod/inquire");
+    }, true);
 
+    // Mark it so we don't attach twice
+    button.dataset.inquireAttached = "true";
+}
+
+// Run immediately if button already exists
+const existingButton = document.querySelector(".basket-btns button[type='submit']");
+if (existingButton) attachInquireHandler(existingButton);
+
+// Setup observer
+const targetNode = document.querySelector(".basket-btns");
+if (targetNode) {
+    const observer = new MutationObserver((mutationsList) => {
+        for (const mutation of mutationsList) {
+            if (mutation.type === "childList") {
+                mutation.addedNodes.forEach((node) => {
+                    if (node.nodeType === 1) {
+                        const btn = node.matches?.("button[type='submit']")
+                            ? node
+                            : node.querySelector?.("button[type='submit']");
+                        if (btn) attachInquireHandler(btn);
+                    }
+                });
+            }
+        }
+    });
+
+    observer.observe(targetNode, { childList: true, subtree: true });
+}
