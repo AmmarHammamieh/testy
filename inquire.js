@@ -1,6 +1,6 @@
 document.documentElement.style.visibility = "hidden";
 const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyRW1haWwiOiJhZG1pbmlzdHJhdG9yIiwidXNlcl9pZCI6IjEiLCJBUElfVElNRSI6MTc1ODM0NjM5OX0.XC4jUa2kAdXfWRokGwHO2G6nXh9GaEo1FEI1v1LyLys";
-
+const base_url="https://rafeed.atcsolution.co/api"
 function addStylesheet(href, callback) {
     const link = document.createElement('link');
     link.rel = 'stylesheet';
@@ -20,53 +20,48 @@ function hideLoader() {
     loader.classList.add('hidden');
 }
 
-async function updateCategoryList() {
-  const params = new URLSearchParams(window.location.search);
-  let series_id = params.get("series_id")
-  let cat_id = params.get("cat_id")
-  const url = "https://rafeed.atcsolution.co/api/Product_series/get_series";
-  let series=[]
-  await fetch(url, {
-    method: "GET",
-    headers: {
-      "authorization": `${token}`,
-      "Content-Type": "application/json",
-    }
-  }).then(response => {
-    return response.json();
-  })
-  .then(data => {
-    let res=data.data;
-    res.map((info)=>{
-      series.push({
-        id:info.ID,
-        name:info.Name,
-        categories:info.categories
-      })
+function updateCategoryList() {
+    const url = base_url+"/Product_series/get_series";
+    let series=[]
+    fetch(url, {
+      method: "GET",
+      headers: {
+        "authorization": `${token}`,
+        "Content-Type": "application/json",
+      }
+    }).then(response => {
+      return response.json();
     })
-    let categoryList = document.getElementsByClassName("slight-submenu-wrap")[0];
-    categoryList.innerHTML=series.map((serie,index) => `
-      <li class="prodli li-with-ul">
-        <a href="javascript:void(0);" title="${serie.name}" onclick='filter(this,${serie.id})'>${serie.name}</a> <i class="list-mid-dot"></i>
-        <ul class="submenu-default-simple slight-submenu-ul slight-submenu-master-ul">
-            ${serie.categories.map((category,index) => `
-              <li class="prodli ${ series_id && cat_id && series_id==serie.id && cat_id==category.id ? "on" : ""} hasNoUlChild"><a href="javascript:void(0);" class="" title="${category.name}" onclick='filter(this,${serie.id},${category.id})'>${category.name}</a></li>
-            `).join("")}
-        </ul>
-      </li>
-    `).join("")
+    .then(data => {
+      let res=data.data;
+      res.map((info)=>{
+        series.push({
+          id:info.ID,
+          name:info.Name,
+          categories:info.categories
+        })
+      })
+      let categoryList = document.getElementsByClassName("slight-submenu-wrap")[0];
+      categoryList.innerHTML=series.map((serie,index) => `
+        <li class="prodli li-with-ul">
+          <a href="/LED-Indoor-Lighting-pl46987387-p2.html?series_id=${serie.id}" title="${serie.name}">${serie.name}</a> <i class="list-mid-dot"></i>
+          <ul class="submenu-default-simple slight-submenu-ul slight-submenu-master-ul">
+              ${serie.categories.map((category,index) => `
+                <li class="prodli hasNoUlChild"><a href="/LED-Indoor-Lighting-pl46987387-p2.html?series_id=${serie.id}&cat_id=${category.id}" class="" title="${category.name}">${category.name}</a></li>
+              `).join("")}
+          </ul>
+        </li>
+      `).join("")
 
-    // to re-initilize category list
-    $(".sitewidget-prodCategory-20191227164552 .submenu-default-simple").slightSubmenu({
-      buttonActivateEvents: "click click",
-      submenuOpeneTime: 10,
+      // to re-initilize category list
+      $(".slight-submenu-wrap.submenu-default-simple").slightSubmenu({
+        buttonActivateEvents: "click click",
+        submenuOpeneTime: 10,
+      });
+    })
+    .catch(error => {
     });
-    $(".sitewidget-prodCategory-20191227164552 .submenu-default-simple ul").hide();
-  })
-  .catch(error => {
-  });
 }
-
 function items() {
     let basket = JSON.parse(localStorage.getItem("baksetProdArray"))
     let inquireProd = JSON.parse(localStorage.getItem("inquireProd"))
