@@ -65,7 +65,7 @@ function renderPage(index) {
                                       class="lazy img-default-bgc"
                                       data-original="${itemsPerPage[i].family_photo}"
                                       src="${itemsPerPage[i].family_photo}"
-                                      alt="${itemsPerPage[i].Name}"
+                                      alt="${itemsPerPage[i].family_Name}"
                                   />
                               </a>
                           </div>
@@ -75,9 +75,9 @@ function renderPage(index) {
               <div class="prodlist-special"></div>
               <div class="prodlist-parameter-wrap">
                   <div class="prodlist-parameter-inner">
-                      <a href="/Ultra-thin-panel-light-for-indoor-pd733273788.html" target="" class="prodlist-pro-name" title="${itemsPerPage[i].Name}" style="height: 40px;">
+                      <a href="/Ultra-thin-panel-light-for-indoor-pd733273788.html" target="" class="prodlist-pro-name" title="${itemsPerPage[i].family_Name}" style="height: 40px;">
                           <div class="inlineLabel fll"></div>
-                          ${itemsPerPage[i].Name}
+                          ${itemsPerPage[i].family_Name}
                       </a>
                       <div class="style_line_9"></div>
                       <div class="prodlist-ops-container" data-pid="${itemsPerPage[i].ID}"></div>
@@ -85,7 +85,7 @@ function renderPage(index) {
                       <dl class="prodlist-defined-list"></dl>
                       <div style="height: 50px; width: 100%;"></div>
                       <div class="prodlist-parameter-btns prodlist-btn-default 1 prodlist-parameter-btns-container" style="margin-top: 10px; max-width: 100%;">
-                          <button prodId="${itemsPerPage[i].ID}" prodPhotoUrl=${itemsPerPage[i].family_photo} prodName=${itemsPerPage[i].Name} style="text-align: center; text-indent: -40px;" class="default-button prodlist-pro-inquire mt10 button_color gbBgColor0 gbBdColor0">
+                          <button prodId="${itemsPerPage[i].ID}" prodPhotoUrl=${itemsPerPage[i].family_photo} prodName=${itemsPerPage[i].family_Name} style="text-align: center; text-indent: -40px;" class="default-button prodlist-pro-inquire mt10 button_color gbBgColor0 gbBdColor0">
                               <i class="togetherClass fa fa-envelope-o" aria-hidden="true"></i>Inquire
                           </button>
                           <a
@@ -93,7 +93,7 @@ function renderPage(index) {
                               href="javascript:void(0);"
                               rel="nofollow"
                               prodId="${itemsPerPage[i].ID}" 
-                              prodname="${itemsPerPage[i].Name}"
+                              prodname="${itemsPerPage[i].family_Name}"
                               prodphotourl="${itemsPerPage[i].family_photo}"
                               class="InquireAndBasket pro-detail-basket proasynclist-add-basket-btn block prodlist-pro-addbasket-btn mt10 button_basket gbBgColor1 gbBdColor0"
                           >
@@ -106,7 +106,7 @@ function renderPage(index) {
           <div class=""></div>
           <div class="" style="display: none;">
               <div class="prodlist-parameter-btns prodlist-btn-default 3" style="margin-top: 10px; position: relative; width: 200px;">
-                  <a href="/Ultra-thin-panel-light-for-indoor-pd733273788.html" target="" title="${itemsPerPage[i].Name}">More &gt;&gt;</a>
+                  <a href="/Ultra-thin-panel-light-for-indoor-pd733273788.html" target="" title="${itemsPerPage[i].family_Name}">More &gt;&gt;</a>
               </div>
           </div>
       </li>`
@@ -265,12 +265,12 @@ async function updatefamiltyListPage() {
                     <div class="prodlist-inner prodlist-inner1">
                         <div class="prodlist-picbox labelfather">
                             <div class="prodlist-cell">
-                                <a href="/Ultra-thin-panel-light-for-indoor-pd733273788.html" target="" title="${family.Name}">
+                                <a href="/Ultra-thin-panel-light-for-indoor-pd733273788.html" target="" title="${family.family_Name}">
                                     <img
                                         class="lazy img-default-bgc"
                                         data-original="${family.family_photo}"
                                         src="${family.family_photo}"
-                                        alt="${family.Name}"
+                                        alt="${family.family_Name}"
                                     />
                                 </a>
                             </div>
@@ -282,7 +282,7 @@ async function updatefamiltyListPage() {
                     <div class="prodlist-parameter-inner">
                         <a href="/Ultra-thin-panel-light-for-indoor-pd733273788.html" target="" class="prodlist-pro-name" title="${family.Name}" style="height: 40px;">
                             <div class="inlineLabel fll"></div>
-                            ${family.Name}
+                            ${family.family_Name}
                         </a>
                         <div class="style_line_9"></div>
                         <div class="prodlist-ops-container" data-pid="${family.ID}"></div>
@@ -290,7 +290,7 @@ async function updatefamiltyListPage() {
                         <dl class="prodlist-defined-list"></dl>
                         <div style="height: 50px; width: 100%;"></div>
                         <div class="prodlist-parameter-btns prodlist-btn-default 1 prodlist-parameter-btns-container" style="margin-top: 10px; max-width: 100%;">
-                            <button prodId="${family.ID}" prodPhotoUrl=${family.family_photo} prodName=${family.Name} style="text-align: center; text-indent: -40px;" class="default-button prodlist-pro-inquire mt10 button_color gbBgColor0 gbBdColor0">
+                            <button prodId="${family.ID}" prodPhotoUrl=${family.family_photo} prodName=${family.family_Name} style="text-align: center; text-indent: -40px;" class="default-button prodlist-pro-inquire mt10 button_color gbBgColor0 gbBdColor0">
                                 <i class="togetherClass fa fa-envelope-o" aria-hidden="true"></i>Inquire
                             </button>
                             <a
@@ -298,7 +298,7 @@ async function updatefamiltyListPage() {
                                 href="javascript:void(0);"
                                 rel="nofollow"
                                 prodId="${family.ID}" 
-                                prodname="${family.Name}"
+                                prodname="${family.family_Name}"
                                 prodphotourl="${family.family_photo}"
                                 class="InquireAndBasket pro-detail-basket proasynclist-add-basket-btn block prodlist-pro-addbasket-btn mt10 button_basket gbBgColor1 gbBdColor0"
                             >
