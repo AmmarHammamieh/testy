@@ -96,6 +96,11 @@
   background-color: #00449e;
   color: #fff;
 }
+@media (max-width: 992px) {
+  .modal__container {
+    width: 80%;
+  }
+}
 @media (max-width: 600px) {
   .modal__container {
     width: 95%;
