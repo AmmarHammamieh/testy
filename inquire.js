@@ -121,33 +121,19 @@ document.addEventListener("DOMContentLoaded", function() {
     addStylesheet("https://ammarhammamieh.github.io/testy/product.css", () => {
         updateCategoryList();
         items();
-        const observer = new MutationObserver(() => {
         const inquireButton = document.querySelector("#basketInquire");
-        const formSubmit = document.querySelector("#formsubmit");
-
-        if (inquireButton && !inquireButton.dataset.bound) {
-            inquireButton.dataset.bound = "true"; // prevent double-binding
-            inquireButton.addEventListener("click", (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                window.location.replace(
-                    window.location.origin + "/phoenix/admin/prod/inquire"
-                );
-            });
-        }
-
-        if (formSubmit && !formSubmit.dataset.bound) {
-            formSubmit.dataset.bound = "true";
-            formSubmit.addEventListener("click", (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-            });
-        }
-        if (inquireButton?.dataset.bound && formSubmit?.dataset.bound) {
-            observer.disconnect();
-        }
-        });
-        observer.observe(document.body, { childList: true, subtree: true });
+        inquireButton.addEventListener('submit', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            localStorage.removeItem("inquireProd")
+            window.location.replace(window.location.origin+"/phoenix/admin/prod/inquire")
+        }, true);
+        inquireButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            localStorage.removeItem("inquireProd")
+            window.location.replace(window.location.origin+"/phoenix/admin/prod/inquire")
+        }, true);
         hideLoader();
     });
 });
