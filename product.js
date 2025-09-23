@@ -56,7 +56,7 @@ function updateCategoryList() {
           <a href="/LED-Indoor-Lighting-pl46987387-p2.html?series_id=${serie.id}" title="${serie.name}">${serie.name}</a> <i class="list-mid-dot"></i>
           <ul class="submenu-default-simple slight-submenu-ul slight-submenu-master-ul">
               ${serie.categories.map((category,index) => `
-                <li class="prodli on hasNoUlChild"><a href="/LED-Indoor-Lighting-pl46987387-p2.html?series_id=${serie.id}&cat_id=${category.id}" class="" title="${category.name}">${category.name}</a></li>
+                <li class="prodli hasNoUlChild"><a href="/LED-Indoor-Lighting-pl46987387-p2.html?series_id=${serie.id}&cat_id=${category.id}" class="" title="${category.name}">${category.name}</a></li>
               `).join("")}
           </ul>
         </li>
