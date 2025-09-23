@@ -146,3 +146,8 @@ table .firstRow{
         grid-column-gap: 50px;
     }
 }
+@media (max-width: 600px) {
+    .modal #technical_tab ul{ 
+        grid-template-columns: repeat(1, 1fr); 
+    }
+}
