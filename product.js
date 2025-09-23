@@ -118,14 +118,18 @@ function replaceSlides(imageUrls) {
     
 }
 function updateDescription(title,description) {
-    document.getElementsByClassName("pro-this-prodBrief")[0].getElementsByTagName("ul")[0].remove();
-    document.getElementsByClassName("keyword_box")[0].remove()
-    document.getElementsByClassName("pro-detials-listshow")[0].remove()
-    document.getElementsByClassName("sitewidget-relatedProducts")[0].remove()
-    document.getElementsByClassName("web-crumbs-title")[0].getElementsByTagName("strong")[0].innerHTML = title
-    document.getElementsByClassName("proddetail-description")[0].getElementsByTagName("h1")[0].innerHTML = `<span class="prodDetail-tts"></span> ${title} <span><i class="fa fa-qrcode" aria-hidden="true"></i></span> `
-    document.getElementsByClassName("pro-this-prodBrief")[0].innerHTML += description
-    document.getElementsByClassName("pro-info-list")[0].getElementsByTagName("li")[0].innerHTML = ` <label style="width: 55px;">Model:</label> <p> 102R </p>`
+    document.getElementsByClassName("pro-this-prodBrief")[0].getElementsByTagName("ul")[0]?.remove();
+    document.getElementsByClassName("keyword_box")[0]?.remove()
+    document.getElementsByClassName("pro-detials-listshow")[0]?.remove()
+    document.getElementsByClassName("sitewidget-relatedProducts")[0]?.remove()
+    if(document.getElementsByClassName("web-crumbs-title")[0])
+        document.getElementsByClassName("web-crumbs-title")[0].getElementsByTagName("strong")[0].innerHTML = title
+    if(document.getElementsByClassName("proddetail-description")[0])
+        document.getElementsByClassName("proddetail-description")[0].getElementsByTagName("h1")[0].innerHTML = `<span class="prodDetail-tts"></span> ${title} <span><i class="fa fa-qrcode" aria-hidden="true"></i></span> `
+    if(document.getElementsByClassName("pro-this-prodBrief")[0])
+        document.getElementsByClassName("pro-this-prodBrief")[0].innerHTML += description
+    if(document.getElementsByClassName("pro-info-list")[0])
+        document.getElementsByClassName("pro-info-list")[0].getElementsByTagName("li")[0].innerHTML = ` <label style="width: 55px;">Model:</label> <p> 102R </p>`
 }
 
 async function packingInfo(product_id) {
@@ -678,6 +682,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
+
 
 
 
