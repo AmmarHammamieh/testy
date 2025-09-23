@@ -114,7 +114,7 @@ function replaceSlides(imageUrls) {
     });
     $(".sitewidget-prodDetail-20141127140104").addClass("isLoaded");
     $('.placeholder-container, .mobile_3-small').remove();
-    $('.easyzoom').easyZoom();
+    // $('.easyzoom').easyZoom();
     
 }
 function updateDescription(title,description) {
@@ -682,6 +682,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
+
 
 
 
