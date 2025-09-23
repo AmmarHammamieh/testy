@@ -67,6 +67,7 @@ function updateCategoryList() {
         buttonActivateEvents: "click click",
         submenuOpeneTime: 10,
       });
+      $(".slight-submenu-wrap.submenu-default-simple ul").hide();
     })
     .catch(error => {
     });
