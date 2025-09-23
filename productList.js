@@ -337,7 +337,7 @@ async function updatefamiltyListPage() {
   hideLoader()
   // stop inquire Form
   const inquireButtons = document.querySelectorAll('.prodlist-pro-inquire');
-  const inquireButton = document.querySelector(".basket-btns button[type='submit']");
+  const inquireButton = document.querySelector("#basketInquire");
   inquireButton.addEventListener('submit', (e) => {
       e.preventDefault();
       e.stopPropagation();
