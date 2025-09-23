@@ -71,6 +71,10 @@ function updateCategoryList() {
     });
 }
 function replaceSlides(imageUrls) {
+    if(imageUrls.includes(null)){
+        $('#masterslider_etAaVqMNrjiZ').remove();
+        return;
+    }
     var $slider = $('#masterslider_etAaVqMNrjiZ');
     $slider.empty();
 
@@ -114,7 +118,7 @@ function replaceSlides(imageUrls) {
     });
     $(".sitewidget-prodDetail-20141127140104").addClass("isLoaded");
     $('.placeholder-container, .mobile_3-small').remove();
-    // $('.easyzoom').easyZoom();
+    $('.easyzoom').easyZoom();
     
 }
 function updateDescription(title,description) {
@@ -222,7 +226,7 @@ async function itemDetails(id){
     let res=data.data
     document.getElementById("general_tab").innerHTML=`<div>
         <span class="label">Luminaire Number : </span>
-        <span class="value">${res.product_number}</span>
+        <span class="value">${res.product_number ? res.product_number : "-"}</span>
     </div>
     <div>
         ${res.description}
@@ -337,7 +341,16 @@ async function itemDetails(id){
             </li>
         </ul>
     `;
-    document.getElementById("accessories_tab").innerHTML=``;
+    document.getElementById("accessories_tab").innerHTML= res.accessories.map((accessory)=>(
+        `<div class="accessory-container">
+            <img src="${accessory.photo}"/>
+            <div class="accessory-content">
+                <span>${accessory.accessory_number ? accessory.accessory_number : ""}</span>
+                <span>${accessory.SupplierCode ? accessory.SupplierCode : ""}</span>
+            </div>
+        </div>`
+    )).join("")
+    
     document.getElementById("downloads_tab").innerHTML=`
         <ul>
             <li>
@@ -353,7 +366,7 @@ async function itemDetails(id){
   .catch(error => {
   });
 }
-function initilizeTabs(product_id,family_name,application_photo,applications,items) {
+function initilizeTabs(product_id,family_name,application_photo,applications,items,installation_way,installation_way_photo) {
     document.getElementsByClassName("detial-cont-index")[0].innerHTML = `<div class="detial-cont-divsions detial-cont-prodescription">
             <ul id="tab_titles" class="detial-cont-tabslabel fix">
                 <li class="on"><a href="javascript:;"> Product Description</a></li>
@@ -384,63 +397,15 @@ function initilizeTabs(product_id,family_name,application_photo,applications,ite
                                         ${items.map((item)=>(
                                             `
                                              <tr>
-                                                <td width="155" align="center" valign="middle" style="text-align: center;"><a href="javascript:;" data-micromodal-trigger="item-modal" onclick="itemDetails(${item.ID})"><p>HYD-102R-4W</p></a></td>
-                                                <td width="74" align="center" valign="middle" style="text-align: center;"><p>4W</p></td>
-                                                <td colspan="1" rowspan="1" valign="middle" width="180" align="center" style="text-align: center;">110-240V/220-240V</td>
+                                                <td width="155" align="center" valign="middle" style="text-align: center;"><a href="javascript:;" data-micromodal-trigger="item-modal" onclick="itemDetails(${item.ID})"><p>${item.product_number || "-"}</p></a></td>
+                                                <td width="74" align="center" valign="middle" style="text-align: center;"><p>${item.Power ? `${item.Power}W` : "-"}</p></td>
+                                                <td colspan="1" rowspan="1" valign="middle" width="180" align="center" style="text-align: center;">${item.InputVoltageMin && item.InputVoltageMax ? `${item.InputVoltageMin}-240V/${item.InputVoltageMax}-240V` : "-"}</td>
                                                 <td colspan="1" rowspan="1" valign="middle" width="164" align="center" style="text-align: center;">90-100 lm/w</td>
                                                 <td width="100" align="center" valign="middle" style="text-align: center;"><p>109*35mm</p></td>
-                                                <td width="68" align="center" valign="middle" style="text-align: center;"><p>90mm</p></td>
+                                                <td width="68" align="center" valign="middle" style="text-align: center;"><p>${item.Cut_out ? `${item.Cut_out}mm`: "-" }</p></td>
                                             </tr>
                                             `
                                         )).join("")}
-                                        <tr>
-                                            <td width="155" align="center" valign="middle" style="text-align: center;"><a data-micromodal-trigger="item-modal"><p>HYD-102R-6W</p></a></td>
-                                            <td width="74" align="center" valign="middle" style="text-align: center;"><p>6W</p></td>
-                                            <td colspan="1" rowspan="1" valign="middle" width="180" align="center" style="text-align: center;">110-240V/220-240V</td>
-                                            <td colspan="1" rowspan="1" valign="middle" width="164" align="center" style="text-align: center;">90-100 lm/w</td>
-                                            <td width="100" align="center" valign="middle" style="text-align: center;"><p>120*35mm</p></td>
-                                            <td width="68" align="center" valign="middle" style="text-align: center;"><p>105mm</p></td>
-                                        </tr>
-                                        <tr>
-                                            <td width="155" align="center" valign="middle" style="text-align: center;"><a data-micromodal-trigger="item-modal"><p>HYD-102R-9W</p></a></td>
-                                            <td width="74" align="center" valign="middle" style="text-align: center;"><p>9W</p></td>
-                                            <td colspan="1" rowspan="1" valign="middle" width="180" align="center" style="text-align: center;">110-240V/220-240V</td>
-                                            <td colspan="1" rowspan="1" valign="middle" width="164" align="center" style="text-align: center;">90-100 lm/w</td>
-                                            <td width="100" align="center" valign="middle" style="text-align: center;"><p>146*35mm</p></td>
-                                            <td width="68" align="center" valign="middle" style="text-align: center;"><p>130mm</p></td>
-                                        </tr>
-                                        <tr>
-                                            <td width="155" align="center" valign="middle" style="text-align: center;"><a data-micromodal-trigger="item-modal"><p>HYD-102R-12W</p></a></td>
-                                            <td width="74" align="center" valign="middle" style="text-align: center;"><p>12W</p></td>
-                                            <td colspan="1" rowspan="1" valign="middle" width="180" align="center" style="text-align: center;">110-240V/220-240V</td>
-                                            <td colspan="1" rowspan="1" valign="middle" width="164" align="center" style="text-align: center;">90-100 lm/w</td>
-                                            <td width="100" align="center" valign="middle" style="text-align: center;"><p>173*35mm</p></td>
-                                            <td width="68" align="center" valign="middle" style="text-align: center;"><p>160mm</p></td>
-                                        </tr>
-                                        <tr>
-                                            <td width="155" align="center" valign="middle" style="text-align: center;"><a data-micromodal-trigger="item-modal"><p>HYD-102R-18W</p></a></td>
-                                            <td width="74" align="center" valign="middle" style="text-align: center;"><p>18W</p></td>
-                                            <td colspan="1" rowspan="1" valign="middle" width="180" align="center" style="text-align: center;">110-240V/220-240V</td>
-                                            <td colspan="1" rowspan="1" valign="middle" width="164" align="center" style="text-align: center;">90-100 lm/w</td>
-                                            <td width="100" align="center" valign="middle" style="text-align: center;"><p>225*35mm</p></td>
-                                            <td width="68" align="center" valign="middle" style="text-align: center;"><p>205mm</p></td>
-                                        </tr>
-                                        <tr>
-                                            <td width="155" align="center" valign="middle" style="text-align: center;"><a data-micromodal-trigger="item-modal"><p>HYD-102R-20W</p></a></td>
-                                            <td width="74" align="center" valign="middle" style="text-align: center;"><p>20W</p></td>
-                                            <td colspan="1" rowspan="1" valign="middle" width="180" align="center" style="text-align: center;">110-240V/220-240V</td>
-                                            <td colspan="1" rowspan="1" valign="middle" width="164" align="center" style="text-align: center;">90-100 lm/w</td>
-                                            <td width="100" align="center" valign="middle" style="text-align: center;"><p>237*35mm</p></td>
-                                            <td width="68" align="center" valign="middle" style="text-align: center;"><p>220mm</p></td>
-                                        </tr>
-                                        <tr>
-                                            <td width="155" align="center" valign="middle" style="text-align: center;"><a data-micromodal-trigger="item-modal"><p>HYD-102R-24W</p></a></td>
-                                            <td width="74" align="center" valign="middle" style="text-align: center;"><p>24W</p></td>
-                                            <td colspan="1" rowspan="1" valign="middle" width="180" align="center" style="text-align: center;">110-240V/220-240V</td>
-                                            <td colspan="1" rowspan="1" valign="middle" width="164" align="center" style="text-align: center;">90-100 lm/w</td>
-                                            <td width="100" align="center" valign="middle" style="text-align: center;"><p>300*35mm</p></td>
-                                            <td width="68" align="center" valign="middle" style="text-align: center;"><p>285mm</p></td>
-                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -452,7 +417,7 @@ function initilizeTabs(product_id,family_name,application_photo,applications,ite
                         </p>
                         <p><br /></p>
                         <ul class="list-paddingleft-2" style="list-style-type: disc;">
-                            ${applications.map((application)=>(
+                            ${applications?.map((application)=>(
                                 `<li><p>${application}</p></li>`
                             )).join("")}
                         </ul>
@@ -481,28 +446,40 @@ function initilizeTabs(product_id,family_name,application_photo,applications,ite
                         }
                         <p><br /></p>
                         <p>
-                            <span style="font-size: 24px; color: rgb(79, 129, 189);"><strong>Installation-Recessed</strong></span>
+                            <span style="font-size: 24px; color: rgb(79, 129, 189);"><strong>Installations:</strong></span>
                         </p>
+                        <p><br /></p>
+                        <ul class="list-paddingleft-2 installation-way-list" style="list-style-type: disc;">
+                            ${installation_way?.map((installation)=>(
+                                `<li><p>${installation}</p></li>`
+                            )).join("")}
+                        </ul>
                         <p>
                             <span style="font-size: 24px; color: rgb(79, 129, 189);">
                                 <strong><br /></strong>
                             </span>
                         </p>
-                        <p>
-                            <img
-                                width="884"
-                                height="441"
-                                alt="Installation"
-                                style="width: 884px; height: 441px;"
-                                border="0"
-                                vspace="0"
-                                hspace="0"
-                                title="Installation"
-                                data-original="//iororwxhmnrilr5q-static.micyjz.com/cloud/jjBpjKorliSRikqopknqjq/anzhuangtu.jpg"
-                                src="//iororwxhmnrilr5q-static.micyjz.com/cloud/jjBpjKorliSRikqopknqjq/anzhuangtu.jpg"
-                                class="lazyloaded"
-                            />
-                        </p>
+                        ${installation_way_photo ? 
+                                `
+                                <p>
+                                    <img
+                                        width="884"
+                                        height="441"
+                                        alt="Installation"
+                                        style="width: 884px; height: 441px;"
+                                        border="0"
+                                        vspace="0"
+                                        hspace="0"
+                                        title="Installation"
+                                        data-original="${installation_way_photo}"
+                                        src="${installation_way_photo}"
+                                        class="lazyloaded"
+                                    />
+                                </p>
+                                `
+                            : 
+                                ""
+                        }
                         <p><br /></p>
                     </div>
                 </div>
@@ -536,10 +513,8 @@ function initilizeTabs(product_id,family_name,application_photo,applications,ite
             if (contents[index]) {
                 contents[index].classList.remove('hide');
             }
-        }
-        );
-    }
-    );
+        });
+    });
 }
 function initilizeModal() {
     console.log("hu2222222")
@@ -632,13 +607,47 @@ async function initializePageContent() {
       )
     );
     let familyDetails=responses[0].data.families[0];
+    document.getElementById("addToBasket").setAttribute("prodid",familyDetails.ID);
+    document.getElementById("addToBasket").setAttribute("prodname",familyDetails.family_Name);
+    document.getElementById("addToBasket").setAttribute("prodphotourl",familyDetails.family_photo);
     let items=responses[1].data.collection;
     updateDescription(familyDetails.family_Name,familyDetails.family_description);
     updateCategoryList();
-    initilizeTabs(familyDetails.ProductID,familyDetails.family_Name,familyDetails.application_photo,familyDetails.applications,items);
+    initilizeTabs(familyDetails.ProductID,familyDetails.family_Name,familyDetails.application_photo,familyDetails.applications,items,familyDetails.installation_way,familyDetails.installation_way_photo);
     replaceSlides([familyDetails.family_photo]);
     initilizeModal();
     hideLoader();
+    // stop inquire Form
+    const inquireTopButton = document.querySelector('#prodInquire');
+    const inquireButton = document.querySelector(".basket-btns button[type='submit']");
+    inquireButton.addEventListener('submit', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        localStorage.removeItem("inquireProd")
+        window.location.replace(window.location.origin+"/phoenix/admin/prod/inquire")
+    }, true);
+    inquireButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        localStorage.removeItem("inquireProd")
+        window.location.replace(window.location.origin+"/phoenix/admin/prod/inquire")
+    }, true);
+    inquireTopButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        let item={
+            "prodId": familyDetails.ID,
+            "prodPhotoUrl": familyDetails.family_photo,
+            "skuParam": "",
+            "selectParam": "",
+            "prodName": familyDetails.family_Name,
+            "quantity": 1,
+            "sku": ""
+        }
+        localStorage.setItem("inquireProd",JSON.stringify(item))
+        window.location.replace(window.location.origin+"/phoenix/admin/prod/inquire")
+    }, true);
+    //
     MicroModal.init();
 }
 function waitForSliderAndInitialize() {
@@ -646,7 +655,7 @@ function waitForSliderAndInitialize() {
     let attempts = 0;
 
     const interval = setInterval(function() {
-        if (window.jQuery!=undefined) {
+        if (window.jQuery!=undefined && jQuery.fn.slightSubmenu!=undefined && jQuery.fn.easyZoom!=undefined) {
             clearInterval(interval);
             initializePageContent();
         }
@@ -676,20 +685,11 @@ document.addEventListener("DOMContentLoaded", function() {
     addStylesheet("https://ammarhammamieh.github.io/testy/product.css", () => {
         addStylesheet("https://ammarhammamieh.github.io/testy/micromodal.min.css", () => {
             addScript("https://ammarhammamieh.github.io/testy/micromodal.min.js", () => {
-                console.log("ho")
                 waitForSliderAndInitialize()
             });
         });
     });
 });
-
-
-
-
-
-
-
-
 
 
 
