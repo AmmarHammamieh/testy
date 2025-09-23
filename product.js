@@ -107,7 +107,7 @@ function replaceSlides(imageUrls) {
         view: 'basic'
     });
     slider_pWfhEQrjIkDO.api.addEventListener('sliderLoad', function() {
-        $('#masterslider_pWfhEQrjIkDO .ms-slide').each(function() {
+        $('#masterslider_etAaVqMNrjiZ .ms-slide').each(function() {
             var $img = $(this).find('img');
             $img.wrap(`<a href="${$img.attr('src')}" class="easyzoom easyzoom--overlay"></a>`);
         });
@@ -682,6 +682,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
+
 
 
 
