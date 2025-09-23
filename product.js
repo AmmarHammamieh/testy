@@ -72,10 +72,10 @@ function updateCategoryList() {
 }
 function replaceSlides(imageUrls) {
     if(imageUrls.includes(null)){
-        $('#masterslider_etAaVqMNrjiZ').remove();
+        $('#masterslider_pWfhEQrjIkDO').remove();
         return;
     }
-    var $slider = $('#masterslider_etAaVqMNrjiZ');
+    var $slider = $('#masterslider_pWfhEQrjIkDO');
     $slider.empty();
 
     imageUrls.forEach(function(url) {
@@ -104,14 +104,14 @@ function replaceSlides(imageUrls) {
         margin: 10,
         space: 7
     });
-    slider_pWfhEQrjIkDO.setup('masterslider_etAaVqMNrjiZ', {
+    slider_pWfhEQrjIkDO.setup('masterslider_pWfhEQrjIkDO', {
         width: 640,
         height: 640,
         space: 5,
         view: 'basic'
     });
     slider_pWfhEQrjIkDO.api.addEventListener('sliderLoad', function() {
-        $('#masterslider_etAaVqMNrjiZ .ms-slide').each(function() {
+        $('#masterslider_pWfhEQrjIkDO .ms-slide').each(function() {
             var $img = $(this).find('img');
             $img.wrap(`<a href="${$img.attr('src')}" class="easyzoom easyzoom--overlay"></a>`);
         });
@@ -122,18 +122,14 @@ function replaceSlides(imageUrls) {
     
 }
 function updateDescription(title,description) {
-    document.getElementsByClassName("pro-this-prodBrief")[0].getElementsByTagName("ul")[0]?.remove();
-    document.getElementsByClassName("keyword_box")[0]?.remove()
-    document.getElementsByClassName("pro-detials-listshow")[0]?.remove()
-    document.getElementsByClassName("sitewidget-relatedProducts")[0]?.remove()
-    if(document.getElementsByClassName("web-crumbs-title")[0])
-        document.getElementsByClassName("web-crumbs-title")[0].getElementsByTagName("strong")[0].innerHTML = title
-    if(document.getElementsByClassName("proddetail-description")[0])
-        document.getElementsByClassName("proddetail-description")[0].getElementsByTagName("h1")[0].innerHTML = `<span class="prodDetail-tts"></span> ${title} <span><i class="fa fa-qrcode" aria-hidden="true"></i></span> `
-    if(document.getElementsByClassName("pro-this-prodBrief")[0])
-        document.getElementsByClassName("pro-this-prodBrief")[0].innerHTML += description
-    if(document.getElementsByClassName("pro-info-list")[0])
-        document.getElementsByClassName("pro-info-list")[0].getElementsByTagName("li")[0].innerHTML = ` <label style="width: 55px;">Model:</label> <p> 102R </p>`
+    document.getElementsByClassName("pro-this-prodBrief")[0].getElementsByTagName("ul")[0].remove();
+    document.getElementsByClassName("keyword_box")[0].remove()
+    document.getElementsByClassName("pro-detials-listshow")[0].remove()
+    document.getElementsByClassName("sitewidget-relatedProducts")[0].remove()
+    document.getElementsByClassName("web-crumbs-title")[0].getElementsByTagName("strong")[0].innerHTML = title
+    document.getElementsByClassName("proddetail-description")[0].getElementsByTagName("h1")[0].innerHTML = `<span class="prodDetail-tts"></span> ${title} <span><i class="fa fa-qrcode" aria-hidden="true"></i></span> `
+    document.getElementsByClassName("pro-this-prodBrief")[0].innerHTML += description
+    document.getElementsByClassName("pro-info-list")[0].getElementsByTagName("li")[0].innerHTML = ` <label style="width: 55px;">Model:</label> <p> 102R </p>`
 }
 
 async function packingInfo(product_id) {
