@@ -335,42 +335,6 @@ async function updatefamiltyListPage() {
   });
   await updateCategoryList()
   hideLoader()
-  // stop inquire Form
-  const inquireButtons = document.querySelectorAll('.prodlist-pro-inquire');
-  const inquireButton = document.querySelector("#basketInquire");
-  inquireButton.addEventListener('submit', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      localStorage.removeItem("inquireProd")
-      window.location.replace(window.location.origin+"/phoenix/admin/prod/inquire")
-  }, true);
-  inquireButton.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      localStorage.removeItem("inquireProd")
-      window.location.replace(window.location.origin+"/phoenix/admin/prod/inquire")
-  }, true);
-  inquireButtons.forEach(button => {
-      button.addEventListener('click', (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          const prodId = button.getAttribute('prodId');
-          const prodPhotoUrl = button.getAttribute('prodPhotoUrl');
-          const prodName = button.getAttribute('prodName');
-          let item={
-            "prodId": prodId,
-            "prodPhotoUrl": prodPhotoUrl,
-            "skuParam": "",
-            "selectParam": "",
-            "prodName": prodName,
-            "quantity": 1,
-            "sku": ""
-          }
-          localStorage.setItem("inquireProd",JSON.stringify(item))
-          window.location.replace(window.location.origin+"/phoenix/admin/prod/inquire")
-      }, true);
-  });
-  //
 }
 
 function pageNumberPaginationListener() {
@@ -408,3 +372,28 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
   
+document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('prodlist-pro-inquire')) {
+        e.preventDefault();
+        e.stopPropagation();
+        const prodId = e.target.getAttribute('prodId');
+        const prodPhotoUrl = e.target.getAttribute('prodPhotoUrl');
+        const prodName = e.target.getAttribute('prodName');
+        let item={
+          "prodId": prodId,
+          "prodPhotoUrl": prodPhotoUrl,
+          "skuParam": "",
+          "selectParam": "",
+          "prodName": prodName,
+          "quantity": 1,
+          "sku": ""
+        }
+        localStorage.setItem("inquireProd",JSON.stringify(item))
+        window.location.replace(window.location.origin+"/phoenix/admin/prod/inquire")
+    }else if (e.target.id=='basketInquire'){
+      e.preventDefault();
+      e.stopPropagation();
+      localStorage.removeItem("inquireProd")
+      window.location.replace(window.location.origin+"/phoenix/admin/prod/inquire")
+    }
+});
