@@ -587,10 +587,10 @@ function initilizeModal() {
 }
 async function initializePageContent() {
     const params = new URLSearchParams(window.location.search);
-    let family_id = params.get("family_id")
+    let family_id = params.get("family_id")?.replaceAll('"', '');
     const urls = [
-        base_url+`/Economic_product/get_product_families/62`,
-        base_url+`/Economic_product/get_economic_product_collections/62`
+        base_url+`/Economic_product/get_product_families/${family_id}`,
+        base_url+`/Economic_product/get_economic_product_collections/${family_id}`
     ];
     const responses = await Promise.all(
       urls.map(url =>
