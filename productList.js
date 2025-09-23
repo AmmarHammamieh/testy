@@ -61,7 +61,7 @@ function renderPage(index) {
                   <div class="prodlist-inner prodlist-inner1">
                       <div class="prodlist-picbox labelfather">
                           <div class="prodlist-cell">
-                              <a href="/Ultra-thin-panel-light-for-indoor-pd733273788.html" target="" title="${itemsPerPage[i].Name}">
+                              <a href="/Ultra-thin-panel-light-for-indoor-pd733273788.html?family_id=${itemsPerPage[i].ID}" target="" title="${itemsPerPage[i].Name}">
                                   <img
                                       class="lazy img-default-bgc"
                                       data-original="${itemsPerPage[i].family_photo}"
@@ -76,7 +76,7 @@ function renderPage(index) {
               <div class="prodlist-special"></div>
               <div class="prodlist-parameter-wrap">
                   <div class="prodlist-parameter-inner">
-                      <a href="/Ultra-thin-panel-light-for-indoor-pd733273788.html" target="" class="prodlist-pro-name" title="${itemsPerPage[i].family_Name}" style="height: 40px;">
+                      <a href="/Ultra-thin-panel-light-for-indoor-pd733273788.html?family_id=${itemsPerPage[i].ID}" target="" class="prodlist-pro-name" title="${itemsPerPage[i].family_Name}" style="height: 40px;">
                           <div class="inlineLabel fll"></div>
                           ${itemsPerPage[i].family_Name}
                       </a>
@@ -107,7 +107,7 @@ function renderPage(index) {
           <div class=""></div>
           <div class="" style="display: none;">
               <div class="prodlist-parameter-btns prodlist-btn-default 3" style="margin-top: 10px; position: relative; width: 200px;">
-                  <a href="/Ultra-thin-panel-light-for-indoor-pd733273788.html" target="" title="${itemsPerPage[i].family_Name}">More &gt;&gt;</a>
+                  <a href="/Ultra-thin-panel-light-for-indoor-pd733273788.html?family_id=${itemsPerPage[i].ID}" target="" title="${itemsPerPage[i].family_Name}">More &gt;&gt;</a>
               </div>
           </div>
       </li>`
@@ -266,7 +266,7 @@ async function updatefamiltyListPage() {
                     <div class="prodlist-inner prodlist-inner1">
                         <div class="prodlist-picbox labelfather">
                             <div class="prodlist-cell">
-                                <a href="/Ultra-thin-panel-light-for-indoor-pd733273788.html" target="" title="${family.family_Name}">
+                                <a href="/Ultra-thin-panel-light-for-indoor-pd733273788.html?family_id=${family.ID}" target="" title="${family.family_Name}">
                                     <img
                                         class="lazy img-default-bgc"
                                         data-original="${family.family_photo}"
@@ -281,7 +281,7 @@ async function updatefamiltyListPage() {
                 <div class="prodlist-special"></div>
                 <div class="prodlist-parameter-wrap">
                     <div class="prodlist-parameter-inner">
-                        <a href="/Ultra-thin-panel-light-for-indoor-pd733273788.html" target="" class="prodlist-pro-name" title="${family.Name}" style="height: 40px;">
+                        <a href="/Ultra-thin-panel-light-for-indoor-pd733273788.html?family_id=${family.ID}" target="" class="prodlist-pro-name" title="${family.Name}" style="height: 40px;">
                             <div class="inlineLabel fll"></div>
                             ${family.family_Name}
                         </a>
@@ -312,7 +312,7 @@ async function updatefamiltyListPage() {
             <div class=""></div>
             <div class="" style="display: none;">
                 <div class="prodlist-parameter-btns prodlist-btn-default 3" style="margin-top: 10px; position: relative; width: 200px;">
-                    <a href="/Ultra-thin-panel-light-for-indoor-pd733273788.html" target="" title="${family.Name}">More &gt;&gt;</a>
+                    <a href="/Ultra-thin-panel-light-for-indoor-pd733273788.html?family_id=${family.ID}" target="" title="${family.Name}">More &gt;&gt;</a>
                 </div>
             </div>
         </li>
