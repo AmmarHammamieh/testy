@@ -72,7 +72,12 @@ html{
 .sitewidget-proddetail > div > div > div > div > div {
   height: 100%;
 }
+/* check */
 
+.modal{
+    z-index: 99999;
+    position: relative;
+}
 .modal__container main{
     height: 60vh;
     position: relative;
