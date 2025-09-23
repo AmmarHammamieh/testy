@@ -150,7 +150,7 @@ async function filter(el,series_id,cat_id){
     document.querySelector(".sitewidget-prodlist .sitewidget-prodlist-description p").remove()
   }
   document.querySelector(".prodlist-wrap").innerHTML+=`<div class="container-spinner-product-list"><div class="spinner-product-list"></div></div>`;
-  let url = `https://rafeed.atcsolution.co/api/Economic_product/get_product_families?series_id=${series_id}`;
+  let url = `https://demo.atcsolution.co/api/Economic_product/get_product_families?series_id=${series_id}`;
   if (cat_id) {
     url += `&category_id=${cat_id}`;
   }  
@@ -189,7 +189,7 @@ async function updateCategoryList() {
   const params = new URLSearchParams(window.location.search);
   let series_id = params.get("series_id")?.replaceAll('"', '');
   let cat_id = params.get("cat_id")?.replaceAll('"', '');
-  const url = "https://rafeed.atcsolution.co/api/Product_series/get_series";
+  const url = "https://demo.atcsolution.co/api/Product_series/get_series";
   let series=[]
   await fetch(url, {
     method: "GET",
@@ -239,9 +239,9 @@ async function updatefamiltyListPage() {
     document.querySelector(".sitewidget-prodlist .sitewidget-prodlist-description p").remove()
   }
   let familtyList = document.getElementsByClassName("prodlist-fix-style")[0].getElementsByTagName("ul")[0];
-  let url = "https://rafeed.atcsolution.co/api/Economic_product/get_product_families";
+  let url = "https://demo.atcsolution.co/api/Economic_product/get_product_families";
   if(series_id || cat_id){
-    url =  `https://rafeed.atcsolution.co/api/Economic_product/get_product_families?series_id=${series_id}`;
+    url =  `https://demo.atcsolution.co/api/Economic_product/get_product_families?series_id=${series_id}`;
     if (cat_id) {
       url += `&category_id=${cat_id}`;
     }  
