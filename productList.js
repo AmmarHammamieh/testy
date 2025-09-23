@@ -176,8 +176,10 @@ async function filter(el,series_id,cat_id){
       renderPage(activePage);
       renderButtons("first")
       pageNumberPaginationListener()
-      el.target.parentElement.classList.add("on");
-      el.target.parentElement.parentElement.classList.add("on");
+    }
+    el.parentElement.classList.add("on");
+    if (el.parentElement?.parentElement?.parentElement.tagName == "LI") {
+      el.parentElement.parentElement.parentElement.classList.add("on");
     }
   })
   .catch(error => {
@@ -185,8 +187,8 @@ async function filter(el,series_id,cat_id){
 }
 async function updateCategoryList() {
   const params = new URLSearchParams(window.location.search);
-  let series_id = params.get("series_id").replaceAll('"', '');
-  let cat_id = params.get("cat_id").replaceAll('"', '');
+  let series_id = params.get("series_id")?.replaceAll('"', '');
+  let cat_id = params.get("cat_id")?.replaceAll('"', '');
   const url = "https://rafeed.atcsolution.co/api/Product_series/get_series";
   let series=[]
   await fetch(url, {
@@ -231,8 +233,8 @@ async function updateCategoryList() {
 }
 async function updatefamiltyListPage() {
   const params = new URLSearchParams(window.location.search);
-  let series_id = params.get("series_id").replaceAll('"', '');
-  let cat_id = params.get("cat_id").replaceAll('"', '');
+  let series_id = params.get("series_id")?.replaceAll('"', '');
+  let cat_id = params.get("cat_id")?.replaceAll('"', '');
   if(document.querySelector(".sitewidget-prodlist .sitewidget-prodlist-description p")){
     document.querySelector(".sitewidget-prodlist .sitewidget-prodlist-description p").remove()
   }
