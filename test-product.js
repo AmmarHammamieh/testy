@@ -1,4 +1,4 @@
-	var slider_pWfhEQrjIkDO = null;
+	var slider_etAaVqMNrjiZ = null;
 document.documentElement.style.visibility = "hidden";
 const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyRW1haWwiOiJhZG1pbmlzdHJhdG9yIiwidXNlcl9pZCI6IjEiLCJBUElfVElNRSI6MTc1ODM0NjM5OX0.XC4jUa2kAdXfWRokGwHO2G6nXh9GaEo1FEI1v1LyLys";
 const base_url="https://integration.atcsolution.co/api"
@@ -94,9 +94,9 @@ function replaceSlides(imageUrls) {
         $slider.append(slideHtml);
     });
 
-    var slider_pWfhEQrjIkDO = new MasterSlider();
-    slider_pWfhEQrjIkDO.control('arrows');
-    slider_pWfhEQrjIkDO.control('thumblist', {
+    var slider_etAaVqMNrjiZ = new MasterSlider();
+    slider_etAaVqMNrjiZ.control('arrows');
+    slider_etAaVqMNrjiZ.control('thumblist', {
         autohide: false,
         dir: 'h',
         arrows: true,
@@ -106,13 +106,13 @@ function replaceSlides(imageUrls) {
         margin: 10,
         space: 7
     });
-    slider_pWfhEQrjIkDO.setup('masterslider_etAaVqMNrjiZ', {
+    slider_etAaVqMNrjiZ.setup('masterslider_etAaVqMNrjiZ', {
         width: 640,
         height: 640,
         space: 5,
         view: 'basic'
     });
-    slider_pWfhEQrjIkDO.api.addEventListener('sliderLoad', function() {
+    slider_etAaVqMNrjiZ.api.addEventListener('sliderLoad', function() {
         $('#masterslider_etAaVqMNrjiZ .ms-slide').each(function() {
             var $img = $(this).find('img');
             $img.wrap(`<a href="${$img.attr('src')}" class="easyzoom easyzoom--overlay"></a>`);
@@ -630,35 +630,35 @@ async function initializePageContent() {
     initilizeModal();
     hideLoader();
     // stop inquire Form
-    const inquireTopButton = document.querySelector('#prodInquire');
-    const inquireButton = document.querySelector("#basketInquire");
-    inquireButton.addEventListener('submit', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        localStorage.removeItem("inquireProd")
-        window.location.replace(window.location.origin+"/phoenix/admin/prod/inquire")
-    }, true);
-    inquireButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        localStorage.removeItem("inquireProd")
-        window.location.replace(window.location.origin+"/phoenix/admin/prod/inquire")
-    }, true);
-    inquireTopButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        let item={
-            "prodId": familyDetails.ID,
-            "prodPhotoUrl": familyDetails.family_photo,
-            "skuParam": "",
-            "selectParam": "",
-            "prodName": familyDetails.family_Name,
-            "quantity": 1,
-            "sku": ""
-        }
-        localStorage.setItem("inquireProd",JSON.stringify(item))
-        window.location.replace(window.location.origin+"/phoenix/admin/prod/inquire")
-    }, true);
+    // const inquireTopButton = document.querySelector('#prodInquire');
+    // const inquireButton = document.querySelector("#basketInquire");
+    // inquireButton.addEventListener('submit', (e) => {
+    //     e.preventDefault();
+    //     e.stopPropagation();
+    //     localStorage.removeItem("inquireProd")
+    //     window.location.replace(window.location.origin+"/phoenix/admin/prod/inquire")
+    // }, true);
+    // inquireButton.addEventListener('click', (e) => {
+    //     e.preventDefault();
+    //     e.stopPropagation();
+    //     localStorage.removeItem("inquireProd")
+    //     window.location.replace(window.location.origin+"/phoenix/admin/prod/inquire")
+    // }, true);
+    // inquireTopButton.addEventListener('click', (e) => {
+    //     e.preventDefault();
+    //     e.stopPropagation();
+    //     let item={
+    //         "prodId": familyDetails.ID,
+    //         "prodPhotoUrl": familyDetails.family_photo,
+    //         "skuParam": "",
+    //         "selectParam": "",
+    //         "prodName": familyDetails.family_Name,
+    //         "quantity": 1,
+    //         "sku": ""
+    //     }
+    //     localStorage.setItem("inquireProd",JSON.stringify(item))
+    //     window.location.replace(window.location.origin+"/phoenix/admin/prod/inquire")
+    // }, true);
     //
     MicroModal.init();
 }
@@ -701,4 +701,31 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         });
     });
+});
+
+
+document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('prodlist-pro-inquire')) {
+        e.preventDefault();
+        e.stopPropagation();
+        const prodId = e.target.getAttribute('prodId');
+        const prodPhotoUrl = e.target.getAttribute('prodPhotoUrl');
+        const prodName = e.target.getAttribute('prodName');
+        let item={
+          "prodId": prodId,
+          "prodPhotoUrl": prodPhotoUrl,
+          "skuParam": "",
+          "selectParam": "",
+          "prodName": prodName,
+          "quantity": 1,
+          "sku": ""
+        }
+        localStorage.setItem("inquireProd",JSON.stringify(item))
+        window.location.replace(window.location.origin+"/phoenix/admin/prod/inquire")
+    }else if (e.target.id=='basketInquire'){
+      e.preventDefault();
+      e.stopPropagation();
+      localStorage.removeItem("inquireProd")
+      window.location.replace(window.location.origin+"/phoenix/admin/prod/inquire")
+    }
 });
