@@ -244,7 +244,7 @@ async function updatefamiltyListPage() {
     breadcrumbs_next = breadcrumbs_next.nextSibling;
     toRemove.remove();
   }
-  breadcrumbs.insertAdjacentHTML(` >> <span class="sitewidget-position-current">LED Indoor Lighting</span>`);
+  breadcrumbs.insertAdjacentHTML("afterend",` >> <span class="sitewidget-position-current">Products</span>`);
   document.querySelector(".sitewidget-prodlist .sitewidget-hd h2").innerHTML="Products"
   if(document.querySelector(".sitewidget-prodlist .sitewidget-prodlist-description p")){
     document.querySelector(".sitewidget-prodlist .sitewidget-prodlist-description p").remove()
