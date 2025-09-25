@@ -26,7 +26,7 @@ function addScript(src, callback) {
   script.onerror = () => {
     callback(new Error(`Failed to load script: ${src}`));
   };
-  document.body.appendChild(script);
+  document.head.appendChild(script);
 }
 
 function updateCategoryList() {
