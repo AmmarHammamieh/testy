@@ -410,39 +410,43 @@ function initilizeTabs(product_id,family_name,application_photo,applications,ite
                             <span class="inner-zoom hide"><i class="fa fa-search-plus"></i></span>
                         </div>
                         <p><br /></p>
-                        <p>
-                            <strong><span style="color: rgb(79, 129, 189); font-size: 24px;">Application</span></strong>
-                        </p>
-                        <p><br /></p>
-                        <ul class="list-paddingleft-2" style="list-style-type: disc;">
-                            ${applications?.map((application)=>(
-                                `<li><p>${application}</p></li>`
-                            )).join("")}
-                        </ul>
-                        ${application_photo ? 
-                            `
-                                <p><br /></p>
-                                <p>
-                                    <img
-                                        title="${family_name}"
-                                        alt="${family_name}"
-                                        width="882"
-                                        height="176"
-                                        border="0"
-                                        vspace="0"
-                                        hspace="0"
-                                        style="width: 882px; height: 176px;"
-                                        data-original="${application_photo}"
-                                        src="${application_photo}"
-                                        class="lazyloaded"
-                                    />
-                                    &nbsp;&nbsp;&nbsp;
-                                </p>
-                            `
-                            :
-                            ""
+                        ${applications.length>0 ? 
+                            `<p>
+                                <strong><span style="color: rgb(79, 129, 189); font-size: 24px;">Application</span></strong>
+                            </p>
+                            <p><br /></p>
+                            <ul class="list-paddingleft-2" style="list-style-type: disc;">
+                                ${applications?.map((application)=>(
+                                    `<li><p>${application}</p></li>`
+                                )).join("")}
+                            </ul>
+                            ${application_photo ? 
+                                    `
+                                        <p><br /></p>
+                                        <p>
+                                            <img
+                                                title="${family_name}"
+                                                alt="${family_name}"
+                                                width="882"
+                                                height="176"
+                                                border="0"
+                                                vspace="0"
+                                                hspace="0"
+                                                style="width: 882px; height: 176px;"
+                                                data-original="${application_photo}"
+                                                src="${application_photo}"
+                                                class="lazyloaded"
+                                            />
+                                            &nbsp;&nbsp;&nbsp;
+                                        </p>
+                                    `
+                                    :
+                                    ""
+                                }
+                                <p><br /></p>`
+                            : 
+                                ""
                         }
-                        <p><br /></p>
                         <p>
                             <span style="font-size: 24px; color: rgb(79, 129, 189);"><strong>Installations:</strong></span>
                         </p>
