@@ -236,6 +236,15 @@ async function updatefamiltyListPage() {
   const params = new URLSearchParams(window.location.search);
   let series_id = params.get("series_id")?.replaceAll('"', '');
   let cat_id = params.get("cat_id")?.replaceAll('"', '');
+  document.querySelector(".web-crumbs-title").innerHTML="Products"
+  const breadcrumbs = document.querySelector('span[itemprop="itemListElement"]');
+  let breadcrumbs_next = breadcrumbs.nextSibling;
+  while (breadcrumbs_next) {
+    const toRemove = breadcrumbs_next;
+    breadcrumbs_next = breadcrumbs_next.nextSibling;
+    toRemove.remove();
+  }
+  breadcrumbs.insertAdjacentHTML(` >> <span class="sitewidget-position-current">LED Indoor Lighting</span>`);
   document.querySelector(".sitewidget-prodlist .sitewidget-hd h2").innerHTML="Products"
   if(document.querySelector(".sitewidget-prodlist .sitewidget-prodlist-description p")){
     document.querySelector(".sitewidget-prodlist .sitewidget-prodlist-description p").remove()
