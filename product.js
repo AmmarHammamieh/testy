@@ -1,7 +1,7 @@
-	var slider_pWfhEQrjIkDO = null;
+var slider_pWfhEQrjIkDO = null;
 document.documentElement.style.visibility = "hidden";
 const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyRW1haWwiOiJhZG1pbmlzdHJhdG9yIiwidXNlcl9pZCI6IjEiLCJBUElfVElNRSI6MTc1ODM0NjM5OX0.XC4jUa2kAdXfWRokGwHO2G6nXh9GaEo1FEI1v1LyLys";
-const base_url="https://rafeed.atcsolution.co/api"
+const base_url="https://integration.atcsolution.co/api"
 
 function addStylesheet(href, callback) {
     const link = document.createElement('link');
@@ -53,10 +53,10 @@ function updateCategoryList() {
       let categoryList = document.getElementsByClassName("slight-submenu-wrap")[0];
       categoryList.innerHTML=series.map((serie,index) => `
         <li class="prodli li-with-ul">
-          <a href="/productlist?series_id=${serie.id}" title="${serie.name}">${serie.name}</a> <i class="list-mid-dot"></i>
+          <a href="/LED-Indoor-Lighting-pl46987387-p2.html?series_id=${serie.id}" title="${serie.name}">${serie.name}</a> <i class="list-mid-dot"></i>
           <ul class="submenu-default-simple slight-submenu-ul slight-submenu-master-ul">
               ${serie.categories.map((category,index) => `
-                <li class="prodli hasNoUlChild"><a href="/productlist?series_id=${serie.id}&cat_id=${category.id}" class="" title="${category.name}">${category.name}</a></li>
+                <li class="prodli hasNoUlChild"><a href="/LED-Indoor-Lighting-pl46987387-p2.html?series_id=${serie.id}&cat_id=${category.id}" class="" title="${category.name}">${category.name}</a></li>
               `).join("")}
           </ul>
         </li>
@@ -74,10 +74,10 @@ function updateCategoryList() {
 }
 function replaceSlides(imageUrls) {
     if(imageUrls.includes(null)){
-        $('#masterslider_etAaVqMNrjiZ').remove();
+        $('#masterslider_pWfhEQrjIkDO').remove();
         return;
     }
-    var $slider = $('#masterslider_etAaVqMNrjiZ');
+    var $slider = $('#masterslider_pWfhEQrjIkDO');
     $slider.empty();
 
     imageUrls.forEach(function(url) {
@@ -106,37 +106,32 @@ function replaceSlides(imageUrls) {
         margin: 10,
         space: 7
     });
-    slider_pWfhEQrjIkDO.setup('masterslider_etAaVqMNrjiZ', {
+    slider_pWfhEQrjIkDO.setup('masterslider_pWfhEQrjIkDO', {
         width: 640,
         height: 640,
         space: 5,
         view: 'basic'
     });
     slider_pWfhEQrjIkDO.api.addEventListener('sliderLoad', function() {
-        $('#masterslider_etAaVqMNrjiZ .ms-slide').each(function() {
+        $('#masterslider_pWfhEQrjIkDO .ms-slide').each(function() {
             var $img = $(this).find('img');
             $img.wrap(`<a href="${$img.attr('src')}" class="easyzoom easyzoom--overlay"></a>`);
         });
     });
     $(".sitewidget-prodDetail-20141127140104").addClass("isLoaded");
     $('.placeholder-container, .mobile_3-small').remove();
+    $('.easyzoom').easyZoom();
+    
 }
 function updateDescription(title,description) {
-    document.querySelectorAll(".proddetail-description .detial-cont-divsions").forEach((item)=>{
-        item.remove()
-    })
-    document.getElementsByClassName("pro-this-prodBrief")[0].getElementsByTagName("ul")[0]?.remove();
-    document.getElementsByClassName("keyword_box")[0]?.remove()
-    document.getElementsByClassName("pro-detials-listshow")[0]?.remove()
-    document.getElementsByClassName("sitewidget-relatedProducts")[0]?.remove()
-    if(document.getElementsByClassName("web-crumbs-title")[0])
-        document.getElementsByClassName("web-crumbs-title")[0].getElementsByTagName("strong")[0].innerHTML = title
-    if(document.getElementsByClassName("proddetail-description")[0])
-        document.getElementsByClassName("proddetail-description")[0].getElementsByTagName("h1")[0].innerHTML = `<span class="prodDetail-tts"></span> ${title} <span><i class="fa fa-qrcode" aria-hidden="true"></i></span> `
-    if(document.getElementsByClassName("pro-this-prodBrief")[0])
-        document.getElementsByClassName("pro-this-prodBrief")[0].innerHTML += description
-    if(document.getElementsByClassName("pro-info-list")[0])
-        document.getElementsByClassName("pro-info-list")[0].getElementsByTagName("li")[0].innerHTML = ` <label style="width: 55px;">Model:</label> <p> 102R </p>`
+    document.getElementsByClassName("pro-this-prodBrief")[0].getElementsByTagName("ul")[0].remove();
+    document.getElementsByClassName("keyword_box")[0].remove()
+    document.getElementsByClassName("pro-detials-listshow")[0].remove()
+    document.getElementsByClassName("sitewidget-relatedProducts")[0].remove()
+    document.getElementsByClassName("web-crumbs-title")[0].getElementsByTagName("strong")[0].innerHTML = title
+    document.getElementsByClassName("proddetail-description")[0].getElementsByTagName("h1")[0].innerHTML = `<span class="prodDetail-tts"></span> ${title} <span><i class="fa fa-qrcode" aria-hidden="true"></i></span> `
+    document.getElementsByClassName("pro-this-prodBrief")[0].innerHTML += description
+    document.getElementsByClassName("pro-info-list")[0].getElementsByTagName("li")[0].innerHTML = ` <label style="width: 55px;">Model:</label> <p> 102R </p>`
 }
 
 async function packingInfo(product_id) {
@@ -370,149 +365,140 @@ async function itemDetails(id){
   });
 }
 function initilizeTabs(product_id,family_name,application_photo,applications,items,installation_way,installation_way_photo) {
-    document.querySelector(".outerContainer:has(.sitewidget-proddetail)").insertAdjacentHTML("afterend", `<div class="sitewidget-proddetail">
-        <div class="sitewidget-bd prodDetail-tab-style prodDetail-tab-style-grey prodd-color-otl prodd-btn-otl-colorful">
-        <div class="proddetails-detial-wrap " style="padding: 0 10px;box-sizing: border-box;overflow: hidden;margin-top: 50px;"> 
-        <div class="detial-wrap-cont">
-            <div class="detial-cont-index">
-                <div class="detial-cont-divsions detial-cont-prodescription">
-                    <ul id="tab_titles" class="detial-cont-tabslabel fix">
-                        <li class="on"><a href="javascript:;"> Product Description</a></li>
-                        <li onclick="packingInfo(${product_id})"><a href="javascript:;"> Product Package </a></li>
-                    </ul>
-                    <div id="tab_content" class="detial-cont-tabscont">
-                        <input type="hidden" name="delay_static_mobile_above" value="true" /> <input type="hidden" name="settingId" value="pWfhEQrjIkDO" />
-                        <div class="fix prodDesc">
-                            <div class="prodDetail-editor-container">
-                                <p><br /></p>
-                                <p>
-                                    <span style="font-size: 24px;">
-                                        <strong><span style="color: rgb(79, 129, 189);">Data</span></strong>
-                                    </span>
-                                </p>
-                                <div class="sliderTable mt10 mb10 sliderTable-index0">
-                                    <div class="inner">
-                                        <table align="center" width="874" style="width: 100%;">
-                                            <tbody>
-                                                <tr class="firstRow">
-                                                    <td width="155" style="background-color: rgb(79, 129, 189); color: rgb(255, 255, 255); text-align: center;" align="center" valign="middle"><p>Item No.</p></td>
-                                                    <td width="74" style="background-color: rgb(79, 129, 189); color: rgb(255, 255, 255); text-align: center;" align="center" valign="middle"><p>Power</p></td>
-                                                    <td colspan="1" rowspan="1" valign="middle" width="180" style="background-color: rgb(79, 129, 189); color: rgb(255, 255, 255); text-align: center;" align="center">Voltage</td>
-                                                    <td colspan="1" rowspan="1" valign="middle" width="164" style="background-color: rgb(79, 129, 189); color: rgb(255, 255, 255); text-align: center;" align="center">luminous efficieny</td>
-                                                    <td width="107" style="background-color: rgb(79, 129, 189); color: rgb(255, 255, 255); text-align: center;" align="center" valign="middle"><p>Size</p></td>
-                                                    <td width="68" style="background-color: rgb(79, 129, 189); color: rgb(255, 255, 255); text-align: center;" align="center" valign="middle"><p>Cut out</p></td>
-                                                </tr>
-                                                ${items.map((item)=>(
-                                                    `
-                                                    <tr>
-                                                        <td width="155" align="center" valign="middle" style="text-align: center;"><a href="javascript:;" data-micromodal-trigger="item-modal" onclick="itemDetails(${item.ID})"><p>${item.product_number || "-"}</p></a></td>
-                                                        <td width="74" align="center" valign="middle" style="text-align: center;"><p>${item.Power ? `${item.Power}W` : "-"}</p></td>
-                                                        <td colspan="1" rowspan="1" valign="middle" width="180" align="center" style="text-align: center;">${item.InputVoltageMin && item.InputVoltageMax ? `${item.InputVoltageMin}-240V/${item.InputVoltageMax}-240V` : "-"}</td>
-                                                        <td colspan="1" rowspan="1" valign="middle" width="164" align="center" style="text-align: center;">90-100 lm/w</td>
-                                                        <td width="100" align="center" valign="middle" style="text-align: center;"><p>109*35mm</p></td>
-                                                        <td width="68" align="center" valign="middle" style="text-align: center;"><p>${item.Cut_out ? `${item.Cut_out}mm`: "-" }</p></td>
-                                                    </tr>
-                                                    `
-                                                )).join("")}
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <span class="inner-zoom hide"><i class="fa fa-search-plus"></i></span>
-                                </div>
-                                <p><br /></p>
-                                <p>
-                                    <strong><span style="color: rgb(79, 129, 189); font-size: 24px;">Application</span></strong>
-                                </p>
-                                <p><br /></p>
-                                <ul class="list-paddingleft-2" style="list-style-type: disc;">
-                                    ${applications?.map((application)=>(
-                                        `<li><p>${application}</p></li>`
-                                    )).join("")}
-                                </ul>
-                                ${application_photo ? 
-                                    `
-                                        <p><br /></p>
-                                        <p>
-                                            <img
-                                                title="${family_name}"
-                                                alt="${family_name}"
-                                                width="882"
-                                                height="176"
-                                                border="0"
-                                                vspace="0"
-                                                hspace="0"
-                                                style="width: 882px; height: 176px;"
-                                                data-original="${application_photo}"
-                                                src="${application_photo}"
-                                                class="lazyloaded"
-                                            />
-                                            &nbsp;&nbsp;&nbsp;
-                                        </p>
-                                    `
-                                    :
-                                    ""
-                                }
-                                <p><br /></p>
-                                <p>
-                                    <span style="font-size: 24px; color: rgb(79, 129, 189);"><strong>Installations:</strong></span>
-                                </p>
-                                <p><br /></p>
-                                <ul class="list-paddingleft-2 installation-way-list" style="list-style-type: disc;">
-                                    ${installation_way?.map((installation)=>(
-                                        `<li><p>${installation}</p></li>`
-                                    )).join("")}
-                                </ul>
-                                <p>
-                                    <span style="font-size: 24px; color: rgb(79, 129, 189);">
-                                        <strong><br /></strong>
-                                    </span>
-                                </p>
-                                ${installation_way_photo ? 
-                                        `
-                                        <p>
-                                            <img
-                                                width="884"
-                                                height="441"
-                                                alt="Installation"
-                                                style="width: 884px; height: 441px;"
-                                                border="0"
-                                                vspace="0"
-                                                hspace="0"
-                                                title="Installation"
-                                                data-original="${installation_way_photo}"
-                                                src="${installation_way_photo}"
-                                                class="lazyloaded"
-                                            />
-                                        </p>
-                                        `
-                                    : 
-                                        ""
-                                }
-                                <p><br /></p>
+    document.getElementsByClassName("detial-cont-index")[0].innerHTML = `<div class="detial-cont-divsions detial-cont-prodescription">
+            <ul id="tab_titles" class="detial-cont-tabslabel fix">
+                <li class="on"><a href="javascript:;"> Product Description</a></li>
+                <li onclick="packingInfo(${product_id})"><a href="javascript:;"> Product Package </a></li>
+            </ul>
+            <div id="tab_content" class="detial-cont-tabscont">
+                <input type="hidden" name="delay_static_mobile_above" value="true" /> <input type="hidden" name="settingId" value="pWfhEQrjIkDO" />
+                <div class="fix prodDesc">
+                    <div class="prodDetail-editor-container">
+                        <p><br /></p>
+                        <p>
+                            <span style="font-size: 24px;">
+                                <strong><span style="color: rgb(79, 129, 189);">Data</span></strong>
+                            </span>
+                        </p>
+                        <div class="sliderTable mt10 mb10 sliderTable-index0">
+                            <div class="inner">
+                                <table align="center" width="874" style="width: 100%;">
+                                    <tbody>
+                                        <tr class="firstRow">
+                                            <td width="155" style="background-color: rgb(79, 129, 189); color: rgb(255, 255, 255); text-align: center;" align="center" valign="middle"><p>Item No.</p></td>
+                                            <td width="74" style="background-color: rgb(79, 129, 189); color: rgb(255, 255, 255); text-align: center;" align="center" valign="middle"><p>Power</p></td>
+                                            <td colspan="1" rowspan="1" valign="middle" width="180" style="background-color: rgb(79, 129, 189); color: rgb(255, 255, 255); text-align: center;" align="center">Voltage</td>
+                                            <td colspan="1" rowspan="1" valign="middle" width="164" style="background-color: rgb(79, 129, 189); color: rgb(255, 255, 255); text-align: center;" align="center">luminous efficieny</td>
+                                            <td width="107" style="background-color: rgb(79, 129, 189); color: rgb(255, 255, 255); text-align: center;" align="center" valign="middle"><p>Size</p></td>
+                                            <td width="68" style="background-color: rgb(79, 129, 189); color: rgb(255, 255, 255); text-align: center;" align="center" valign="middle"><p>Cut out</p></td>
+                                        </tr>
+                                        ${items.map((item)=>(
+                                            `
+                                             <tr>
+                                                <td width="155" align="center" valign="middle" style="text-align: center;"><a href="javascript:;" data-micromodal-trigger="item-modal" onclick="itemDetails(${item.ID})"><p>${item.product_number || "-"}</p></a></td>
+                                                <td width="74" align="center" valign="middle" style="text-align: center;"><p>${item.Power ? `${item.Power}W` : "-"}</p></td>
+                                                <td colspan="1" rowspan="1" valign="middle" width="180" align="center" style="text-align: center;">${item.InputVoltageMin && item.InputVoltageMax ? `${item.InputVoltageMin}-240V/${item.InputVoltageMax}-240V` : "-"}</td>
+                                                <td colspan="1" rowspan="1" valign="middle" width="164" align="center" style="text-align: center;">90-100 lm/w</td>
+                                                <td width="100" align="center" valign="middle" style="text-align: center;"><p>109*35mm</p></td>
+                                                <td width="68" align="center" valign="middle" style="text-align: center;"><p>${item.Cut_out ? `${item.Cut_out}mm`: "-" }</p></td>
+                                            </tr>
+                                            `
+                                        )).join("")}
+                                    </tbody>
+                                </table>
                             </div>
+                            <span class="inner-zoom hide"><i class="fa fa-search-plus"></i></span>
                         </div>
-                        <div class="fix prodDesc hide">
-                            <div class="prodDetail-editor-container">
+                        <p><br /></p>
+                        <p>
+                            <strong><span style="color: rgb(79, 129, 189); font-size: 24px;">Application</span></strong>
+                        </p>
+                        <p><br /></p>
+                        <ul class="list-paddingleft-2" style="list-style-type: disc;">
+                            ${applications?.map((application)=>(
+                                `<li><p>${application}</p></li>`
+                            )).join("")}
+                        </ul>
+                        ${application_photo ? 
+                            `
                                 <p><br /></p>
                                 <p>
-                                    <span style="font-size: 24px;">
-                                        <strong><span style="color: rgb(79, 129, 189);">Package Data</span></strong>
-                                    </span>
+                                    <img
+                                        title="${family_name}"
+                                        alt="${family_name}"
+                                        width="882"
+                                        height="176"
+                                        border="0"
+                                        vspace="0"
+                                        hspace="0"
+                                        style="width: 882px; height: 176px;"
+                                        data-original="${application_photo}"
+                                        src="${application_photo}"
+                                        class="lazyloaded"
+                                    />
+                                    &nbsp;&nbsp;&nbsp;
                                 </p>
-                                <p><br /></p>
-                                <div id="packing_data" class="sliderTable mt10 mb10 sliderTable-index1">
-                                    <div class="inner">
-                                    </div>
-                                </div>
+                            `
+                            :
+                            ""
+                        }
+                        <p><br /></p>
+                        <p>
+                            <span style="font-size: 24px; color: rgb(79, 129, 189);"><strong>Installations:</strong></span>
+                        </p>
+                        <p><br /></p>
+                        <ul class="list-paddingleft-2 installation-way-list" style="list-style-type: disc;">
+                            ${installation_way?.map((installation)=>(
+                                `<li><p>${installation}</p></li>`
+                            )).join("")}
+                        </ul>
+                        <p>
+                            <span style="font-size: 24px; color: rgb(79, 129, 189);">
+                                <strong><br /></strong>
+                            </span>
+                        </p>
+                        ${installation_way_photo ? 
+                                `
+                                <p>
+                                    <img
+                                        width="884"
+                                        height="441"
+                                        alt="Installation"
+                                        style="width: 884px; height: 441px;"
+                                        border="0"
+                                        vspace="0"
+                                        hspace="0"
+                                        title="Installation"
+                                        data-original="${installation_way_photo}"
+                                        src="${installation_way_photo}"
+                                        class="lazyloaded"
+                                    />
+                                </p>
+                                `
+                            : 
+                                ""
+                        }
+                        <p><br /></p>
+                    </div>
+                </div>
+                <div class="fix prodDesc hide">
+                    <div class="prodDetail-editor-container">
+                        <p><br /></p>
+                        <p>
+                            <span style="font-size: 24px;">
+                                <strong><span style="color: rgb(79, 129, 189);">Package Data</span></strong>
+                            </span>
+                        </p>
+                        <p><br /></p>
+                        <div id="packing_data" class="sliderTable mt10 mb10 sliderTable-index1">
+                            <div class="inner">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    </div>
-    </div>`);
+        </div>`
+
     // initilize
     const tabs = document.querySelectorAll('#tab_titles li');
     const contents = document.querySelectorAll('#tab_content .prodDesc');
@@ -667,7 +653,7 @@ function waitForSliderAndInitialize() {
     let attempts = 0;
 
     const interval = setInterval(function() {
-        if (window.jQuery!=undefined) {
+        if (window.jQuery!=undefined && jQuery.fn.slightSubmenu!=undefined && jQuery.fn.easyZoom!=undefined) {
             clearInterval(interval);
             initializePageContent();
         }
