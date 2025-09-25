@@ -624,6 +624,17 @@ async function initializePageContent() {
     replaceSlides([familyDetails.family_photo]);
     initilizeModal();
     hideLoader();
+    document.querySelector(".web-crumbs-title").innerHTML="Products"
+    const breadcrumbs = document.querySelector('span[itemprop="itemListElement"]');
+    let breadcrumbs_next = breadcrumbs.nextSibling;
+    while (breadcrumbs_next) {
+        const toRemove = breadcrumbs_next;
+        breadcrumbs_next = breadcrumbs_next.nextSibling;
+        toRemove.remove();
+    }
+    breadcrumbs.insertAdjacentHTML("afterend",`
+        <span itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"> <a itemprop="item" href="/productList"> <span itemprop="name">Products</span> </a> <meta itemprop="position" content="2"> </span>
+        >> <span class="sitewidget-position-current">Products</span>`);
     // stop inquire Form
     const inquireTopButton = document.querySelector('#prodInquire');
     const inquireButton = document.querySelector("#basketInquire");
