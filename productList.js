@@ -3,7 +3,7 @@ const itemsPerPage = 20;
 let activePage=0;
 let paginationbody="";  
 const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyRW1haWwiOiJhZG1pbmlzdHJhdG9yIiwidXNlcl9pZCI6IjEiLCJBUElfVElNRSI6MTc1ODM0NjM5OX0.XC4jUa2kAdXfWRokGwHO2G6nXh9GaEo1FEI1v1LyLys";
-const base_url="https://rafeed.atcsolution.co/api"
+const base_url="https://integration.atcsolution.co/api"
 
 function addStylesheet(href, callback) {
     const link = document.createElement('link');
