@@ -53,10 +53,10 @@ function updateCategoryList() {
       let categoryList = document.getElementsByClassName("slight-submenu-wrap")[0];
       categoryList.innerHTML=series.map((serie,index) => `
         <li class="prodli li-with-ul">
-          <a href="/LED-Indoor-Lighting-pl46987387-p2.html?series_id=${serie.id}" title="${serie.name}">${serie.name}</a> <i class="list-mid-dot"></i>
+          <a href="/productlist?series_id=${serie.id}" title="${serie.name}">${serie.name}</a> <i class="list-mid-dot"></i>
           <ul class="submenu-default-simple slight-submenu-ul slight-submenu-master-ul">
               ${serie.categories.map((category,index) => `
-                <li class="prodli hasNoUlChild"><a href="/LED-Indoor-Lighting-pl46987387-p2.html?series_id=${serie.id}&cat_id=${category.id}" class="" title="${category.name}">${category.name}</a></li>
+                <li class="prodli hasNoUlChild"><a href="/productlist?series_id=${serie.id}&cat_id=${category.id}" class="" title="${category.name}">${category.name}</a></li>
               `).join("")}
           </ul>
         </li>
@@ -344,7 +344,7 @@ async function itemDetails(id){
             </li>
         </ul>
     `;
-    document.getElementById("accessories_tab").innerHTML= res.accessories.map((accessory)=>(
+    document.getElementById("accessories_tab").innerHTML= res.accessories&&res.accessories.length>0 ? res.accessories.map((accessory)=>(
         `<div class="accessory-container">
             <img src="${accessory.photo}"/>
             <div class="accessory-content">
@@ -352,7 +352,7 @@ async function itemDetails(id){
                 <span>${accessory.SupplierCode ? accessory.SupplierCode : ""}</span>
             </div>
         </div>`
-    )).join("")
+    )).join("") : `<p> No products found </p>`
     
     document.getElementById("downloads_tab").innerHTML=`
         <ul>
