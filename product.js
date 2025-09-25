@@ -633,8 +633,8 @@ async function initializePageContent() {
         toRemove.remove();
     }
     breadcrumbs.insertAdjacentHTML("afterend",`
-        <span itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"> <a itemprop="item" href="/productList"> <span itemprop="name">Products</span> </a> <meta itemprop="position" content="2"> </span>
-        >> <span class="sitewidget-position-current">Products</span>`);
+        >> <span itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"> <a itemprop="item" href="/productList"> <span itemprop="name">Products</span> </a> <meta itemprop="position" content="2"> </span>
+        >> <span class="sitewidget-position-current">${familyDetails.family_Name}</span>`);
     // stop inquire Form
     const inquireTopButton = document.querySelector('#prodInquire');
     const inquireButton = document.querySelector("#basketInquire");
