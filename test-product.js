@@ -118,7 +118,7 @@ function replaceSlides(imageUrls) {
             $img.wrap(`<a href="${$img.attr('src')}" class="easyzoom easyzoom--overlay"></a>`);
         });
     });
-    $(".sitewidget-prodDetail-20141127140104").addClass("isLoaded");
+    $(".sitewidget-prodDetail-20250923143314").addClass("isLoaded");
     $('.placeholder-container, .mobile_3-small').remove();
 }
 function updateDescription(title,description) {
