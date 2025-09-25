@@ -64,8 +64,8 @@ async function updateCategoryList() {
     });
 }
 function items() {
-    let basket = JSON.parse(localStorage.getItem("baksetProdArray"))
-    let inquireProd = JSON.parse(localStorage.getItem("inquireProd"))
+    let basket = localStorage.getItem("baksetProdArray")? JSON.parse(localStorage.getItem("baksetProdArray")) : []
+    let inquireProd = localStorage.getItem("inquireProd") ?  JSON.parse(localStorage.getItem("inquireProd")) : undefined
     document.querySelector(".sitewidget-inquire .sitewidget-bd.fix").insertAdjacentHTML("afterbegin",`
         <div class="new-inquire-table-main" style="width: 100%; overflow-x: auto;">
             <table width="100%" class="sitewidget-inquire-table new-inquire-table">
