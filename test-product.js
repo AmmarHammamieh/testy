@@ -352,7 +352,7 @@ async function itemDetails(id){
                 <span>${accessory.SupplierCode ? accessory.SupplierCode : ""}</span>
             </div>
         </div>`
-    )).join("") : `<p> No products found </p>`
+    )).join("") : `<p> No accessories found </p>`
     
     document.getElementById("downloads_tab").innerHTML=`
         <ul>
