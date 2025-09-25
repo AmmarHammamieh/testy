@@ -660,7 +660,7 @@ async function initializePageContent() {
             "skuParam": "",
             "selectParam": "",
             "prodName": familyDetails.family_Name,
-            "quantity": 1,
+            "quantity": document.getElementsByClassName("order-quan-input")[0].value,
             "sku": ""
         }
         localStorage.setItem("inquireProd",JSON.stringify(item))
