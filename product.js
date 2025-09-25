@@ -447,42 +447,47 @@ function initilizeTabs(product_id,family_name,application_photo,applications,ite
                             : 
                                 ""
                         }
-                        <p>
-                            <span style="font-size: 24px; color: rgb(79, 129, 189);"><strong>Installations:</strong></span>
-                        </p>
-                        <p><br /></p>
-                        <ul class="list-paddingleft-2 installation-way-list" style="list-style-type: disc;">
-                            ${installation_way?.map((installation)=>(
-                                `<li><p>${installation}</p></li>`
-                            )).join("")}
-                        </ul>
-                        <p>
-                            <span style="font-size: 24px; color: rgb(79, 129, 189);">
-                                <strong><br /></strong>
-                            </span>
-                        </p>
-                        ${installation_way_photo ? 
-                                `
-                                <p>
-                                    <img
-                                        width="884"
-                                        height="441"
-                                        alt="Installation"
-                                        style="width: 884px; height: 441px;"
-                                        border="0"
-                                        vspace="0"
-                                        hspace="0"
-                                        title="Installation"
-                                        data-original="${installation_way_photo}"
-                                        src="${installation_way_photo}"
-                                        class="lazyloaded"
-                                    />
+
+                        ${installation_way.length>0?
+                                `<p>
+                                    <span style="font-size: 24px; color: rgb(79, 129, 189);"><strong>Installations:</strong></span>
                                 </p>
-                                `
-                            : 
+                                <p><br /></p>
+                                <ul class="list-paddingleft-2 installation-way-list" style="list-style-type: disc;">
+                                    ${installation_way?.map((installation)=>(
+                                        `<li><p>${installation}</p></li>`
+                                    )).join("")}
+                                </ul>
+                                <p>
+                                    <span style="font-size: 24px; color: rgb(79, 129, 189);">
+                                        <strong><br /></strong>
+                                    </span>
+                                </p>
+                                ${installation_way_photo ? 
+                                        `
+                                        <p>
+                                            <img
+                                                width="884"
+                                                height="441"
+                                                alt="Installation"
+                                                style="width: 884px; height: 441px;"
+                                                border="0"
+                                                vspace="0"
+                                                hspace="0"
+                                                title="Installation"
+                                                data-original="${installation_way_photo}"
+                                                src="${installation_way_photo}"
+                                                class="lazyloaded"
+                                            />
+                                        </p>
+                                        `
+                                    : 
+                                        ""
+                                }
+                                <p><br /></p>`
+                            :
                                 ""
                         }
-                        <p><br /></p>
                     </div>
                 </div>
                 <div class="fix prodDesc hide">
