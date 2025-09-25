@@ -339,7 +339,7 @@ async function itemDetails(id){
             </li>
         </ul>
     `;
-    document.getElementById("accessories_tab").innerHTML= res.accessories.map((accessory)=>(
+    document.getElementById("accessories_tab").innerHTML= res.accessories&&res.accessories.length>0 ? res.accessories.map((accessory)=>(
         `<div class="accessory-container">
             <img src="${accessory.photo}"/>
             <div class="accessory-content">
@@ -348,6 +348,7 @@ async function itemDetails(id){
             </div>
         </div>`
     )).join("")
+    : "<p> No accessories found </p>";
     
     document.getElementById("downloads_tab").innerHTML=`
         <ul>
