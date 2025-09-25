@@ -121,19 +121,27 @@ document.addEventListener("DOMContentLoaded", function() {
     addStylesheet("https://ammarhammamieh.github.io/testy/product.css", () => {
         updateCategoryList();
         items();
-        const inquireButton = document.querySelector("#basketInquire");
-        inquireButton.addEventListener('submit', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            localStorage.removeItem("inquireProd")
-            window.location.replace(window.location.origin+"/phoenix/admin/prod/inquire")
-        }, true);
-        inquireButton.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            localStorage.removeItem("inquireProd")
-            window.location.replace(window.location.origin+"/phoenix/admin/prod/inquire")
-        }, true);
+        // const inquireButton = document.querySelector("#basketInquire");
+        // inquireButton.addEventListener('submit', (e) => {
+        //     e.preventDefault();
+        //     e.stopPropagation();
+        //     localStorage.removeItem("inquireProd")
+        //     window.location.replace(window.location.origin+"/phoenix/admin/prod/inquire")
+        // }, true);
+        // inquireButton.addEventListener('click', (e) => {
+        //     e.preventDefault();
+        //     e.stopPropagation();
+        //     localStorage.removeItem("inquireProd")
+        //     window.location.replace(window.location.origin+"/phoenix/admin/prod/inquire")
+        // }, true);
         hideLoader();
     });
+});
+document.addEventListener('click', (e) => {
+     if (e.target.id=='basketInquire'){
+      e.preventDefault();
+      e.stopPropagation();
+      localStorage.removeItem("inquireProd")
+      window.location.replace(window.location.origin+"/phoenix/admin/prod/inquire")
+    }
 });
