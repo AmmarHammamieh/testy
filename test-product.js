@@ -420,12 +420,12 @@ function initilizeTabs(product_id,family_name,application_photo,applications,ite
                                     <span class="inner-zoom hide"><i class="fa fa-search-plus"></i></span>
                                 </div>
                                 <p><br /></p>
-                                <p>
+                                ${applications.length>0 ? 
+                                `<p>
                                     <strong><span style="color: rgb(79, 129, 189); font-size: 24px;">Application</span></strong>
                                 </p>
                                 <p><br /></p>
-                                ${applications.length>0 ? 
-                                    `<ul class="list-paddingleft-2" style="list-style-type: disc;">
+                                <ul class="list-paddingleft-2" style="list-style-type: disc;">
                                         ${applications?.map((application)=>(
                                             `<li><p>${application}</p></li>`
                                         )).join("")}
