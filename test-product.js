@@ -408,8 +408,8 @@ function initilizeTabs(product_id,family_name,application_photo,applications,ite
                                                         <td width="155" align="center" valign="middle" style="text-align: center;"><a href="javascript:;" data-micromodal-trigger="item-modal" onclick="itemDetails(${item.ID})"><p>${item.product_number || "-"}</p></a></td>
                                                         <td width="74" align="center" valign="middle" style="text-align: center;"><p>${item.Power ? `${item.Power}W` : "-"}</p></td>
                                                         <td colspan="1" rowspan="1" valign="middle" width="180" align="center" style="text-align: center;">${item.InputVoltageMin && item.InputVoltageMax ? `${item.InputVoltageMin}-240V/${item.InputVoltageMax}-240V` : "-"}</td>
-                                                        <td colspan="1" rowspan="1" valign="middle" width="164" align="center" style="text-align: center;">90-100 lm/w</td>
-                                                        <td width="100" align="center" valign="middle" style="text-align: center;"><p>109*35mm</p></td>
+ 														<td colspan="1" rowspan="1" valign="middle" width="164" align="center" style="text-align: center;">${item.liminous_efficiency}</td>
+                                                        <td width="100" align="center" valign="middle" style="text-align: center;"><p>${item.dimension}</p></td>
                                                         <td width="68" align="center" valign="middle" style="text-align: center;"><p>${item.Cut_out ? `${item.Cut_out}mm`: "-" }</p></td>
                                                     </tr>
                                                     `
