@@ -1,7 +1,8 @@
 var slider_pWfhEQrjIkDO = null;
 document.documentElement.style.visibility = "hidden";
 const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyRW1haWwiOiJhZG1pbmlzdHJhdG9yIiwidXNlcl9pZCI6IjEiLCJBUElfVElNRSI6MTc2MTA1MDU4OH0.jFy7810Ody5XgF8RyDv0ncWpNHd2wpWFV58AXwroAbs";
-const base_url="https://api.atcsolution.co/"
+const base_url="https://api.atcsolution.co"
+let base_chatBot_url_front="https://widget.atcsolution.co";
 
 function addStylesheet(href, callback) {
     const link = document.createElement('link');
@@ -35,7 +36,7 @@ function updateCategoryList() {
     fetch(url, {
       method: "GET",
       headers: {
-        "authorization": `${token}`,
+        "apikey": `${token}`,
         "Content-Type": "application/json",
       }
     }).then(response => {
@@ -123,7 +124,6 @@ function replaceSlides(imageUrls) {
     $('.easyzoom').easyZoom();
 
 
-    // responsive
     var $resposnive_slider = $("#component_pWfhEQrjIkDO #slider-pWfhEQrjIkDO");
     $resposnive_slider.empty();
 
@@ -150,6 +150,7 @@ function replaceSlides(imageUrls) {
         $resposnive_slider.append(htmlSlide);
     });
     $("#component_pWfhEQrjIkDO .prodetail-slider").data("owlCarousel").reinit({items:1,autoPlay:false});
+    
 }
 function updateDescription(title,description) {
     document.getElementsByClassName("pro-this-prodBrief")[0].getElementsByTagName("ul")[0].remove();
@@ -174,7 +175,7 @@ async function packingInfo(product_id) {
     await fetch(url, {
         method: "GET",
         headers: {
-            "authorization": `${token}`,
+            "apikey": `${token}`,
             "Content-Type": "application/json",
         },
     }).then(response => {
@@ -242,7 +243,7 @@ async function itemDetails(id){
   await fetch(url, {
     method: "GET",
     headers: {
-      "authorization": `${token}`,
+      "apikey": `${token}`,
       "Content-Type": "application/json",
     },
   }).then(response => {
@@ -636,7 +637,7 @@ async function initializePageContent() {
         fetch(url, {
           method: "GET",
           headers: {
-            "authorization": `${token}`,
+            "apikey": `${token}`,
             "Content-Type": "application/json",
           },
         }).then(res => res.json())
@@ -729,20 +730,11 @@ document.addEventListener("DOMContentLoaded", function() {
     spinnerDiv.classList.add('spinner');
     loaderDiv.appendChild(spinnerDiv);
     document.body.prepend(loaderDiv);
-    addStylesheet("https://ammarhammamieh.github.io/testy/product.css", () => {
-        addStylesheet("https://ammarhammamieh.github.io/testy/micromodal.min.css", () => {
-            addScript("https://ammarhammamieh.github.io/testy/micromodal.min.js", () => {
+    addStylesheet(base_chatBot_url_front+"/components/products/css/product.css", () => {
+        addStylesheet(base_chatBot_url_front+"/components/products/libraries/micromodal.min.css", () => {
+            addScript(base_chatBot_url_front+"/components/products/libraries/micromodal.min.js", () => {
                 waitForSliderAndInitialize()
             });
         });
     });
 });
-
-
-
-
-
-
-
-
-
