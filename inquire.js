@@ -1,6 +1,6 @@
 document.documentElement.style.visibility = "hidden";
 const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyRW1haWwiOiJhZG1pbmlzdHJhdG9yIiwidXNlcl9pZCI6IjEiLCJBUElfVElNRSI6MTc2MTA1MDU4OH0.jFy7810Ody5XgF8RyDv0ncWpNHd2wpWFV58AXwroAbs";
-const base_url="https://api.atcsolution.co/"
+const base_url="https://api.atcsolution.co"
 let base_chatBot_url_front="https://widget.atcsolution.co";
 
 function addStylesheet(href, callback) {
