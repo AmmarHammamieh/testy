@@ -277,7 +277,7 @@ async function updatefamiltyListPage() {
                     <div class="prodlist-inner prodlist-inner1">
                         <div class="prodlist-picbox labelfather">
                             <div class="prodlist-cell">
-                                <a href="/Ultra-thin-panel-light-for-indoor-pd733273788.html?family_id=${family.ID}" target="" title="${family.family_Name}">
+                                <a href="/Ultra-thin-panel-light-for-indoor-pd733273788.html?family_id=${family.ID}" target="" title="test">
                                     <img
                                         class="lazy img-default-bgc"
                                         data-original="${family.family_photo}"
