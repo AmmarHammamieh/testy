@@ -159,7 +159,7 @@ async function filter(el,series_id,cat_id){
   await fetch(url, {
     method: "GET",
     headers: {
-      "authorization": `${token}`,
+      "apikey": `${token}`,
       "Content-Type": "application/json",
     },
   }).then(response => {
@@ -196,7 +196,7 @@ async function updateCategoryList() {
   await fetch(url, {
     method: "GET",
     headers: {
-      "authorization": `${token}`,
+      "apikey": `${token}`,
       "Content-Type": "application/json",
     }
   }).then(response => {
@@ -261,7 +261,7 @@ async function updatefamiltyListPage() {
   await fetch(url, {
       method: "GET",
       headers: {
-        "authorization": `${token}`,
+        "apikey": `${token}`,
         "Content-Type": "application/json",
       }
   }).then(response => {
