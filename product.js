@@ -135,7 +135,7 @@ function updateDescription(title,description) {
 }
 
 async function packingInfo(product_id) {
-    let url = base_url+`/Economic_product/get_family_packaging_information/${product_id}`;
+    let url = base_url+`/packing/v1/families/${product_id}/packing_details`;
     document.querySelector("#packing_data .inner").innerHTML=`
         <div class="loading-container">
             <div class="container-spinner-product-list">
@@ -709,6 +709,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
+
 
 
 
