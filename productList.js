@@ -4,6 +4,7 @@ let activePage=0;
 let paginationbody="";  
 const token = "eyJ4NXQjUzI1NiI6Ik1XVXhZbU5rWldJd1lUUTJORGN5TVRVd1l6VTFOVFF5WVRsall6QXlaak01TkRneFpUVmtaREZsTm1WaE5Ea3pZemd5WWpBeU0yTmlaVEF6WWpRMFl3PT0iLCJraWQiOiJnYXRld2F5X2NlcnRpZmljYXRlX2FsaWFzIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ==.eyJzdWIiOiJhZG1pbkBjYXJib24uc3VwZXIiLCJhcHBsaWNhdGlvbiI6eyJpZCI6MTEwLCJ1dWlkIjoiYWMzZDYyNjgtZjBjYy00YWM2LTgxNjYtNDQ4NjgzNzNlNTczIn0sImlzcyI6Imh0dHBzOlwvXC93c28yYW0tZGV2LmF0Y3N5c3RlbWF0aWMuY29tOjQ0M1wvb2F1dGgyXC90b2tlbiIsImtleXR5cGUiOiJQUk9EVUNUSU9OIiwidG9rZW5fdHlwZSI6ImFwaUtleSIsImlhdCI6MTc2MTEzNDE3MSwianRpIjoiMjVjYWFlNTctM2M0YS00ZmJjLWIyNzUtMjc3YWU0NjU0ZGNmIn0=.Cm-4JqMBRYT6zhAZXX_tGKsbiSeN9j1MH84hwE4R3lKguSxcHsrw6M9gARdVZ3gmBDcejAIUTz_1uoCEqfD8e4QmH5I39EbgCIafnoVgYCFdv2vJ1oc8f2ksu07l9OwoIPye8impG9IGk4RRhB2slIt0jzuZEMiIt6vci2EbpfV69VxqFYNaXdABaiWGupBbpKltgFfk6gb6eW9B9_U1w9Wzep8Iqb2sXw2dWhtmPh8G3YQnNgIeoJ6F5bBs0oTr6zgb_FIKSV29lyrsyJwK1DJqGAshXwlRh8GauiDuhwL8uG5SPRVreeD2dpJcUamRLPrb8h9n6bX7MIgIxyQ0_Q==";
 const base_url="https://api.atcsolution.co"
+let base_chatBot_url_front="https://widget.atcsolution.co";
 
 function addStylesheet(href, callback) {
     const link = document.createElement('link');
@@ -158,7 +159,7 @@ async function filter(el,series_id,cat_id){
   await fetch(url, {
     method: "GET",
     headers: {
-      "ApiKey": `${token}`,
+      "authorization": `${token}`,
       "Content-Type": "application/json",
     },
   }).then(response => {
@@ -195,7 +196,7 @@ async function updateCategoryList() {
   await fetch(url, {
     method: "GET",
     headers: {
-      "ApiKey": `${token}`,
+      "authorization": `${token}`,
       "Content-Type": "application/json",
     }
   }).then(response => {
@@ -260,7 +261,7 @@ async function updatefamiltyListPage() {
   await fetch(url, {
       method: "GET",
       headers: {
-        "ApiKey": `${token}`,
+        "authorization": `${token}`,
         "Content-Type": "application/json",
       }
   }).then(response => {
@@ -377,7 +378,7 @@ document.addEventListener("DOMContentLoaded", function() {
   spinnerDiv.classList.add('spinner');
   loaderDiv.appendChild(spinnerDiv);
   document.body.prepend(loaderDiv);
-  addStylesheet("https://ammarhammamieh.github.io/testy/product.css", () => {
+  addStylesheet(base_chatBot_url_front+'/components/products/css/product.css', () => {
     updatefamiltyListPage();
   });
 });
