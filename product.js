@@ -1,7 +1,7 @@
 var slider_pWfhEQrjIkDO = null;
 document.documentElement.style.visibility = "hidden";
 const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyRW1haWwiOiJhZG1pbmlzdHJhdG9yIiwidXNlcl9pZCI6IjEiLCJBUElfVElNRSI6MTc2MTA1MDU4OH0.jFy7810Ody5XgF8RyDv0ncWpNHd2wpWFV58AXwroAbs";
-const base_url="https://integration.atcsolution.co/api"
+const base_url="https://api.atcsolution.co/"
 
 function addStylesheet(href, callback) {
     const link = document.createElement('link');
@@ -30,7 +30,7 @@ function addScript(src, callback) {
 }
 
 function updateCategoryList() {
-    const url = base_url+"/Product_series/get_series";
+    const url = base_url+"/product_development/v1/series";
     let series=[]
     fetch(url, {
       method: "GET",
@@ -210,7 +210,7 @@ async function itemDetails(id){
         <div class="spinner-product-list"></div>
     </div>
   `);
-  let url = base_url+`/Economic_product/get_economic_product_collection_by_id/${id}`;
+  let url = base_url+`product_development/v1/products/${id}`;
   await fetch(url, {
     method: "GET",
     headers: {
@@ -600,8 +600,8 @@ async function initializePageContent() {
     const params = new URLSearchParams(window.location.search);
     let family_id = params.get("family_id")?.replaceAll('"', '');
     const urls = [
-        base_url+`/Economic_product/get_product_families/${family_id}`,
-        base_url+`/Economic_product/get_economic_product_collections?product_family_id=${family_id}&is_published=1`
+        base_url+`/product_development/v1/families/${family_id}`,
+        base_url+`/product_development/v1/products?product_family_id=${family_id}`
     ];
     const responses = await Promise.all(
       urls.map(url =>
@@ -709,6 +709,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
+
 
 
 
