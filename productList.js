@@ -3,7 +3,7 @@ const itemsPerPage = 20;
 let activePage=0;
 let paginationbody="";  
 const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyRW1haWwiOiJhZG1pbmlzdHJhdG9yIiwidXNlcl9pZCI6IjEiLCJBUElfVElNRSI6MTc1ODM0NjM5OX0.XC4jUa2kAdXfWRokGwHO2G6nXh9GaEo1FEI1v1LyLys";
-const base_url="https://lumytic123.atcsolution.co/api"
+const base_url="https://api.atcsolution.co"
 
 function addStylesheet(href, callback) {
     const link = document.createElement('link');
@@ -151,7 +151,7 @@ async function filter(el,series_id,cat_id){
     document.querySelector(".sitewidget-prodlist .sitewidget-prodlist-description p").remove()
   }
   document.querySelector(".prodlist-wrap").innerHTML+=`<div class="container-spinner-product-list"><div class="spinner-product-list"></div></div>`;
-  let url = base_url+`/Economic_product/get_product_families?series_id=${series_id}`;
+  let url = base_url+`/product_development/v1/families?series_id=${series_id}`;
   if (cat_id) {
     url += `&category_id=${cat_id}`;
   }  
@@ -250,9 +250,9 @@ async function updatefamiltyListPage() {
     document.querySelector(".sitewidget-prodlist .sitewidget-prodlist-description p").remove()
   }
   let familtyList = document.getElementsByClassName("prodlist-fix-style")[0].getElementsByTagName("ul")[0];
-  let url = base_url+"/Economic_product/get_product_families";
+  let url = base_url+"/product_development/v1/families";
   if(series_id || cat_id){
-    url =  base_url+`/Economic_product/get_product_families?series_id=${series_id}`;
+    url =  base_url+`/product_development/v1/families?series_id=${series_id}`;
     if (cat_id) {
       url += `&category_id=${cat_id}`;
     }  
