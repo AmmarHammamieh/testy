@@ -190,7 +190,7 @@ async function updateCategoryList() {
   const params = new URLSearchParams(window.location.search);
   let series_id = params.get("series_id")?.replaceAll('"', '');
   let cat_id = params.get("cat_id")?.replaceAll('"', '');
-  const url = base_url+"/Product_series/get_series";
+  const url = base_url+"/product_development/v1/series";
   let series=[]
   await fetch(url, {
     method: "GET",
