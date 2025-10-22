@@ -1,6 +1,8 @@
 document.documentElement.style.visibility = "hidden";
-const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyRW1haWwiOiJhZG1pbmlzdHJhdG9yIiwidXNlcl9pZCI6IjEiLCJBUElfVElNRSI6MTc1ODM0NjM5OX0.XC4jUa2kAdXfWRokGwHO2G6nXh9GaEo1FEI1v1LyLys";
-const base_url="https://integration.atcsolution.co/api"
+const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyRW1haWwiOiJhZG1pbmlzdHJhdG9yIiwidXNlcl9pZCI6IjEiLCJBUElfVElNRSI6MTc2MTA1MDU4OH0.jFy7810Ody5XgF8RyDv0ncWpNHd2wpWFV58AXwroAbs";
+const base_url="https://api.atcsolution.co/"
+let base_chatBot_url_front="https://widget.atcsolution.co";
+
 function addStylesheet(href, callback) {
     const link = document.createElement('link');
     link.rel = 'stylesheet';
@@ -21,7 +23,7 @@ function hideLoader() {
 }
 
 async function updateCategoryList() {
-    const url = base_url+"/Product_series/get_series";
+    const url = base_url+"/product_development/v1/series";
     let series=[]
     await fetch(url, {
       method: "GET",
@@ -118,22 +120,9 @@ document.addEventListener("DOMContentLoaded", function() {
     spinnerDiv.classList.add('spinner');
     loaderDiv.appendChild(spinnerDiv);
     document.body.prepend(loaderDiv);
-    addStylesheet("https://ammarhammamieh.github.io/testy/product.css", () => {
+    addStylesheet(base_chatBot_url_front+"/components/products/css/product.css", () => {
         updateCategoryList();
         items();
-        // const inquireButton = document.querySelector("#basketInquire");
-        // inquireButton.addEventListener('submit', (e) => {
-        //     e.preventDefault();
-        //     e.stopPropagation();
-        //     localStorage.removeItem("inquireProd")
-        //     window.location.replace(window.location.origin+"/phoenix/admin/prod/inquire")
-        // }, true);
-        // inquireButton.addEventListener('click', (e) => {
-        //     e.preventDefault();
-        //     e.stopPropagation();
-        //     localStorage.removeItem("inquireProd")
-        //     window.location.replace(window.location.origin+"/phoenix/admin/prod/inquire")
-        // }, true);
         hideLoader();
     });
 });
