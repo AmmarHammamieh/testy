@@ -121,7 +121,35 @@ function replaceSlides(imageUrls) {
     $(".sitewidget-prodDetail-20141127140104").addClass("isLoaded");
     $('.placeholder-container, .mobile_3-small').remove();
     $('.easyzoom').easyZoom();
-    
+
+
+    // responsive
+    var $resposnive_slider = $("#component_pWfhEQrjIkDO #slider-pWfhEQrjIkDO");
+    $resposnive_slider.empty();
+
+    imageUrls.forEach(function(url) {
+        var htmlSlide = `
+            <div class="prod-pic-item labelclass">
+                <div class="prodDetail-0-ttl prodDetail-ttl"><div></div></div>
+                <div class="prodDetail-0-ttr prodDetail-ttr"><div></div></div>
+                <div class="prodDetail-0-tt prodDetail-tt"></div>
+                <div class="prodDetail-0-itl prodDetail-itl"><img src="" /></div>
+                <div class="prodDetail-0-itr prodDetail-itr"><img src="" /></div>
+                <div class="prodDetail-0-ir prodDetail-ir"></div>
+                <a href="javascript:;" class="viewer_show">
+                    <picture>
+                        <img
+                            class="img_viewer_show history-point-image"
+                            src="${url}"
+                            org-src="${url}"
+                        />
+                    </picture>
+                </a>
+            </div>
+        `;
+        $resposnive_slider.append(htmlSlide);
+    });
+    $("#component_pWfhEQrjIkDO .prodetail-slider").data("owlCarousel").reinit({items:1,autoPlay:false});
 }
 function updateDescription(title,description) {
     document.getElementsByClassName("pro-this-prodBrief")[0].getElementsByTagName("ul")[0].remove();
@@ -709,6 +737,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
+
 
 
 
