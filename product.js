@@ -158,8 +158,8 @@ function updateDescription(title,description) {
     document.getElementsByClassName("pro-detials-listshow")[0].remove()
     document.getElementsByClassName("sitewidget-relatedProducts")[0].remove()
     document.getElementsByClassName("web-crumbs-title")[0].getElementsByTagName("strong")[0].innerHTML = title
-    let qrcode = document.querySelector(".codeed")
-    document.getElementsByClassName("proddetail-description")[0].getElementsByTagName("h1")[0].innerHTML = `<span class="prodDetail-tts"></span> ${title} ${qrcode.outerHTML}`
+    let qrcode = document.querySelector(".proddetail-description h1 .prodDetailCode")
+    document.getElementsByClassName("proddetail-description")[0].getElementsByTagName("h1")[0].innerHTML = `<span class="prodDetail-tts"></span> ${title} <span class="codeed" style="position: relative; display: inline-block;"><i class="fa fa-qrcode" aria-hidden="true"></i></span> `
     document.getElementsByClassName("pro-this-prodBrief")[0].innerHTML += description
     document.getElementsByClassName("pro-info-list")[0].getElementsByTagName("li")[0].remove()
 }
@@ -704,7 +704,7 @@ function waitForSliderAndInitialize() {
     let attempts = 0;
 
     const interval = setInterval(function() {
-        if (window.jQuery!=undefined && jQuery.fn.slightSubmenu!=undefined && jQuery.fn.easyZoom!=undefined) {
+        if (window.jQuery!=undefined && jQuery.fn.slightSubmenu!=undefined && jQuery.fn.easyZoom!=undefined &&$("#component_pWfhEQrjIkDO .prodetail-slider")) {
             clearInterval(interval);
             initializePageContent();
         }
@@ -739,4 +739,3 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
-
