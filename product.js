@@ -158,8 +158,16 @@ function updateDescription(title,description) {
     document.getElementsByClassName("pro-detials-listshow")[0].remove()
     document.getElementsByClassName("sitewidget-relatedProducts")[0].remove()
     document.getElementsByClassName("web-crumbs-title")[0].getElementsByTagName("strong")[0].innerHTML = title
-    let qrcode = document.querySelector(".proddetail-description h1 .prodDetailCode")
-    document.getElementsByClassName("proddetail-description")[0].getElementsByTagName("h1")[0].innerHTML = `<span class="prodDetail-tts"></span> ${title} <span class="codeed" style="position: relative; display: inline-block;"><i class="fa fa-qrcode" aria-hidden="true"></i>${qrcode}</span> `
+    let container = document.querySelector(".proddetail-description h1");
+    let qrcode = container.querySelector(".prodDetailCode");
+    container.innerHTML = `
+      <span class="prodDetail-tts"></span> 
+      ${title} 
+      <span class="codeed" style="position: relative; display: inline-block;">
+        <i class="fa fa-qrcode" aria-hidden="true"></i>
+      </span>
+    `;
+    container.querySelector(".codeed").appendChild(qrcode);
     document.getElementsByClassName("pro-this-prodBrief")[0].innerHTML += description
     document.getElementsByClassName("pro-info-list")[0].getElementsByTagName("li")[0].remove()
 }
@@ -739,4 +747,5 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
+
 
