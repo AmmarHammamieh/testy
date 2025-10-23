@@ -240,7 +240,7 @@ async function itemDetails(id){
         <div class="spinner-product-list"></div>
     </div>
   `);
-  let url = base_url+`product_development/v1/products/${id}`;
+  let url = base_url+`/product_development/v1/products/${id}`;
   await fetch(url, {
     method: "GET",
     headers: {
@@ -739,3 +739,4 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
+
