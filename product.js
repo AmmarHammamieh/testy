@@ -1,6 +1,6 @@
 var slider_pWfhEQrjIkDO = null;
 document.documentElement.style.visibility = "hidden";
-const token = "eyJ4NXQjUzI1NiI6Ik1XVXhZbU5rWldJd1lUUTJORGN5TVRVd1l6VTFOVFF5WVRsall6QXlaak01TkRneFpUVmtaREZsTm1WaE5Ea3pZemd5WWpBeU0yTmlaVEF6WWpRMFl3PT0iLCJraWQiOiJnYXRld2F5X2NlcnRpZmljYXRlX2FsaWFzIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ==.eyJzdWIiOiJhZG1pbkBjYXJib24uc3VwZXIiLCJhcHBsaWNhdGlvbiI6eyJpZCI6MTEwLCJ1dWlkIjoiYWMzZDYyNjgtZjBjYy00YWM2LTgxNjYtNDQ4NjgzNzNlNTczIn0sImlzcyI6Imh0dHBzOlwvXC93c28yYW0tZGV2LmF0Y3N5c3RlbWF0aWMuY29tOjQ0M1wvb2F1dGgyXC90b2tlbiIsImtleXR5cGUiOiJQUk9EVUNUSU9OIiwidG9rZW5fdHlwZSI6ImFwaUtleSIsImlhdCI6MTc2MTEzNDE3MSwianRpIjoiMjVjYWFlNTctM2M0YS00ZmJjLWIyNzUtMjc3YWU0NjU0ZGNmIn0=.Cm-4JqMBRYT6zhAZXX_tGKsbiSeN9j1MH84hwE4R3lKguSxcHsrw6M9gARdVZ3gmBDcejAIUTz_1uoCEqfD8e4QmH5I39EbgCIafnoVgYCFdv2vJ1oc8f2ksu07l9OwoIPye8impG9IGk4RRhB2slIt0jzuZEMiIt6vci2EbpfV69VxqFYNaXdABaiWGupBbpKltgFfk6gb6eW9B9_U1w9Wzep8Iqb2sXw2dWhtmPh8G3YQnNgIeoJ6F5bBs0oTr6zgb_FIKSV29lyrsyJwK1DJqGAshXwlRh8GauiDuhwL8uG5SPRVreeD2dpJcUamRLPrb8h9n6bX7MIgIxyQ0_Q==";
+const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyRW1haWwiOiJhZG1pbmlzdHJhdG9yIiwidXNlcl9pZCI6IjEiLCJBUElfVElNRSI6MTc2MTA1MDU4OH0.jFy7810Ody5XgF8RyDv0ncWpNHd2wpWFV58AXwroAbs";
 const base_url="https://api.atcsolution.co"
 let base_chatBot_url_front="https://widget.atcsolution.co";
 
@@ -158,13 +158,14 @@ function updateDescription(title,description) {
     document.getElementsByClassName("pro-detials-listshow")[0].remove()
     document.getElementsByClassName("sitewidget-relatedProducts")[0].remove()
     document.getElementsByClassName("web-crumbs-title")[0].getElementsByTagName("strong")[0].innerHTML = title
-    document.getElementsByClassName("proddetail-description")[0].getElementsByTagName("h1")[0].innerHTML = `<span class="prodDetail-tts"></span> ${title} <span><i class="fa fa-qrcode" aria-hidden="true"></i></span> `
+    let qrcode = document.querySelector(".proddetail-description h1 .prodDetailCode")
+    document.getElementsByClassName("proddetail-description")[0].getElementsByTagName("h1")[0].innerHTML = `<span class="prodDetail-tts"></span> ${title} <span class="codeed" style="position: relative; display: inline-block;"><i class="fa fa-qrcode" aria-hidden="true"></i>${qrcode}</span> `
     document.getElementsByClassName("pro-this-prodBrief")[0].innerHTML += description
     document.getElementsByClassName("pro-info-list")[0].getElementsByTagName("li")[0].remove()
 }
 
-async function packingInfo(product_id) {
-    let url = base_url+`/packing/v1/families/${product_id}/packing_details`;
+async function packingInfo(family_id) {
+    let url = base_url+`/packing/v1/families/${family_id}/packing_details`;
     document.querySelector("#packing_data .inner").innerHTML=`
         <div class="loading-container">
             <div class="container-spinner-product-list">
@@ -394,11 +395,11 @@ async function itemDetails(id){
   .catch(error => {
   });
 }
-function initilizeTabs(product_id,family_name,application_photo,applications,items,installation_way,installation_way_photo) {
+function initilizeTabs(family_id,family_name,application_photo,applications,items,installation_way,installation_way_photo) {
     document.getElementsByClassName("detial-cont-index")[0].innerHTML = `<div class="detial-cont-divsions detial-cont-prodescription">
             <ul id="tab_titles" class="detial-cont-tabslabel fix">
                 <li class="on"><a href="javascript:;"> Product Description</a></li>
-                <li onclick="packingInfo(${product_id})"><a href="javascript:;"> Product Package </a></li>
+                <li onclick="packingInfo(${family_id})"><a href="javascript:;"> Product Package </a></li>
             </ul>
             <div id="tab_content" class="detial-cont-tabscont">
                 <input type="hidden" name="delay_static_mobile_above" value="true" /> <input type="hidden" name="settingId" value="pWfhEQrjIkDO" />
@@ -650,7 +651,7 @@ async function initializePageContent() {
     let items=responses[1].data.collection;
     updateDescription(familyDetails.family_Name,familyDetails.family_description);
     updateCategoryList();
-    initilizeTabs(familyDetails.ProductID,familyDetails.family_Name,familyDetails.application_photo,familyDetails.applications,items,familyDetails.installation_way,familyDetails.installation_way_photo);
+    initilizeTabs(familyDetails.ID,familyDetails.family_Name,familyDetails.application_photo,familyDetails.applications,items,familyDetails.installation_way,familyDetails.installation_way_photo);
     replaceSlides([familyDetails.family_photo]);
     initilizeModal();
     hideLoader();
@@ -738,4 +739,3 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
-
