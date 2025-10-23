@@ -704,7 +704,7 @@ function waitForSliderAndInitialize() {
     let attempts = 0;
 
     const interval = setInterval(function() {
-        if (window.jQuery!=undefined && jQuery.fn.slightSubmenu!=undefined && jQuery.fn.easyZoom!=undefined &&$("#component_pWfhEQrjIkDO .prodetail-slider")) {
+        if (window.jQuery!=undefined && jQuery.fn.slightSubmenu!=undefined && jQuery.fn.easyZoom!=undefined && $("#component_pWfhEQrjIkDO #slider-pWfhEQrjIkDO") && $("#component_pWfhEQrjIkDO .prodetail-slider")) {
             clearInterval(interval);
             initializePageContent();
         }
